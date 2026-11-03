@@ -13,11 +13,14 @@ others.
 from __future__ import annotations
 
 import html as _html
+import json
 import logging
 import re
 import smtplib
 import sqlite3
 import time
+import urllib.error
+import urllib.request
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -26,7 +29,9 @@ from app.core.config import get_settings
 log = logging.getLogger(__name__)
 
 _cfg = get_settings()
-GMAIL_USER = _cfg.gmail_user
+BREVO_API_KEY = (_cfg.brevo_api_key or "").strip()
+EMAIL_FROM = (_cfg.email_from or "").strip()
+GMAIL_USER = _cfg.gmail_user or EMAIL_FROM
 GMAIL_PASS = (_cfg.gmail_app_password or "").replace(" ", "").strip()
 SMTP_SECURITY = (_cfg.smtp_security or "ssl").strip().lower()
 if SMTP_SECURITY not in ("ssl", "starttls", "none"):
@@ -34,7 +39,7 @@ if SMTP_SECURITY not in ("ssl", "starttls", "none"):
     SMTP_SECURITY = "ssl"
 SMTP_HOST = (_cfg.smtp_host or "smtp.gmail.com").strip()
 SMTP_PORT = int(_cfg.smtp_port or (465 if SMTP_SECURITY == "ssl" else 587))
-SERVER = "Gmail" if SMTP_HOST == "smtp.gmail.com" else "The mail server"
+SERVER = "Brevo" if BREVO_API_KEY else ("Gmail" if SMTP_HOST == "smtp.gmail.com" else "The mail server")
 BRAND = "X Education"
 BRAND_FOOTER = "X Education, Mumbai, India"
 SMTP_TIMEOUT_SECONDS = 10
@@ -45,12 +50,13 @@ _paused_until = {"t": 0.0}
 INK, MUTED, LINE, CANVAS, BRAND_COLOR = "#1F2430", "#5B6170", "#E3E5EA", "#F5F6F8", "#5B2C83"
 
 
-NOT_CONFIGURED = "Recorded (configure Gmail in backend/.env to send it)"
+NOT_CONFIGURED = "Recorded (configure Brevo or Gmail in backend/.env to send it)"
 
 
 def configured() -> bool:
-    """True when email is set up in backend/.env, so emails and sign-up codes are really sent (a local relay with
-    SMTP_SECURITY=none needs only the sender's address)."""
+    """True when email is set up in backend/.env, so emails and sign-up codes are really sent."""
+    if BREVO_API_KEY and (EMAIL_FROM or GMAIL_USER):
+        return True
     return bool(GMAIL_USER and (GMAIL_PASS or SMTP_SECURITY == "none"))
 
 
@@ -84,16 +90,59 @@ def _to_simulated_inbox(to: str, subject: str, body: str) -> None:
         log.warning("Could not put an email in the simulated inbox of %s", to, exc_info=True)
 
 
+def _send_brevo(to: str, subject: str, body: str, html: str | None = None, headers: dict | None = None) -> tuple[bool, str]:
+    sender_email = EMAIL_FROM or GMAIL_USER
+    payload = {
+        "sender": {"name": BRAND, "email": sender_email},
+        "to": [{"email": to}],
+        "subject": subject,
+        "textContent": body,
+    }
+    if html:
+        payload["htmlContent"] = html
+    if headers:
+        payload["headers"] = headers
+
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        "https://api.brevo.com/v3/smtp/email",
+        data=data,
+        headers={
+            "api-key": BREVO_API_KEY,
+            "Content-Type": "application/json",
+            "accept": "application/json",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=SMTP_TIMEOUT_SECONDS) as resp:
+            if resp.status in (200, 201, 202):
+                log.info("Email sent to %s via Brevo API: %s", to, subject)
+                return True, f"Sent to {to}"
+            return False, f"Brevo returned HTTP {resp.status}"
+    except urllib.error.HTTPError as e:
+        err_msg = e.read().decode("utf-8", errors="ignore")
+        log.error("Brevo API error: %d: %s", e.code, err_msg)
+        return False, f"Brevo API error ({e.code}): {err_msg}"
+    except OSError as e:
+        return _network_error(e)
+    except Exception as e:  # noqa: BLE001 - an email problem must never fail the request that sent it
+        log.exception("Brevo email to %s failed", to)
+        return False, str(e)
+
+
 def _send(to: str, subject: str, body: str, html: str | None = None, headers: dict | None = None) -> tuple[bool, str]:
     if is_simulated_address(to):
         log.info("Email recorded, not sent (simulated learner): %s / %s", to, subject)
         return True, "Simulated learner: recorded, not sent"
     if not configured():
-        log.info("Email recorded, not sent (Gmail not configured): %s / %s", to, subject)
+        log.info("Email recorded, not sent (email not configured): %s / %s", to, subject)
         return True, NOT_CONFIGURED
     if time.time() < _paused_until["t"]:
         log.warning("Email not sent (%s was unreachable a moment ago): %s / %s", SERVER, to, subject)
         return False, "Email is paused for a few minutes after a network error"
+    if BREVO_API_KEY:
+        return _send_brevo(to, subject, body, html=html, headers=headers)
     try:
         msg = MIMEMultipart("alternative")
         msg["Subject"] = subject

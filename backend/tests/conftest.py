@@ -42,6 +42,8 @@ os.environ.update(
     SIMULATION_ENABLED="false",
     GMAIL_USER="",
     GMAIL_APP_PASSWORD="",
+    BREVO_API_KEY="",
+    EMAIL_FROM="",
     GEMINI_API_KEY="",
     GEMINI_MODEL="",
     JWT_SECRET="tests-only-signing-secret-0123456789abcdef",
