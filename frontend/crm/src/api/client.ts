@@ -26,9 +26,11 @@ export function setSignedOutHandler(fn: () => void): void {
   onSignedOut = fn;
 }
 
+const API_BASE = (import.meta.env.VITE_API_URL ?? "").replace(/\/+$/, "");
+
 /** The CRM API: every path is relative to /api/v1/crm. */
 export const api = createHttpClient({
-  base: "/api/v1/crm",
+  base: `${API_BASE}/api/v1/crm`,
   token: getToken,
   onUnauthorized: () => {
     setToken(null);
@@ -37,4 +39,4 @@ export const api = createHttpClient({
 });
 
 /** The public part of the API (the course catalogue), shared with the website. */
-export const publicApi = createHttpClient({ base: "/api/v1" });
+export const publicApi = createHttpClient({ base: `${API_BASE}/api/v1` });

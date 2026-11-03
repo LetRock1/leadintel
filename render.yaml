@@ -1,0 +1,71 @@
+services:
+  # -------------------------------------------------------------
+  # 1. Backend API Service (FastAPI + ML Engine + Background Jobs)
+  # -------------------------------------------------------------
+  - type: web
+    name: leadintel-backend
+    runtime: python
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: "pip install -r requirements.txt && python -m app.cli bootstrap --skip-history"
+    startCommand: "python -m app.cli serve --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: DEMO_MODE
+        value: "true"
+      - key: ENVIRONMENT
+        value: "production"
+      - key: EMAIL_FROM
+        value: "krishna.jain24@spit.ac.in"
+      - key: CRM_OWNER_EMAIL
+        value: "krishna.jain24@spit.ac.in"
+      - key: CRM_OWNER_NAME
+        value: "Krishna Jain"
+      - key: CORS_ORIGINS
+        value: '["*"]'
+      - key: BREVO_API_KEY
+        sync: false
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+      - key: CRM_OWNER_PASSWORD
+        sync: false
+
+  # -------------------------------------------------------------
+  # 2. Public Learner Website (React + Vite)
+  # -------------------------------------------------------------
+  - type: web
+    name: leadintel-web
+    runtime: static
+    region: oregon
+    plan: free
+    rootDir: .
+    buildCommand: "npm ci --prefix frontend && npm run build -w web --prefix frontend"
+    staticPublishPath: "./frontend/web/dist"
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  # -------------------------------------------------------------
+  # 3. CRM Dashboard (Staff & Team Analytics)
+  # -------------------------------------------------------------
+  - type: web
+    name: leadintel-crm
+    runtime: static
+    region: oregon
+    plan: free
+    rootDir: .
+    buildCommand: "npm ci --prefix frontend && npm run build -w crm --prefix frontend"
+    staticPublishPath: "./frontend/crm/dist"
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

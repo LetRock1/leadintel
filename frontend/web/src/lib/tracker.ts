@@ -76,11 +76,13 @@ export function leadSource(): string {
   return source;
 }
 
+const API_BASE = (import.meta.env.VITE_API_URL ?? "").replace(/\/+$/, "");
+
 async function post(path: string, body: unknown, keepalive = false): Promise<Response | null> {
   const token = getToken();
   if (!token) return null;
   try {
-    return await fetch(`/api/v1${path}`, {
+    return await fetch(`${API_BASE}/api/v1${path}`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
       body: JSON.stringify(body),
@@ -151,7 +153,7 @@ export async function reportEmailClick(token: string): Promise<void> {
     /* ignore */
   }
   try {
-    const res = await fetch("/api/v1/email/click", {
+    const res = await fetch(`${API_BASE}/api/v1/email/click`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token }),
