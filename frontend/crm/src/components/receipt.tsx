@@ -150,25 +150,28 @@ export function DecisionReceipt({
                       1. How ML Influences This (Causal Uplift, Not Naive Scoring)
                     </p>
                     <p className="mt-0.5 text-[11.5px] text-muted">
-                      A standard CRM only predicts static buying likelihood and blindly discounts warm leads. Our ML S-Learner
-                      model estimates the <em>counterfactual probability vector</em>: what this specific person will do under
-                      each intervention. It detects when discounts cannibalize organic purchases (producing negative ΔProfit).
+                      A standard CRM only predicts static buying likelihood and blindly discounts warm leads. Our ML
+                      S-Learner model estimates the <em>counterfactual probability vector</em>: what this specific
+                      person will do under each intervention. It detects when discounts cannibalize organic purchases
+                      (producing negative ΔProfit).
                     </p>
                   </div>
 
                   <div>
-                    <p className="font-semibold text-ink">
-                      2. Exact Optimization Calculation
-                    </p>
+                    <p className="font-semibold text-ink">2. Exact Optimization Calculation</p>
                     <p className="mt-0.5 font-mono text-[11px] text-brand-ink">
                       ΔProfit(a) = [P(buy | a) × Fee × (1 − Discount)] − Action Cost − [P(buy | none) × Fee]
                     </p>
                     {price && none && picked && (
                       <div className="mt-1.5 rounded bg-surface p-2 text-[11.5px] font-mono text-ink-2 border border-line/60 space-y-0.5">
-                        <p>• Baseline without action: {pct(none.p_convert)} × {money(price)} = {money(none.p_convert * price)}</p>
+                        <p>
+                          • Baseline without action: {pct(none.p_convert)} × {money(price)} ={" "}
+                          {money(none.p_convert * price)}
+                        </p>
                         <p>
                           • {picked.label || actionLabel(picked.action)}: {pct(picked.p_convert)} × {money(price)}
-                          {picked.discount > 0 ? ` × (1 − ${pct(picked.discount)})` : ""} − {money(picked.cost)} = {money(picked.expected_profit)}
+                          {picked.discount > 0 ? ` × (1 − ${pct(picked.discount)})` : ""} − {money(picked.cost)} ={" "}
+                          {money(picked.expected_profit)}
                         </p>
                         <p className="font-semibold text-brand">
                           • Net Incremental Profit (ΔProfit): {money(picked.incremental_profit)}
@@ -214,12 +217,12 @@ export function DecisionReceipt({
                         call slots are reserved for high-uplift leads.
                       </li>
                       <li>
-                        <strong>Discount Budget Approval:</strong> Governed by the owner's monthly limit (under Planner);
-                        the Coupon Guard blocks discounts on leads with high organic conversion.
+                        <strong>Discount Budget Approval:</strong> Governed by the owner's monthly limit (under
+                        Planner); the Coupon Guard blocks discounts on leads with high organic conversion.
                       </li>
                       <li>
-                        <strong>Anti-Fatigue Policy:</strong> Maximum 1 active coupon per learner, 7-day cooldown between
-                        coupons, and no repetitive manual outreach within 24 hours.
+                        <strong>Anti-Fatigue Policy:</strong> Maximum 1 active coupon per learner, 7-day cooldown
+                        between coupons, and no repetitive manual outreach within 24 hours.
                       </li>
                     </ul>
                   </div>

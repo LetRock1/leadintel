@@ -90,7 +90,9 @@ def _to_simulated_inbox(to: str, subject: str, body: str) -> None:
         log.warning("Could not put an email in the simulated inbox of %s", to, exc_info=True)
 
 
-def _send_brevo(to: str, subject: str, body: str, html: str | None = None, headers: dict | None = None) -> tuple[bool, str]:
+def _send_brevo(
+    to: str, subject: str, body: str, html: str | None = None, headers: dict | None = None
+) -> tuple[bool, str]:
     sender_email = EMAIL_FROM or GMAIL_USER
     payload = {
         "sender": {"name": BRAND, "email": sender_email},
