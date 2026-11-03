@@ -34,3 +34,10 @@ coverage/
 
 # Temporary files of the start scripts
 frontend/lock.new
+
+# Local utility scripts and snapshot dumps
+new.txt
+final.txt
+sraping.py
+scraping.py
+
