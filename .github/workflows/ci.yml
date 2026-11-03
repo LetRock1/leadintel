@@ -1,0 +1,71 @@
+# Checks every push and pull request: code style, tests and production builds of all three parts.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: API and research code (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.12"]  # the oldest supported version and the recommended one
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: backend/requirements*.txt
+      - name: Install
+        run: python -m pip install -r requirements-dev.txt
+      - name: Lint and format (backend, ml, scripts)
+        run: |
+          ruff check ..
+          ruff format --check ..
+      - name: No emoji anywhere
+        run: python ../scripts/check_no_emoji.py
+      - name: API reference matches the code
+        run: python ../scripts/api_reference.py --check
+      - name: Tests
+        run: python -m pytest
+
+  frontend:
+    name: Website and CRM (TypeScript)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install
+        run: npm ci
+      - name: Type check
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      - name: Format
+        run: npm run format:check
+      - name: Unit tests
+        run: npm test
+      - name: Production build
+        run: npm run build

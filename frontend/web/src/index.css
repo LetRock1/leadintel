@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "@xedu/shared/styles/tokens.css";
+@source "../../shared/src";
+
+/* The course overview's progress bars fill while each slide is shown. */
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* The website reads at a slightly larger size than the CRM, and its headings use Lexend. */
+@layer base {
+  body {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.012em;
+  }
+}

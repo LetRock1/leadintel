@@ -1,0 +1,173 @@
+/*
+  X Education design tokens, shared by the website and the CRM.
+
+  Colours are CSS variables, so one class on <html> (.dark) switches the whole interface; Tailwind utilities
+  (bg-surface, text-ink, border-line ...) are mapped onto them below. Brand: aubergine. Data colours (series-*)
+  are validated for colour-blind separation on both surfaces and are used only for charts.
+*/
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --xe-canvas: #f5f6f8;
+  --xe-surface: #ffffff;
+  --xe-raised: #ffffff;
+  --xe-sunken: #eef0f3;
+  --xe-line: #e3e5ea;
+  --xe-line-strong: #cdd1d9;
+  --xe-ink: #1e2230;
+  --xe-ink-2: #4b5162;
+  --xe-muted: #5f6577;
+  --xe-brand: #5b2c83;
+  --xe-brand-strong: #46206a;
+  --xe-brand-soft: #f1eaf8;
+  --xe-brand-ink: #5b2c83;
+  --xe-on-brand: #ffffff;
+  --xe-focus: #7c4db8;
+  --xe-good: #166534;
+  --xe-good-soft: #e7f5ec;
+  --xe-bad: #b91c1c;
+  --xe-bad-soft: #fbeaea;
+  --xe-warn: #9a4508;
+  --xe-warn-soft: #fdf2e2;
+  --xe-info: #1d4ed8;
+  --xe-info-soft: #e8eefc;
+  --xe-series-1: #2a78d6;
+  --xe-series-2: #eb6834;
+  --xe-series-3: #1baf7a;
+  --xe-series-4: #eda100;
+  --xe-series-muted: #b8bdc8;
+  --xe-grid: #e8eaee;
+  --xe-axis: #c9cdd5;
+  --xe-overlay: rgba(17, 20, 31, 0.45);
+  --xe-shadow-overlay: 0 12px 32px rgba(17, 20, 31, 0.16), 0 2px 6px rgba(17, 20, 31, 0.08);
+}
+
+.dark {
+  color-scheme: dark;
+  --xe-canvas: #111217;
+  --xe-surface: #191b22;
+  --xe-raised: #21242d;
+  --xe-sunken: #15161c;
+  --xe-line: #2a2d37;
+  --xe-line-strong: #3a3e4a;
+  --xe-ink: #e7e8ec;
+  --xe-ink-2: #b4b8c4;
+  --xe-muted: #8e93a0;
+  --xe-brand: #7a4ab3;
+  --xe-brand-strong: #8f60c7;
+  --xe-brand-soft: #2a2138;
+  --xe-brand-ink: #c4a2ea;
+  --xe-on-brand: #ffffff;
+  --xe-focus: #b48ce0;
+  --xe-good: #34b36a;
+  --xe-good-soft: #15291d;
+  --xe-bad: #f07070;
+  --xe-bad-soft: #321a1c;
+  --xe-warn: #e0a040;
+  --xe-warn-soft: #30251a;
+  --xe-info: #6e9bf5;
+  --xe-info-soft: #1a2235;
+  --xe-series-1: #3987e5;
+  --xe-series-2: #d95926;
+  --xe-series-3: #199e70;
+  --xe-series-4: #c98500;
+  --xe-series-muted: #4a4e5a;
+  --xe-grid: #262934;
+  --xe-axis: #3a3e4a;
+  --xe-overlay: rgba(0, 0, 0, 0.6);
+  --xe-shadow-overlay: 0 12px 32px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+@theme inline {
+  --color-canvas: var(--xe-canvas);
+  --color-surface: var(--xe-surface);
+  --color-raised: var(--xe-raised);
+  --color-sunken: var(--xe-sunken);
+  --color-line: var(--xe-line);
+  --color-line-strong: var(--xe-line-strong);
+  --color-ink: var(--xe-ink);
+  --color-ink-2: var(--xe-ink-2);
+  --color-muted: var(--xe-muted);
+  --color-brand: var(--xe-brand);
+  --color-brand-strong: var(--xe-brand-strong);
+  --color-brand-soft: var(--xe-brand-soft);
+  --color-brand-ink: var(--xe-brand-ink);
+  --color-on-brand: var(--xe-on-brand);
+  --color-good: var(--xe-good);
+  --color-good-soft: var(--xe-good-soft);
+  --color-bad: var(--xe-bad);
+  --color-bad-soft: var(--xe-bad-soft);
+  --color-warn: var(--xe-warn);
+  --color-warn-soft: var(--xe-warn-soft);
+  --color-info: var(--xe-info);
+  --color-info-soft: var(--xe-info-soft);
+  --color-series-1: var(--xe-series-1);
+  --color-series-2: var(--xe-series-2);
+  --color-series-3: var(--xe-series-3);
+  --color-series-4: var(--xe-series-4);
+  --color-series-muted: var(--xe-series-muted);
+  --shadow-overlay: var(--xe-shadow-overlay);
+}
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Lexend", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--xe-canvas);
+    color: var(--xe-ink);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  :focus-visible {
+    outline: 2px solid var(--xe-focus);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: var(--xe-brand-soft);
+    color: var(--xe-ink);
+  }
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  dialog::backdrop {
+    background: var(--xe-overlay);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* A dotted leader between a label and its value, as on an itemised receipt. */
+@utility leader {
+  flex: 1 1 auto;
+  min-width: 1.5rem;
+  margin: 0 0.5rem;
+  border-bottom: 1px dotted var(--xe-line-strong);
+  transform: translateY(-0.3em);
+}

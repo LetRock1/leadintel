@@ -1,0 +1,10 @@
+[project]
+name = "xeducation-crm-backend"
+version = "7.1.0"
+description = "X Education CRM: the learner website's API, the team's CRM API, machine learning and background jobs"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"
+filterwarnings = ["ignore::DeprecationWarning"]

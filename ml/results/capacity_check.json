@@ -1,0 +1,399 @@
+{
+  "settings": {
+    "capacity": 20,
+    "days": 60,
+    "warmup_days": 7,
+    "seeds": 10,
+    "lookback_days": 7,
+    "pool": 150000,
+    "call_worthy_share": 0.36
+  },
+  "scenarios": [
+    {
+      "label": "demand 0.5x capacity",
+      "demand": 0.5,
+      "drift": false,
+      "policies": {
+        "no calls": {
+          "profit_per_day": 61871,
+          "calls_per_day": 0.0,
+          "share_of_hindsight": 0.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": -29787,
+          "vs_first_come_ci95": 857
+        },
+        "first come": {
+          "profit_per_day": 91659,
+          "calls_per_day": 9.2,
+          "share_of_hindsight": 1.0,
+          "share_ci95": 0.001,
+          "vs_first_come_per_day": 0,
+          "vs_first_come_ci95": 0
+        },
+        "fixed price": {
+          "profit_per_day": 91659,
+          "calls_per_day": 9.2,
+          "share_of_hindsight": 1.0,
+          "share_ci95": 0.001,
+          "vs_first_come_per_day": 0,
+          "vs_first_come_ci95": 0
+        },
+        "re-solved price": {
+          "profit_per_day": 91659,
+          "calls_per_day": 9.2,
+          "share_of_hindsight": 1.0,
+          "share_ci95": 0.001,
+          "vs_first_come_per_day": 0,
+          "vs_first_come_ci95": 0
+        },
+        "hindsight": {
+          "profit_per_day": 91667,
+          "calls_per_day": 9.2,
+          "share_of_hindsight": 1.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": 9,
+          "vs_first_come_ci95": 17
+        },
+        "true hindsight": {
+          "profit_per_day": 96024,
+          "calls_per_day": 8.8,
+          "share_of_hindsight": 1.147,
+          "share_ci95": 0.022,
+          "vs_first_come_per_day": 4366,
+          "vs_first_come_ci95": 642
+        }
+      }
+    },
+    {
+      "label": "demand 1x capacity",
+      "demand": 1,
+      "drift": false,
+      "policies": {
+        "no calls": {
+          "profit_per_day": 126486,
+          "calls_per_day": 0.0,
+          "share_of_hindsight": 0.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": -54887,
+          "vs_first_come_ci95": 2154
+        },
+        "first come": {
+          "profit_per_day": 181374,
+          "calls_per_day": 17.0,
+          "share_of_hindsight": 0.937,
+          "share_ci95": 0.009,
+          "vs_first_come_per_day": 0,
+          "vs_first_come_ci95": 0
+        },
+        "fixed price": {
+          "profit_per_day": 181436,
+          "calls_per_day": 16.9,
+          "share_of_hindsight": 0.938,
+          "share_ci95": 0.009,
+          "vs_first_come_per_day": 62,
+          "vs_first_come_ci95": 60
+        },
+        "re-solved price": {
+          "profit_per_day": 183289,
+          "calls_per_day": 16.9,
+          "share_of_hindsight": 0.97,
+          "share_ci95": 0.011,
+          "vs_first_come_per_day": 1915,
+          "vs_first_come_ci95": 415
+        },
+        "hindsight": {
+          "profit_per_day": 185068,
+          "calls_per_day": 17.0,
+          "share_of_hindsight": 1.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": 3694,
+          "vs_first_come_ci95": 574
+        },
+        "true hindsight": {
+          "profit_per_day": 195167,
+          "calls_per_day": 16.5,
+          "share_of_hindsight": 1.173,
+          "share_ci95": 0.012,
+          "vs_first_come_per_day": 13794,
+          "vs_first_come_ci95": 456
+        }
+      }
+    },
+    {
+      "label": "demand 2x capacity",
+      "demand": 2,
+      "drift": false,
+      "policies": {
+        "no calls": {
+          "profit_per_day": 247781,
+          "calls_per_day": 0.0,
+          "share_of_hindsight": 0.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": -64740,
+          "vs_first_come_ci95": 1339
+        },
+        "first come": {
+          "profit_per_day": 312520,
+          "calls_per_day": 19.9,
+          "share_of_hindsight": 0.703,
+          "share_ci95": 0.012,
+          "vs_first_come_per_day": 0,
+          "vs_first_come_ci95": 0
+        },
+        "fixed price": {
+          "profit_per_day": 330544,
+          "calls_per_day": 17.6,
+          "share_of_hindsight": 0.898,
+          "share_ci95": 0.012,
+          "vs_first_come_per_day": 18024,
+          "vs_first_come_ci95": 1775
+        },
+        "re-solved price": {
+          "profit_per_day": 335779,
+          "calls_per_day": 19.2,
+          "share_of_hindsight": 0.955,
+          "share_ci95": 0.009,
+          "vs_first_come_per_day": 23258,
+          "vs_first_come_ci95": 1231
+        },
+        "hindsight": {
+          "profit_per_day": 339960,
+          "calls_per_day": 19.9,
+          "share_of_hindsight": 1.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": 27440,
+          "vs_first_come_ci95": 1406
+        },
+        "true hindsight": {
+          "profit_per_day": 363007,
+          "calls_per_day": 19.9,
+          "share_of_hindsight": 1.251,
+          "share_ci95": 0.016,
+          "vs_first_come_per_day": 50487,
+          "vs_first_come_ci95": 1545
+        }
+      }
+    },
+    {
+      "label": "demand 4x capacity",
+      "demand": 4,
+      "drift": false,
+      "policies": {
+        "no calls": {
+          "profit_per_day": 496048,
+          "calls_per_day": 0.0,
+          "share_of_hindsight": 0.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": -65734,
+          "vs_first_come_ci95": 939
+        },
+        "first come": {
+          "profit_per_day": 561782,
+          "calls_per_day": 20.0,
+          "share_of_hindsight": 0.523,
+          "share_ci95": 0.01,
+          "vs_first_come_per_day": 0,
+          "vs_first_come_ci95": 0
+        },
+        "fixed price": {
+          "profit_per_day": 608354,
+          "calls_per_day": 17.7,
+          "share_of_hindsight": 0.893,
+          "share_ci95": 0.006,
+          "vs_first_come_per_day": 46572,
+          "vs_first_come_ci95": 2618
+        },
+        "re-solved price": {
+          "profit_per_day": 617068,
+          "calls_per_day": 19.7,
+          "share_of_hindsight": 0.962,
+          "share_ci95": 0.008,
+          "vs_first_come_per_day": 55286,
+          "vs_first_come_ci95": 2694
+        },
+        "hindsight": {
+          "profit_per_day": 621857,
+          "calls_per_day": 20.0,
+          "share_of_hindsight": 1.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": 60075,
+          "vs_first_come_ci95": 2520
+        },
+        "true hindsight": {
+          "profit_per_day": 663054,
+          "calls_per_day": 20.0,
+          "share_of_hindsight": 1.328,
+          "share_ci95": 0.016,
+          "vs_first_come_per_day": 101272,
+          "vs_first_come_ci95": 2860
+        }
+      }
+    },
+    {
+      "label": "demand 8x capacity",
+      "demand": 8,
+      "drift": false,
+      "policies": {
+        "no calls": {
+          "profit_per_day": 991546,
+          "calls_per_day": 0.0,
+          "share_of_hindsight": 0.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": -63818,
+          "vs_first_come_ci95": 889
+        },
+        "first come": {
+          "profit_per_day": 1055364,
+          "calls_per_day": 20.0,
+          "share_of_hindsight": 0.407,
+          "share_ci95": 0.008,
+          "vs_first_come_per_day": 0,
+          "vs_first_come_ci95": 0
+        },
+        "fixed price": {
+          "profit_per_day": 1130727,
+          "calls_per_day": 17.5,
+          "share_of_hindsight": 0.887,
+          "share_ci95": 0.009,
+          "vs_first_come_per_day": 75363,
+          "vs_first_come_ci95": 2423
+        },
+        "re-solved price": {
+          "profit_per_day": 1143403,
+          "calls_per_day": 19.9,
+          "share_of_hindsight": 0.968,
+          "share_ci95": 0.007,
+          "vs_first_come_per_day": 88039,
+          "vs_first_come_ci95": 2605
+        },
+        "hindsight": {
+          "profit_per_day": 1148433,
+          "calls_per_day": 20.0,
+          "share_of_hindsight": 1.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": 93069,
+          "vs_first_come_ci95": 2130
+        },
+        "true hindsight": {
+          "profit_per_day": 1209718,
+          "calls_per_day": 20.0,
+          "share_of_hindsight": 1.391,
+          "share_ci95": 0.013,
+          "vs_first_come_per_day": 154354,
+          "vs_first_come_ci95": 2471
+        }
+      }
+    },
+    {
+      "label": "demand 2x capacity, doubling half-way",
+      "demand": 2,
+      "drift": true,
+      "policies": {
+        "no calls": {
+          "profit_per_day": 385328,
+          "calls_per_day": 0.0,
+          "share_of_hindsight": 0.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": -63676,
+          "vs_first_come_ci95": 2023
+        },
+        "first come": {
+          "profit_per_day": 449004,
+          "calls_per_day": 20.0,
+          "share_of_hindsight": 0.581,
+          "share_ci95": 0.011,
+          "vs_first_come_per_day": 0,
+          "vs_first_come_ci95": 0
+        },
+        "fixed price": {
+          "profit_per_day": 482165,
+          "calls_per_day": 17.7,
+          "share_of_hindsight": 0.884,
+          "share_ci95": 0.01,
+          "vs_first_come_per_day": 33161,
+          "vs_first_come_ci95": 1190
+        },
+        "re-solved price": {
+          "profit_per_day": 489168,
+          "calls_per_day": 19.5,
+          "share_of_hindsight": 0.948,
+          "share_ci95": 0.01,
+          "vs_first_come_per_day": 40164,
+          "vs_first_come_ci95": 1674
+        },
+        "hindsight": {
+          "profit_per_day": 494876,
+          "calls_per_day": 20.0,
+          "share_of_hindsight": 1.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": 45872,
+          "vs_first_come_ci95": 1273
+        },
+        "true hindsight": {
+          "profit_per_day": 527698,
+          "calls_per_day": 19.9,
+          "share_of_hindsight": 1.3,
+          "share_ci95": 0.016,
+          "vs_first_come_per_day": 78694,
+          "vs_first_come_ci95": 1747
+        }
+      }
+    },
+    {
+      "label": "demand 4x capacity, doubling half-way",
+      "demand": 4,
+      "drift": true,
+      "policies": {
+        "no calls": {
+          "profit_per_day": 775987,
+          "calls_per_day": 0.0,
+          "share_of_hindsight": 0.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": -64944,
+          "vs_first_come_ci95": 828
+        },
+        "first come": {
+          "profit_per_day": 840931,
+          "calls_per_day": 20.0,
+          "share_of_hindsight": 0.455,
+          "share_ci95": 0.014,
+          "vs_first_come_per_day": 0,
+          "vs_first_come_ci95": 0
+        },
+        "fixed price": {
+          "profit_per_day": 902504,
+          "calls_per_day": 17.9,
+          "share_of_hindsight": 0.885,
+          "share_ci95": 0.011,
+          "vs_first_come_per_day": 61573,
+          "vs_first_come_ci95": 4496
+        },
+        "re-solved price": {
+          "profit_per_day": 913915,
+          "calls_per_day": 19.8,
+          "share_of_hindsight": 0.965,
+          "share_ci95": 0.009,
+          "vs_first_come_per_day": 72984,
+          "vs_first_come_ci95": 4481
+        },
+        "hindsight": {
+          "profit_per_day": 918901,
+          "calls_per_day": 20.0,
+          "share_of_hindsight": 1.0,
+          "share_ci95": 0.0,
+          "vs_first_come_per_day": 77969,
+          "vs_first_come_ci95": 4244
+        },
+        "true hindsight": {
+          "profit_per_day": 972981,
+          "calls_per_day": 20.0,
+          "share_of_hindsight": 1.38,
+          "share_ci95": 0.023,
+          "vs_first_come_per_day": 132050,
+          "vs_first_come_ci95": 3997
+        }
+      }
+    }
+  ],
+  "seconds": 116.0
+}

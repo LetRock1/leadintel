@@ -1,0 +1,191 @@
+{
+  "_about": "Business rules of the X Education CRM in one place. The backend and the research scripts read this file; restart the backend after editing it. Step keys are fixed (the models know them); their labels, costs and discounts can be changed.",
+  "business": {
+    "name": "X Education",
+    "crm_name": "X Education CRM",
+    "currency": "INR",
+    "currency_symbol": "₹"
+  },
+  "tiers": [
+    {
+      "min_score": 80,
+      "name": "Target Immediately"
+    },
+    {
+      "min_score": 60,
+      "name": "Nurture via Email/WhatsApp"
+    },
+    {
+      "min_score": 40,
+      "name": "Marketing Campaign"
+    },
+    {
+      "min_score": 0,
+      "name": "Low Priority"
+    }
+  ],
+  "lifecycle_stages": {
+    "_about": "The usual CRM lifecycle, worked out from what the learner did.",
+    "Lead": "signed up",
+    "Engaged": "watched a video, read the brochure or testimonials, joined a webinar, or came back for a second visit",
+    "MQL": "marketing-qualified: looked at pricing, wishlisted a course or used the help assistant",
+    "SQL": "sales-qualified: sent an enquiry, added to the cart or started checkout",
+    "Customer": "bought a course",
+    "Lost": "closed by the team with a reason: no automatic steps until someone re-opens the lead"
+  },
+  "actions": {
+    "none": {
+      "label": "Do nothing for now",
+      "channel": null,
+      "discount": 0.0,
+      "cost": 0
+    },
+    "email_info": {
+      "label": "Send an information email",
+      "channel": "email",
+      "discount": 0.0,
+      "cost": 2
+    },
+    "email_coupon_10": {
+      "label": "Send email with 10% coupon",
+      "channel": "email",
+      "discount": 0.1,
+      "cost": 2
+    },
+    "email_coupon_20": {
+      "label": "Send email with 20% coupon",
+      "channel": "email",
+      "discount": 0.2,
+      "cost": 2
+    },
+    "call": {
+      "label": "Counsellor phone call",
+      "channel": "call",
+      "discount": 0.0,
+      "cost": 150
+    },
+    "whatsapp": {
+      "label": "WhatsApp message",
+      "channel": "whatsapp",
+      "discount": 0.0,
+      "cost": 5
+    }
+  },
+  "daily_call_capacity": 8,
+  "call_capacity": {
+    "_about": "Capacity-aware next-best-action. daily_call_capacity is how many counsellor calls the team can make in a day (8: one counsellor, besides call-backs). 'priced': a call slot gets a price worked out from the last lookback_days of decisions, and a call is created only when it adds more than that price over the best step without a call (see backend/app/ml/capacity.py). 'fcfs': first come, first served until the daily capacity is used. Until min_decisions decisions with a possible call exist, the price is 0.",
+    "policy": "priced",
+    "lookback_days": 7,
+    "min_decisions": 50
+  },
+  "discount_budget": {
+    "_about": "Discount money is the business's second scarce resource (counsellor time is the first). Without a budget a coupon is given whenever it adds more profit than it costs. The owner can set a monthly discount budget on the Planner page: every rupee of expected discount then gets a price, worked out from the last lookback_days of decisions and the budget left this month, and a coupon is sent only when the profit it adds is worth more than the discount it uses (see backend/app/ml/budget.py). With fewer than min_decisions decisions where a coupon paid, the price is 0 and coupons simply stop when the budget is used up.",
+    "lookback_days": 7,
+    "min_decisions": 30
+  },
+  "planner": {
+    "_about": "The owner's planner: what one more counsellor (counsellor_daily_calls more call slots a day) would add against counsellor_monthly_cost. The owner can change the cost on the Planner page.",
+    "counsellor_daily_calls": 8,
+    "counsellor_monthly_cost": 35000
+  },
+  "exploration_rate": 0.15,
+  "outcome_window_days": 14,
+  "coupon_valid_hours": 72,
+  "coupon_gap_days": 7,
+  "automation_minutes": {
+    "_about": "How long after the event a follow-up is considered, and how often the automation job runs.",
+    "demo": {
+      "job_every": 1,
+      "visit_ended": 1,
+      "cart_abandoned": 1,
+      "checkout_abandoned": 1,
+      "wishlist": 1
+    },
+    "live": {
+      "job_every": 5,
+      "visit_ended": 15,
+      "cart_abandoned": 60,
+      "checkout_abandoned": 30,
+      "wishlist": 30
+    }
+  },
+  "cooldown_hours": {
+    "_about": "Hours before the same automatic follow-up can reach a person again; manual_repeat: hours before the team can send a person the same email step again by hand. A person holds at most one open coupon whatever these say.",
+    "visit": 6,
+    "cart": 12,
+    "checkout": 12,
+    "wishlist": 24,
+    "manual_repeat": 24
+  },
+  "score_refresh_minutes": {
+    "_about": "How often every lead is re-scored with the current model and the time since their last visit (also at start-up and right after the learning loop switches models).",
+    "demo": 5,
+    "live": 60
+  },
+  "learning": {
+    "_about": "The automatic learning loop. A new model replaces the old one only if it predicts the untouched control group (global_control) better in at least swap_confidence of the bootstrap resamples.",
+    "check_every_minutes": {
+      "demo": 5,
+      "live": 60
+    },
+    "min_new_outcomes": 30,
+    "swap_confidence": 0.9,
+    "ridge": 2.0,
+    "bootstrap_resamples": 300,
+    "lead_age": true,
+    "_lead_age": "Learn how much a lead's age (days since sign-up: 7-14, 14-30, 30+) changes its chance to buy, next to the time away, and keep it in the score. false switches it off."
+  },
+  "ab_testing": {
+    "control_share": 0.2,
+    "alpha": 0.05,
+    "power": 0.8,
+    "min_detectable_effect": 0.05,
+    "outcome_window_days": 14,
+    "max_variants": 3,
+    "min_per_segment_arm": 30,
+    "auto_adopt": true,
+    "adoption_check_share": 0.1,
+    "_auto_adopt": "When a test is final and an email without a discount clearly won, it becomes the standard information email for that audience. adoption_check_share of the audience keeps the old email, so the CRM keeps checking that the winner still wins, and switches back by itself if it does not."
+  },
+  "campaigns": {
+    "holdout_share": 0.1
+  },
+  "global_control": {
+    "_about": "A fixed random share of leads that never gets automatic follow-ups (no next-best-action steps, campaigns or A/B emails). It measures the CRM's total impact and is the learning loop's honest check. Usual practice is 1 to 15%.",
+    "share": 0.05
+  },
+  "starting_history": {
+    "_about": "On the first start the backend creates six months of history for 2,000 simulated learners (addresses @demo.xeducation.test, never emailed, tagged 'simulated' in the dashboard), so the CRM has data to learn from on day one. Remove it with: python -m app.cli history remove",
+    "create_on_first_start": true,
+    "learners": 2000,
+    "days": 180
+  },
+  "live_simulation": {
+    "_about": "While the backend runs, the simulated learners keep using the website in real time: they come back, react to the CRM's emails, coupons, calls and WhatsApp messages, and buy through the same API a browser uses; new ones sign up every day. Only the learners are simulated: their call and WhatsApp tasks wait in Today's actions for the team like everyone's, and when someone presses Call there, the simulated learner answers or not. enabled=false stops them (the Simulation page can also pause them).",
+    "enabled": true,
+    "new_signups_per_day": 13,
+    "tick_seconds": 10
+  },
+  "team": {
+    "_about": "Team accounts and lead owners. New leads (real or simulated) and any lead with an open task or call-back request are given to an active counsellor automatically (round_robin: in turn; least_loaded: whoever has the fewest open tasks and call-backs); older leads without open work stay unassigned until an admin gives them out. The Team page (admins) can change auto_assign, assignment_rule, the service-level hours and task_expiry_days; its choices are kept in the database and take precedence over this file. task_expiry_days: an open call or WhatsApp task nobody did by then closes itself as expired (0 = never).",
+    "auto_assign": true,
+    "assignment_rule": "round_robin",
+    "task_sla_hours": 24,
+    "callback_sla_hours": 4,
+    "task_expiry_days": 7,
+    "lost_reasons": [
+      "Not interested any more",
+      "Too expensive",
+      "Chose another institute",
+      "Not eligible",
+      "Wrong or invalid contact details",
+      "Asked not to be contacted",
+      "Duplicate lead",
+      "Other"
+    ],
+    "login_lockout": {
+      "max_failures": 5,
+      "minutes": 15
+    }
+  }
+}

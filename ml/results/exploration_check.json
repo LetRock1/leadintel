@@ -1,0 +1,2009 @@
+{
+  "months": 12,
+  "leads_per_month": 1000,
+  "repeats": 5,
+  "shares": [
+    0.0,
+    0.05,
+    0.15
+  ],
+  "worlds": {
+    "documented": {
+      "0.00": {
+        "total_done_per_lead": 3935.0563917854247,
+        "total_greedy_per_lead": 3935.0563917854247,
+        "oracle_per_lead": 4211.968746682013,
+        "last_greedy_per_lead": 3917.8398547192455,
+        "swaps": 3.6,
+        "runs": [
+          {
+            "total_done_per_lead": 3934.4934588950096,
+            "total_greedy_per_lead": 3934.4934588950096,
+            "oracle_per_lead": 4254.5793729225725,
+            "last_greedy_per_lead": 4208.127543081274,
+            "swaps": 5
+          },
+          {
+            "total_done_per_lead": 3895.1267904562956,
+            "total_greedy_per_lead": 3895.1267904562956,
+            "oracle_per_lead": 4179.669729874845,
+            "last_greedy_per_lead": 3671.776238042936,
+            "swaps": 4
+          },
+          {
+            "total_done_per_lead": 3950.9798510456844,
+            "total_greedy_per_lead": 3950.9798510456844,
+            "oracle_per_lead": 4234.300702445745,
+            "last_greedy_per_lead": 3940.1627896163363,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": 3975.50526789919,
+            "total_greedy_per_lead": 3975.50526789919,
+            "oracle_per_lead": 4205.166966898222,
+            "last_greedy_per_lead": 3995.0204778633797,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 3919.1765906309442,
+            "total_greedy_per_lead": 3919.1765906309442,
+            "oracle_per_lead": 4186.1269612686865,
+            "last_greedy_per_lead": 3774.1122249923,
+            "swaps": 4
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": 3689.588826758746,
+        "total_greedy_per_lead": 3820.4011724981874,
+        "oracle_per_lead": 4211.968746682013,
+        "last_greedy_per_lead": 3763.2519880606196,
+        "swaps": 0.6,
+        "runs": [
+          {
+            "total_done_per_lead": 3646.316253634901,
+            "total_greedy_per_lead": 3781.8494599184887,
+            "oracle_per_lead": 4254.5793729225725,
+            "last_greedy_per_lead": 3976.9147452048073,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 3738.8882663448453,
+            "total_greedy_per_lead": 3882.9025982441126,
+            "oracle_per_lead": 4179.669729874845,
+            "last_greedy_per_lead": 3688.850685011439,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 3639.4363789279328,
+            "total_greedy_per_lead": 3760.6193952075987,
+            "oracle_per_lead": 4234.300702445745,
+            "last_greedy_per_lead": 3681.9845583180777,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 3684.3438199155157,
+            "total_greedy_per_lead": 3804.0500041996497,
+            "oracle_per_lead": 4205.166966898222,
+            "last_greedy_per_lead": 3800.26479940249,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 3738.9594149705367,
+            "total_greedy_per_lead": 3872.584404921087,
+            "oracle_per_lead": 4186.1269612686865,
+            "last_greedy_per_lead": 3668.245152366285,
+            "swaps": 0
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": 3490.7623853379605,
+        "total_greedy_per_lead": 3906.130887451084,
+        "oracle_per_lead": 4211.968746682013,
+        "last_greedy_per_lead": 3857.7154768388114,
+        "swaps": 0.0,
+        "runs": [
+          {
+            "total_done_per_lead": 3514.4813403126773,
+            "total_greedy_per_lead": 3952.3238601898825,
+            "oracle_per_lead": 4254.5793729225725,
+            "last_greedy_per_lead": 4170.921837049244,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 3462.3330292983605,
+            "total_greedy_per_lead": 3882.9025982441126,
+            "oracle_per_lead": 4179.669729874845,
+            "last_greedy_per_lead": 3688.850685011439,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 3521.9075494677168,
+            "total_greedy_per_lead": 3933.597447390925,
+            "oracle_per_lead": 4234.300702445745,
+            "last_greedy_per_lead": 3847.9724305427326,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 3480.878472022913,
+            "total_greedy_per_lead": 3889.246126509411,
+            "oracle_per_lead": 4205.166966898222,
+            "last_greedy_per_lead": 3912.587279224358,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 3474.2115355881365,
+            "total_greedy_per_lead": 3872.584404921087,
+            "oracle_per_lead": 4186.1269612686865,
+            "last_greedy_per_lead": 3668.245152366285,
+            "swaps": 0
+          }
+        ]
+      }
+    },
+    "null": {
+      "0.00": {
+        "total_done_per_lead": -419.74190886822345,
+        "total_greedy_per_lead": -419.74190886822345,
+        "oracle_per_lead": 0.0,
+        "last_greedy_per_lead": -402.35926734402847,
+        "swaps": 3.0,
+        "runs": [
+          {
+            "total_done_per_lead": -434.11158608842703,
+            "total_greedy_per_lead": -434.11158608842703,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -441.6097537719483,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": -399.1695233314579,
+            "total_greedy_per_lead": -399.1695233314579,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -340.61477305722906,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -454.2308423320123,
+            "total_greedy_per_lead": -454.2308423320123,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -360.7371794532244,
+            "swaps": 4
+          },
+          {
+            "total_done_per_lead": -403.23299630753075,
+            "total_greedy_per_lead": -403.23299630753075,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -366.06572335908305,
+            "swaps": 4
+          },
+          {
+            "total_done_per_lead": -407.964596281689,
+            "total_greedy_per_lead": -407.964596281689,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -502.76890707865766,
+            "swaps": 3
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": -538.7498234957426,
+        "total_greedy_per_lead": -519.3598215855545,
+        "oracle_per_lead": 0.0,
+        "last_greedy_per_lead": -513.2650690659166,
+        "swaps": 0.2,
+        "runs": [
+          {
+            "total_done_per_lead": -521.7928601024631,
+            "total_greedy_per_lead": -508.1931049983045,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -486.7739580763309,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -558.324242699713,
+            "total_greedy_per_lead": -538.2081838279112,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -536.886118283837,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -521.7323007829187,
+            "total_greedy_per_lead": -499.62152343243656,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -459.1351773541233,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -547.7575805201956,
+            "total_greedy_per_lead": -529.1936677157811,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -522.1921338583727,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -544.1421333734226,
+            "total_greedy_per_lead": -521.5826279533395,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -561.3379577569192,
+            "swaps": 0
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": -573.345777766149,
+        "total_greedy_per_lead": -517.6308998996442,
+        "oracle_per_lead": 0.0,
+        "last_greedy_per_lead": -523.1582704785138,
+        "swaps": 0.6,
+        "runs": [
+          {
+            "total_done_per_lead": -549.4362496065156,
+            "total_greedy_per_lead": -508.1931049983045,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -486.7739580763309,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -548.7468750517081,
+            "total_greedy_per_lead": -486.22487938514706,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -483.7725394924934,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": -608.2611588564365,
+            "total_greedy_per_lead": -542.9602194456492,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -561.7147632084526,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -578.7490849352565,
+            "total_greedy_per_lead": -529.1936677157811,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -522.1921338583727,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -581.5355203808281,
+            "total_greedy_per_lead": -521.5826279533395,
+            "oracle_per_lead": 0.0,
+            "last_greedy_per_lead": -561.3379577569192,
+            "swaps": 0
+          }
+        ]
+      }
+    },
+    "reversed": {
+      "0.00": {
+        "total_done_per_lead": -1507.378448347599,
+        "total_greedy_per_lead": -1507.378448347599,
+        "oracle_per_lead": 1888.0722369484665,
+        "last_greedy_per_lead": -1322.5817445879968,
+        "swaps": 0.6,
+        "runs": [
+          {
+            "total_done_per_lead": -1002.4069047718382,
+            "total_greedy_per_lead": -1002.4069047718382,
+            "oracle_per_lead": 1860.3322544745834,
+            "last_greedy_per_lead": -863.3230798250463,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -1530.946976701097,
+            "total_greedy_per_lead": -1530.946976701097,
+            "oracle_per_lead": 1884.7272897711443,
+            "last_greedy_per_lead": -1458.4625280111463,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -1886.4657418626848,
+            "total_greedy_per_lead": -1886.4657418626848,
+            "oracle_per_lead": 1902.1564749986399,
+            "last_greedy_per_lead": -1716.4485927692044,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -1243.1037669512637,
+            "total_greedy_per_lead": -1243.1037669512637,
+            "oracle_per_lead": 1923.4275280062182,
+            "last_greedy_per_lead": -772.0152139084353,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -1873.9688514511124,
+            "total_greedy_per_lead": -1873.9688514511124,
+            "oracle_per_lead": 1869.717637491747,
+            "last_greedy_per_lead": -1802.6593084261513,
+            "swaps": 0
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": -1549.0783974453807,
+        "total_greedy_per_lead": -1604.3562282327025,
+        "oracle_per_lead": 1888.0722369484665,
+        "last_greedy_per_lead": -1393.869369924239,
+        "swaps": 0.2,
+        "runs": [
+          {
+            "total_done_per_lead": -1814.741060831325,
+            "total_greedy_per_lead": -1881.1531829853718,
+            "oracle_per_lead": 1860.3322544745834,
+            "last_greedy_per_lead": -1927.9729386744532,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -1804.5358621954972,
+            "total_greedy_per_lead": -1872.317157925541,
+            "oracle_per_lead": 1884.7272897711443,
+            "last_greedy_per_lead": -1792.9321721913436,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -1815.539547302739,
+            "total_greedy_per_lead": -1886.4657418626848,
+            "oracle_per_lead": 1902.1564749986399,
+            "last_greedy_per_lead": -1716.4485927692044,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -1799.8550405321446,
+            "total_greedy_per_lead": -1872.8209850955664,
+            "oracle_per_lead": 1923.4275280062182,
+            "last_greedy_per_lead": -1708.5132639229362,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -510.7204763651969,
+            "total_greedy_per_lead": -509.02407329434783,
+            "oracle_per_lead": 1869.717637491747,
+            "last_greedy_per_lead": 176.520117936742,
+            "swaps": 1
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": -1385.253864078017,
+        "total_greedy_per_lead": -1541.6706421384736,
+        "oracle_per_lead": 1888.0722369484665,
+        "last_greedy_per_lead": -1124.0024743446997,
+        "swaps": 0.4,
+        "runs": [
+          {
+            "total_done_per_lead": -1685.7108092516137,
+            "total_greedy_per_lead": -1881.1531829853718,
+            "oracle_per_lead": 1860.3322544745834,
+            "last_greedy_per_lead": -1927.9729386744532,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -1664.9209436366893,
+            "total_greedy_per_lead": -1872.317157925541,
+            "oracle_per_lead": 1884.7272897711443,
+            "last_greedy_per_lead": -1792.9321721913436,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -1073.2136121105236,
+            "total_greedy_per_lead": -1173.238061121301,
+            "oracle_per_lead": 1902.1564749986399,
+            "last_greedy_per_lead": 256.04790584328714,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -1650.9223027700946,
+            "total_greedy_per_lead": -1872.8209850955664,
+            "oracle_per_lead": 1923.4275280062182,
+            "last_greedy_per_lead": -1708.5132639229362,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -851.5016526211642,
+            "total_greedy_per_lead": -908.823823564588,
+            "oracle_per_lead": 1869.717637491747,
+            "last_greedy_per_lead": -446.64190277805267,
+            "swaps": 1
+          }
+        ]
+      }
+    },
+    "hidden": {
+      "0.00": {
+        "total_done_per_lead": 836.9796262695085,
+        "total_greedy_per_lead": 836.9796262695085,
+        "oracle_per_lead": 2843.1636527197984,
+        "last_greedy_per_lead": 849.0297037067267,
+        "swaps": 2.6,
+        "runs": [
+          {
+            "total_done_per_lead": 862.8794924264165,
+            "total_greedy_per_lead": 862.8794924264165,
+            "oracle_per_lead": 2857.608801689769,
+            "last_greedy_per_lead": 793.0245188348492,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 823.3697133887243,
+            "total_greedy_per_lead": 823.3697133887243,
+            "oracle_per_lead": 2801.684152432386,
+            "last_greedy_per_lead": 843.8755275618685,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 866.9773469950875,
+            "total_greedy_per_lead": 866.9773469950875,
+            "oracle_per_lead": 2871.060482507501,
+            "last_greedy_per_lead": 1044.7179987718966,
+            "swaps": 4
+          },
+          {
+            "total_done_per_lead": 854.6901782200821,
+            "total_greedy_per_lead": 854.6901782200821,
+            "oracle_per_lead": 2881.4397504935328,
+            "last_greedy_per_lead": 819.8297970979544,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 776.9814003172318,
+            "total_greedy_per_lead": 776.9814003172318,
+            "oracle_per_lead": 2804.025076475804,
+            "last_greedy_per_lead": 743.7006762670651,
+            "swaps": 2
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": 758.1813890125803,
+        "total_greedy_per_lead": 795.1636829088075,
+        "oracle_per_lead": 2843.1636527197984,
+        "last_greedy_per_lead": 808.3971225387904,
+        "swaps": 0.0,
+        "runs": [
+          {
+            "total_done_per_lead": 795.2909733120973,
+            "total_greedy_per_lead": 814.4974106204844,
+            "oracle_per_lead": 2857.608801689769,
+            "last_greedy_per_lead": 768.883969145117,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 724.212519943977,
+            "total_greedy_per_lead": 758.30305832733,
+            "oracle_per_lead": 2801.684152432386,
+            "last_greedy_per_lead": 847.3402596506879,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 782.5248355006192,
+            "total_greedy_per_lead": 828.4823173960253,
+            "oracle_per_lead": 2871.060482507501,
+            "last_greedy_per_lead": 968.5326299774154,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 757.4598067542311,
+            "total_greedy_per_lead": 795.8890890617926,
+            "oracle_per_lead": 2881.4397504935328,
+            "last_greedy_per_lead": 673.6118117216922,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 731.4188095519771,
+            "total_greedy_per_lead": 778.6465391384049,
+            "oracle_per_lead": 2804.025076475804,
+            "last_greedy_per_lead": 783.6169421990397,
+            "swaps": 0
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": 666.8730061816337,
+        "total_greedy_per_lead": 795.1636829088075,
+        "oracle_per_lead": 2843.1636527197984,
+        "last_greedy_per_lead": 808.3971225387904,
+        "swaps": 0.0,
+        "runs": [
+          {
+            "total_done_per_lead": 687.5208881402618,
+            "total_greedy_per_lead": 814.4974106204844,
+            "oracle_per_lead": 2857.608801689769,
+            "last_greedy_per_lead": 768.883969145117,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 625.5898607082881,
+            "total_greedy_per_lead": 758.30305832733,
+            "oracle_per_lead": 2801.684152432386,
+            "last_greedy_per_lead": 847.3402596506879,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 711.2108102032131,
+            "total_greedy_per_lead": 828.4823173960253,
+            "oracle_per_lead": 2871.060482507501,
+            "last_greedy_per_lead": 968.5326299774154,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 668.1065672663918,
+            "total_greedy_per_lead": 795.8890890617926,
+            "oracle_per_lead": 2881.4397504935328,
+            "last_greedy_per_lead": 673.6118117216922,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 641.9369045900138,
+            "total_greedy_per_lead": 778.6465391384049,
+            "oracle_per_lead": 2804.025076475804,
+            "last_greedy_per_lead": 783.6169421990397,
+            "swaps": 0
+          }
+        ]
+      }
+    },
+    "random_01": {
+      "0.00": {
+        "total_done_per_lead": 783.3446834361371,
+        "total_greedy_per_lead": 783.3446834361371,
+        "oracle_per_lead": 3379.765249650604,
+        "last_greedy_per_lead": 1262.3666902695368,
+        "swaps": 3.4,
+        "runs": [
+          {
+            "total_done_per_lead": 595.9304648179167,
+            "total_greedy_per_lead": 595.9304648179167,
+            "oracle_per_lead": 3399.939063023532,
+            "last_greedy_per_lead": 752.8608358548461,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 860.3741991579838,
+            "total_greedy_per_lead": 860.3741991579838,
+            "oracle_per_lead": 3398.9693790237434,
+            "last_greedy_per_lead": 1792.726427988394,
+            "swaps": 5
+          },
+          {
+            "total_done_per_lead": 776.1658714220966,
+            "total_greedy_per_lead": 776.1658714220966,
+            "oracle_per_lead": 3373.55155812174,
+            "last_greedy_per_lead": 1233.0392396935822,
+            "swaps": 5
+          },
+          {
+            "total_done_per_lead": 879.9490947256568,
+            "total_greedy_per_lead": 879.9490947256568,
+            "oracle_per_lead": 3359.2222867040296,
+            "last_greedy_per_lead": 1337.2578088875837,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 804.3037870570314,
+            "total_greedy_per_lead": 804.3037870570314,
+            "oracle_per_lead": 3367.143961379972,
+            "last_greedy_per_lead": 1195.9491389232778,
+            "swaps": 3
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": 466.2181821953708,
+        "total_greedy_per_lead": 530.5106130579427,
+        "oracle_per_lead": 3379.765249650604,
+        "last_greedy_per_lead": 604.6739466199908,
+        "swaps": 0.4,
+        "runs": [
+          {
+            "total_done_per_lead": 651.9741317262021,
+            "total_greedy_per_lead": 729.8235205483294,
+            "oracle_per_lead": 3399.939063023532,
+            "last_greedy_per_lead": 985.5630688931859,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 403.9583353632269,
+            "total_greedy_per_lead": 483.36370922980956,
+            "oracle_per_lead": 3398.9693790237434,
+            "last_greedy_per_lead": 603.4032218541239,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 407.24673523227716,
+            "total_greedy_per_lead": 463.44103052332343,
+            "oracle_per_lead": 3373.55155812174,
+            "last_greedy_per_lead": 280.8094726651674,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 481.07414567046294,
+            "total_greedy_per_lead": 531.56211749074,
+            "oracle_per_lead": 3359.2222867040296,
+            "last_greedy_per_lead": 561.2294573032234,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 386.8375629846849,
+            "total_greedy_per_lead": 444.36268749751054,
+            "oracle_per_lead": 3367.143961379972,
+            "last_greedy_per_lead": 592.364512384254,
+            "swaps": 0
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": 237.8113317924508,
+        "total_greedy_per_lead": 410.99780114345793,
+        "oracle_per_lead": 3379.765249650604,
+        "last_greedy_per_lead": 482.32842923428495,
+        "swaps": 0.4,
+        "runs": [
+          {
+            "total_done_per_lead": 57.85021400433447,
+            "total_greedy_per_lead": 221.1059747732297,
+            "oracle_per_lead": 3399.939063023532,
+            "last_greedy_per_lead": 333.61113014804056,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 281.8636179489495,
+            "total_greedy_per_lead": 483.36370922980956,
+            "oracle_per_lead": 3398.9693790237434,
+            "last_greedy_per_lead": 603.4032218541239,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 292.9999335970451,
+            "total_greedy_per_lead": 463.44103052332343,
+            "oracle_per_lead": 3373.55155812174,
+            "last_greedy_per_lead": 280.8094726651674,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 290.05635504267394,
+            "total_greedy_per_lead": 442.7156036934166,
+            "oracle_per_lead": 3359.2222867040296,
+            "last_greedy_per_lead": 601.453809119839,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 266.2865383692511,
+            "total_greedy_per_lead": 444.36268749751054,
+            "oracle_per_lead": 3367.143961379972,
+            "last_greedy_per_lead": 592.364512384254,
+            "swaps": 0
+          }
+        ]
+      },
+      "hidden_share": 0.5166904023304625
+    },
+    "random_02": {
+      "0.00": {
+        "total_done_per_lead": 2376.662603652371,
+        "total_greedy_per_lead": 2376.662603652371,
+        "oracle_per_lead": 4306.686318965791,
+        "last_greedy_per_lead": 2696.858942787871,
+        "swaps": 2.6,
+        "runs": [
+          {
+            "total_done_per_lead": 2333.020222184138,
+            "total_greedy_per_lead": 2333.020222184138,
+            "oracle_per_lead": 4342.855058661414,
+            "last_greedy_per_lead": 2429.3229619027356,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 2340.252642768994,
+            "total_greedy_per_lead": 2340.252642768994,
+            "oracle_per_lead": 4251.725928219433,
+            "last_greedy_per_lead": 2759.80895418944,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": 2372.053624598964,
+            "total_greedy_per_lead": 2372.053624598964,
+            "oracle_per_lead": 4297.093468157065,
+            "last_greedy_per_lead": 2722.1848549054876,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 2436.1094237746597,
+            "total_greedy_per_lead": 2436.1094237746597,
+            "oracle_per_lead": 4328.046239936207,
+            "last_greedy_per_lead": 2897.4803193547145,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 2401.8771049351003,
+            "total_greedy_per_lead": 2401.8771049351003,
+            "oracle_per_lead": 4313.710899854831,
+            "last_greedy_per_lead": 2675.497623586976,
+            "swaps": 2
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": 2070.419410331856,
+        "total_greedy_per_lead": 2143.0598454035794,
+        "oracle_per_lead": 4306.686318965791,
+        "last_greedy_per_lead": 2257.2392570956845,
+        "swaps": 0.2,
+        "runs": [
+          {
+            "total_done_per_lead": 2042.610876587435,
+            "total_greedy_per_lead": 2120.5326502710054,
+            "oracle_per_lead": 4342.855058661414,
+            "last_greedy_per_lead": 2082.100861435747,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 2026.3512196949816,
+            "total_greedy_per_lead": 2092.1248101123188,
+            "oracle_per_lead": 4251.725928219433,
+            "last_greedy_per_lead": 2338.03705558251,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 2068.5865507334743,
+            "total_greedy_per_lead": 2130.046492969857,
+            "oracle_per_lead": 4297.093468157065,
+            "last_greedy_per_lead": 2122.2550340736134,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 2187.3260870399095,
+            "total_greedy_per_lead": 2278.2249962074134,
+            "oracle_per_lead": 4328.046239936207,
+            "last_greedy_per_lead": 2628.555217887353,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 2027.2223176034802,
+            "total_greedy_per_lead": 2094.3702774573035,
+            "oracle_per_lead": 4313.710899854831,
+            "last_greedy_per_lead": 2115.2481164991987,
+            "swaps": 0
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": 1885.9728185831452,
+        "total_greedy_per_lead": 2110.385805834995,
+        "oracle_per_lead": 4306.686318965791,
+        "last_greedy_per_lead": 2142.012908762609,
+        "swaps": 0.2,
+        "runs": [
+          {
+            "total_done_per_lead": 1895.1346348482668,
+            "total_greedy_per_lead": 2120.5326502710054,
+            "oracle_per_lead": 4342.855058661414,
+            "last_greedy_per_lead": 2082.100861435747,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 1885.5465582389543,
+            "total_greedy_per_lead": 2092.1248101123188,
+            "oracle_per_lead": 4251.725928219433,
+            "last_greedy_per_lead": 2338.03705558251,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 1880.5471532478066,
+            "total_greedy_per_lead": 2102.2483025787315,
+            "oracle_per_lead": 4297.093468157065,
+            "last_greedy_per_lead": 2019.863588185389,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 1880.5719664998076,
+            "total_greedy_per_lead": 2142.6529887556167,
+            "oracle_per_lead": 4328.046239936207,
+            "last_greedy_per_lead": 2154.8149221102,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 1888.0637800808918,
+            "total_greedy_per_lead": 2094.3702774573035,
+            "oracle_per_lead": 4313.710899854831,
+            "last_greedy_per_lead": 2115.2481164991987,
+            "swaps": 0
+          }
+        ]
+      },
+      "hidden_share": 0.7148064231614649
+    },
+    "random_03": {
+      "0.00": {
+        "total_done_per_lead": 3448.5914330574624,
+        "total_greedy_per_lead": 3448.5914330574624,
+        "oracle_per_lead": 6928.7946773762405,
+        "last_greedy_per_lead": 6222.13499455406,
+        "swaps": 6.2,
+        "runs": [
+          {
+            "total_done_per_lead": 3191.6588237097617,
+            "total_greedy_per_lead": 3191.6588237097617,
+            "oracle_per_lead": 6929.841924733452,
+            "last_greedy_per_lead": 6205.732379122575,
+            "swaps": 6
+          },
+          {
+            "total_done_per_lead": 3508.205643702601,
+            "total_greedy_per_lead": 3508.205643702601,
+            "oracle_per_lead": 6876.7329348819885,
+            "last_greedy_per_lead": 6097.312398032625,
+            "swaps": 6
+          },
+          {
+            "total_done_per_lead": 3703.4918272113755,
+            "total_greedy_per_lead": 3703.4918272113755,
+            "oracle_per_lead": 6947.609670724705,
+            "last_greedy_per_lead": 6597.872085011626,
+            "swaps": 7
+          },
+          {
+            "total_done_per_lead": 3246.610841572965,
+            "total_greedy_per_lead": 3246.610841572965,
+            "oracle_per_lead": 6976.742152835675,
+            "last_greedy_per_lead": 5947.715292843643,
+            "swaps": 6
+          },
+          {
+            "total_done_per_lead": 3592.9900290906116,
+            "total_greedy_per_lead": 3592.9900290906116,
+            "oracle_per_lead": 6913.046703705382,
+            "last_greedy_per_lead": 6262.0428177598305,
+            "swaps": 6
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": 408.65774502432185,
+        "total_greedy_per_lead": 436.6093637535886,
+        "oracle_per_lead": 6928.7946773762405,
+        "last_greedy_per_lead": 1300.7530268663916,
+        "swaps": 0.8,
+        "runs": [
+          {
+            "total_done_per_lead": -268.56922991047867,
+            "total_greedy_per_lead": -245.26559618174096,
+            "oracle_per_lead": 6929.841924733452,
+            "last_greedy_per_lead": -233.02806279547954,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 356.4323484496428,
+            "total_greedy_per_lead": 365.4770116615053,
+            "oracle_per_lead": 6876.7329348819885,
+            "last_greedy_per_lead": 630.3847658513945,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -291.20093636282843,
+            "total_greedy_per_lead": -303.9198338557627,
+            "oracle_per_lead": 6947.609670724705,
+            "last_greedy_per_lead": -323.06901965207663,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 685.5648925837327,
+            "total_greedy_per_lead": 723.8062338594397,
+            "oracle_per_lead": 6976.742152835675,
+            "last_greedy_per_lead": 3769.0678249245398,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 1561.061650361541,
+            "total_greedy_per_lead": 1642.9490032845017,
+            "oracle_per_lead": 6913.046703705382,
+            "last_greedy_per_lead": 2660.4096260035794,
+            "swaps": 1
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": 1937.6646408268266,
+        "total_greedy_per_lead": 2280.11756309656,
+        "oracle_per_lead": 6928.7946773762405,
+        "last_greedy_per_lead": 5696.00775742689,
+        "swaps": 1.2,
+        "runs": [
+          {
+            "total_done_per_lead": 543.2303840134741,
+            "total_greedy_per_lead": 664.5683903975556,
+            "oracle_per_lead": 6929.841924733452,
+            "last_greedy_per_lead": 5470.878995692194,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 2834.9748523419626,
+            "total_greedy_per_lead": 3305.030144953207,
+            "oracle_per_lead": 6876.7329348819885,
+            "last_greedy_per_lead": 5296.062503563262,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 1045.7608927417589,
+            "total_greedy_per_lead": 1253.8655675305695,
+            "oracle_per_lead": 6947.609670724705,
+            "last_greedy_per_lead": 5726.389651877305,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 2900.407376680716,
+            "total_greedy_per_lead": 3379.0799098881184,
+            "oracle_per_lead": 6976.742152835675,
+            "last_greedy_per_lead": 5749.101646205556,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 2363.949698356222,
+            "total_greedy_per_lead": 2798.0438027133473,
+            "oracle_per_lead": 6913.046703705382,
+            "last_greedy_per_lead": 6237.605989796132,
+            "swaps": 2
+          }
+        ]
+      },
+      "hidden_share": 0.6351858994293492
+    },
+    "random_04": {
+      "0.00": {
+        "total_done_per_lead": -282.21195415154045,
+        "total_greedy_per_lead": -282.21195415154045,
+        "oracle_per_lead": 2558.1530933042195,
+        "last_greedy_per_lead": -38.89163200285484,
+        "swaps": 2.0,
+        "runs": [
+          {
+            "total_done_per_lead": -402.73883694609145,
+            "total_greedy_per_lead": -402.73883694609145,
+            "oracle_per_lead": 2559.051125156863,
+            "last_greedy_per_lead": -180.75382339568273,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": -512.6857152382946,
+            "total_greedy_per_lead": -512.6857152382946,
+            "oracle_per_lead": 2523.4340018764983,
+            "last_greedy_per_lead": -358.36775956812176,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": -65.81471358268708,
+            "total_greedy_per_lead": -65.81471358268708,
+            "oracle_per_lead": 2604.5304771162505,
+            "last_greedy_per_lead": 75.21672054244698,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": -210.80680786866742,
+            "total_greedy_per_lead": -210.80680786866742,
+            "oracle_per_lead": 2532.6299945104834,
+            "last_greedy_per_lead": 126.29128187100254,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": -219.01369712196143,
+            "total_greedy_per_lead": -219.01369712196143,
+            "oracle_per_lead": 2571.119867861001,
+            "last_greedy_per_lead": 143.15542053608078,
+            "swaps": 1
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": -971.0290308119389,
+        "total_greedy_per_lead": -961.7247942647919,
+        "oracle_per_lead": 2558.1530933042195,
+        "last_greedy_per_lead": -834.5233705306742,
+        "swaps": 0.8,
+        "runs": [
+          {
+            "total_done_per_lead": -132.32024620745187,
+            "total_greedy_per_lead": -76.81871057680509,
+            "oracle_per_lead": 2559.051125156863,
+            "last_greedy_per_lead": 109.32292766778903,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": -180.88533169530365,
+            "total_greedy_per_lead": -126.31969314667242,
+            "oracle_per_lead": 2523.4340018764983,
+            "last_greedy_per_lead": 516.2210740383676,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": -1498.4087751379968,
+            "total_greedy_per_lead": -1524.1949206007405,
+            "oracle_per_lead": 2604.5304771162505,
+            "last_greedy_per_lead": -1696.4359065545113,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -1509.8404282997187,
+            "total_greedy_per_lead": -1530.458473019302,
+            "oracle_per_lead": 2532.6299945104834,
+            "last_greedy_per_lead": -1539.8972685244005,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -1533.6903727192237,
+            "total_greedy_per_lead": -1550.8321739804396,
+            "oracle_per_lead": 2571.119867861001,
+            "last_greedy_per_lead": -1561.8276792806155,
+            "swaps": 0
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": -912.7892145604422,
+        "total_greedy_per_lead": -881.8681429607975,
+        "oracle_per_lead": 2558.1530933042195,
+        "last_greedy_per_lead": 315.6900433371398,
+        "swaps": 1.0,
+        "runs": [
+          {
+            "total_done_per_lead": -1128.9033462324944,
+            "total_greedy_per_lead": -1158.1290805790152,
+            "oracle_per_lead": 2559.051125156863,
+            "last_greedy_per_lead": 86.89550531621408,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -499.2094481913795,
+            "total_greedy_per_lead": -370.6683328517995,
+            "oracle_per_lead": 2523.4340018764983,
+            "last_greedy_per_lead": -287.29941709006044,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -707.5683200781579,
+            "total_greedy_per_lead": -643.6951286448725,
+            "oracle_per_lead": 2604.5304771162505,
+            "last_greedy_per_lead": -250.8690990044249,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -921.801438144683,
+            "total_greedy_per_lead": -895.2633504915958,
+            "oracle_per_lead": 2532.6299945104834,
+            "last_greedy_per_lead": 1080.5826858197706,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -1306.4635201554968,
+            "total_greedy_per_lead": -1341.584822236705,
+            "oracle_per_lead": 2571.119867861001,
+            "last_greedy_per_lead": 949.1405416441995,
+            "swaps": 1
+          }
+        ]
+      },
+      "hidden_share": 0.688161865649265
+    },
+    "random_05": {
+      "0.00": {
+        "total_done_per_lead": 1939.5872573003592,
+        "total_greedy_per_lead": 1939.5872573003592,
+        "oracle_per_lead": 5705.890866505483,
+        "last_greedy_per_lead": 2323.368431191475,
+        "swaps": 3.8,
+        "runs": [
+          {
+            "total_done_per_lead": 2118.7209367382516,
+            "total_greedy_per_lead": 2118.7209367382516,
+            "oracle_per_lead": 5771.758996461965,
+            "last_greedy_per_lead": 2163.1090265806065,
+            "swaps": 6
+          },
+          {
+            "total_done_per_lead": 1916.0633180023785,
+            "total_greedy_per_lead": 1916.0633180023785,
+            "oracle_per_lead": 5644.60052218251,
+            "last_greedy_per_lead": 2707.535952952687,
+            "swaps": 4
+          },
+          {
+            "total_done_per_lead": 1864.4032863363657,
+            "total_greedy_per_lead": 1864.4032863363657,
+            "oracle_per_lead": 5667.203777777971,
+            "last_greedy_per_lead": 1922.0835994623058,
+            "swaps": 4
+          },
+          {
+            "total_done_per_lead": 1725.9346403422162,
+            "total_greedy_per_lead": 1725.9346403422162,
+            "oracle_per_lead": 5699.798904208764,
+            "last_greedy_per_lead": 2665.6868657873156,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": 2072.814105082585,
+            "total_greedy_per_lead": 2072.814105082585,
+            "oracle_per_lead": 5746.092131896207,
+            "last_greedy_per_lead": 2158.42671117446,
+            "swaps": 3
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": 1238.234393187089,
+        "total_greedy_per_lead": 1331.097605283539,
+        "oracle_per_lead": 5705.890866505483,
+        "last_greedy_per_lead": 1385.2515002950897,
+        "swaps": 0.2,
+        "runs": [
+          {
+            "total_done_per_lead": 1785.6959802756162,
+            "total_greedy_per_lead": 1919.3701798007348,
+            "oracle_per_lead": 5771.758996461965,
+            "last_greedy_per_lead": 1986.5371492973795,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 1118.4578290305892,
+            "total_greedy_per_lead": 1208.577853361298,
+            "oracle_per_lead": 5644.60052218251,
+            "last_greedy_per_lead": 1159.901406958449,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 1052.6599434391746,
+            "total_greedy_per_lead": 1140.7665309655506,
+            "oracle_per_lead": 5667.203777777971,
+            "last_greedy_per_lead": 1441.6762455371577,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 1095.6730747350712,
+            "total_greedy_per_lead": 1157.3876512835434,
+            "oracle_per_lead": 5699.798904208764,
+            "last_greedy_per_lead": 1293.0213434615155,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 1138.6851384549939,
+            "total_greedy_per_lead": 1229.3858110065696,
+            "oracle_per_lead": 5746.092131896207,
+            "last_greedy_per_lead": 1045.1213562209468,
+            "swaps": 0
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": 1170.8792106068763,
+        "total_greedy_per_lead": 1455.4417856534762,
+        "oracle_per_lead": 5705.890866505483,
+        "last_greedy_per_lead": 1575.6958077767906,
+        "swaps": 0.4,
+        "runs": [
+          {
+            "total_done_per_lead": 1913.773781056397,
+            "total_greedy_per_lead": 2317.4407237260516,
+            "oracle_per_lead": 5771.758996461965,
+            "last_greedy_per_lead": 2397.869053792469,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 960.606416639168,
+            "total_greedy_per_lead": 1208.577853361298,
+            "oracle_per_lead": 5644.60052218251,
+            "last_greedy_per_lead": 1159.901406958449,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 892.794375644361,
+            "total_greedy_per_lead": 1140.7665309655506,
+            "oracle_per_lead": 5667.203777777971,
+            "last_greedy_per_lead": 1441.6762455371577,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 946.5052384281788,
+            "total_greedy_per_lead": 1157.3876512835434,
+            "oracle_per_lead": 5699.798904208764,
+            "last_greedy_per_lead": 1293.0213434615155,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 1140.7162412662772,
+            "total_greedy_per_lead": 1453.0361689309382,
+            "oracle_per_lead": 5746.092131896207,
+            "last_greedy_per_lead": 1586.0109891343616,
+            "swaps": 1
+          }
+        ]
+      },
+      "hidden_share": 0.8394026487138172
+    },
+    "random_06": {
+      "0.00": {
+        "total_done_per_lead": 3510.9774127803103,
+        "total_greedy_per_lead": 3510.9774127803103,
+        "oracle_per_lead": 5796.089516387541,
+        "last_greedy_per_lead": 3904.8155832757343,
+        "swaps": 2.8,
+        "runs": [
+          {
+            "total_done_per_lead": 3447.459222210045,
+            "total_greedy_per_lead": 3447.459222210045,
+            "oracle_per_lead": 5834.298177363052,
+            "last_greedy_per_lead": 3875.648782069029,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 3582.7772293202993,
+            "total_greedy_per_lead": 3582.7772293202993,
+            "oracle_per_lead": 5901.224790613481,
+            "last_greedy_per_lead": 4020.8052151294855,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": 3451.975865811412,
+            "total_greedy_per_lead": 3451.975865811412,
+            "oracle_per_lead": 5664.773299580648,
+            "last_greedy_per_lead": 3993.6779793936976,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 3573.9375101436767,
+            "total_greedy_per_lead": 3573.9375101436767,
+            "oracle_per_lead": 5820.193561537456,
+            "last_greedy_per_lead": 3797.2751263355694,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 3498.737236416117,
+            "total_greedy_per_lead": 3498.737236416117,
+            "oracle_per_lead": 5759.957752843067,
+            "last_greedy_per_lead": 3836.6708134508885,
+            "swaps": 3
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": 3327.6957975499654,
+        "total_greedy_per_lead": 3411.7382635678186,
+        "oracle_per_lead": 5796.089516387541,
+        "last_greedy_per_lead": 3547.3494938368094,
+        "swaps": 0.8,
+        "runs": [
+          {
+            "total_done_per_lead": 3409.416981946328,
+            "total_greedy_per_lead": 3493.8319351204173,
+            "oracle_per_lead": 5834.298177363052,
+            "last_greedy_per_lead": 3468.6386539125097,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 3626.7667815608106,
+            "total_greedy_per_lead": 3736.758940511911,
+            "oracle_per_lead": 5901.224790613481,
+            "last_greedy_per_lead": 4141.961979126364,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 3208.381644991843,
+            "total_greedy_per_lead": 3279.0350680454926,
+            "oracle_per_lead": 5664.773299580648,
+            "last_greedy_per_lead": 3451.846318043777,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 3177.900419127007,
+            "total_greedy_per_lead": 3258.2021405273385,
+            "oracle_per_lead": 5820.193561537456,
+            "last_greedy_per_lead": 3306.9375663671713,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": 3216.0131601238354,
+            "total_greedy_per_lead": 3290.8632336339356,
+            "oracle_per_lead": 5759.957752843067,
+            "last_greedy_per_lead": 3367.362951734224,
+            "swaps": 0
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": 3225.9462181916915,
+        "total_greedy_per_lead": 3483.8182304332345,
+        "oracle_per_lead": 5796.089516387541,
+        "last_greedy_per_lead": 3772.2785463957907,
+        "swaps": 0.2,
+        "runs": [
+          {
+            "total_done_per_lead": 3110.5792637663653,
+            "total_greedy_per_lead": 3336.766917685955,
+            "oracle_per_lead": 5834.298177363052,
+            "last_greedy_per_lead": 3327.4396241504805,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 3195.382702087549,
+            "total_greedy_per_lead": 3441.2308347449907,
+            "oracle_per_lead": 5901.224790613481,
+            "last_greedy_per_lead": 3778.46144082889,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 3047.1468566031467,
+            "total_greedy_per_lead": 3279.0350680454926,
+            "oracle_per_lead": 5664.773299580648,
+            "last_greedy_per_lead": 3451.846318043777,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 3119.0596192133085,
+            "total_greedy_per_lead": 3372.1809758424383,
+            "oracle_per_lead": 5820.193561537456,
+            "last_greedy_per_lead": 3464.7420291286344,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 3657.562649288087,
+            "total_greedy_per_lead": 3989.8773558472953,
+            "oracle_per_lead": 5759.957752843067,
+            "last_greedy_per_lead": 4838.903319827171,
+            "swaps": 1
+          }
+        ]
+      },
+      "hidden_share": 0.21127872013843563
+    },
+    "random_07": {
+      "0.00": {
+        "total_done_per_lead": 234.02326293075575,
+        "total_greedy_per_lead": 234.02326293075575,
+        "oracle_per_lead": 3392.501121314069,
+        "last_greedy_per_lead": 835.3057821030627,
+        "swaps": 3.0,
+        "runs": [
+          {
+            "total_done_per_lead": 127.99456354202435,
+            "total_greedy_per_lead": 127.99456354202435,
+            "oracle_per_lead": 3397.15017388631,
+            "last_greedy_per_lead": 444.07184673005287,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": -659.9031856296195,
+            "total_greedy_per_lead": -659.9031856296195,
+            "oracle_per_lead": 3432.067867467451,
+            "last_greedy_per_lead": -532.171301088876,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 411.71085971501293,
+            "total_greedy_per_lead": 411.71085971501293,
+            "oracle_per_lead": 3322.5387887670236,
+            "last_greedy_per_lead": 305.3220618635841,
+            "swaps": 4
+          },
+          {
+            "total_done_per_lead": 457.8565325565224,
+            "total_greedy_per_lead": 457.8565325565224,
+            "oracle_per_lead": 3400.6163759733568,
+            "last_greedy_per_lead": 1884.4249267603718,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 832.4575444698386,
+            "total_greedy_per_lead": 832.4575444698386,
+            "oracle_per_lead": 3410.132400476204,
+            "last_greedy_per_lead": 2074.88137625018,
+            "swaps": 4
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": -108.79904420885335,
+        "total_greedy_per_lead": -76.60500028801124,
+        "oracle_per_lead": 3392.501121314069,
+        "last_greedy_per_lead": 745.2601489752371,
+        "swaps": 1.0,
+        "runs": [
+          {
+            "total_done_per_lead": 209.16970551821146,
+            "total_greedy_per_lead": 254.71618734565905,
+            "oracle_per_lead": 3397.15017388631,
+            "last_greedy_per_lead": 511.9015757849601,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -749.722683754147,
+            "total_greedy_per_lead": -761.6856049813258,
+            "oracle_per_lead": 3432.067867467451,
+            "last_greedy_per_lead": -611.9807592059362,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 84.06168162994776,
+            "total_greedy_per_lead": 157.24759912242607,
+            "oracle_per_lead": 3322.5387887670236,
+            "last_greedy_per_lead": 463.2150348225683,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 33.32932408046594,
+            "total_greedy_per_lead": 45.5793617623018,
+            "oracle_per_lead": 3400.6163759733568,
+            "last_greedy_per_lead": 1307.8771035682555,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -120.83324851874478,
+            "total_greedy_per_lead": -78.8825446891173,
+            "oracle_per_lead": 3410.132400476204,
+            "last_greedy_per_lead": 2055.2877899063383,
+            "swaps": 1
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": -349.2390569533573,
+        "total_greedy_per_lead": -277.4317367353106,
+        "oracle_per_lead": 3392.501121314069,
+        "last_greedy_per_lead": 616.4673946632876,
+        "swaps": 0.8,
+        "runs": [
+          {
+            "total_done_per_lead": -246.53605067310977,
+            "total_greedy_per_lead": -171.82589019212682,
+            "oracle_per_lead": 3397.15017388631,
+            "last_greedy_per_lead": 2850.9319467182286,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -1523.373555703154,
+            "total_greedy_per_lead": -1671.702682278876,
+            "oracle_per_lead": 3432.067867467451,
+            "last_greedy_per_lead": -1684.8604173731403,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": -1685.4055304066812,
+            "total_greedy_per_lead": -1809.369951517652,
+            "oracle_per_lead": 3322.5387887670236,
+            "last_greedy_per_lead": -1874.453347789232,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 488.1479540924868,
+            "total_greedy_per_lead": 716.5992200540277,
+            "oracle_per_lead": 3400.6163759733568,
+            "last_greedy_per_lead": 1292.6519669181052,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 1220.9718979236716,
+            "total_greedy_per_lead": 1549.140620258074,
+            "oracle_per_lead": 3410.132400476204,
+            "last_greedy_per_lead": 2498.0668248424763,
+            "swaps": 1
+          }
+        ]
+      },
+      "hidden_share": 0.13958032879989213
+    },
+    "random_08": {
+      "0.00": {
+        "total_done_per_lead": 1677.7047037243196,
+        "total_greedy_per_lead": 1677.7047037243196,
+        "oracle_per_lead": 4256.367863586975,
+        "last_greedy_per_lead": 2166.2651001497297,
+        "swaps": 4.8,
+        "runs": [
+          {
+            "total_done_per_lead": 1660.3204087200772,
+            "total_greedy_per_lead": 1660.3204087200772,
+            "oracle_per_lead": 4279.557016924648,
+            "last_greedy_per_lead": 2110.311170588672,
+            "swaps": 6
+          },
+          {
+            "total_done_per_lead": 1621.603719670368,
+            "total_greedy_per_lead": 1621.603719670368,
+            "oracle_per_lead": 4250.210737080787,
+            "last_greedy_per_lead": 2140.7541696980675,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 1562.2535406166517,
+            "total_greedy_per_lead": 1562.2535406166517,
+            "oracle_per_lead": 4257.976859741598,
+            "last_greedy_per_lead": 1969.687566322486,
+            "swaps": 5
+          },
+          {
+            "total_done_per_lead": 1721.5282291206086,
+            "total_greedy_per_lead": 1721.5282291206086,
+            "oracle_per_lead": 4236.968467424086,
+            "last_greedy_per_lead": 2155.23318171118,
+            "swaps": 5
+          },
+          {
+            "total_done_per_lead": 1822.8176204938934,
+            "total_greedy_per_lead": 1822.8176204938934,
+            "oracle_per_lead": 4257.126236763753,
+            "last_greedy_per_lead": 2455.339412428243,
+            "swaps": 5
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": 889.9430321072281,
+        "total_greedy_per_lead": 929.3881631732495,
+        "oracle_per_lead": 4256.367863586975,
+        "last_greedy_per_lead": 1050.1823382924024,
+        "swaps": 0.2,
+        "runs": [
+          {
+            "total_done_per_lead": 760.8980867496219,
+            "total_greedy_per_lead": 790.4605825455247,
+            "oracle_per_lead": 4279.557016924648,
+            "last_greedy_per_lead": 1192.647091028632,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 725.4987500463367,
+            "total_greedy_per_lead": 766.1116509340426,
+            "oracle_per_lead": 4250.210737080787,
+            "last_greedy_per_lead": 722.8446772427284,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 746.2281191278117,
+            "total_greedy_per_lead": 793.677847566889,
+            "oracle_per_lead": 4257.976859741598,
+            "last_greedy_per_lead": 648.0315632211776,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 770.5386628652413,
+            "total_greedy_per_lead": 784.1942697564028,
+            "oracle_per_lead": 4236.968467424086,
+            "last_greedy_per_lead": 623.3643427073366,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 1446.5515417471288,
+            "total_greedy_per_lead": 1512.4964650633883,
+            "oracle_per_lead": 4257.126236763753,
+            "last_greedy_per_lead": 2064.024017262137,
+            "swaps": 1
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": 705.4178035376663,
+        "total_greedy_per_lead": 781.7704863816576,
+        "oracle_per_lead": 4256.367863586975,
+        "last_greedy_per_lead": 792.9589289895785,
+        "swaps": 0.0,
+        "runs": [
+          {
+            "total_done_per_lead": 715.9811869494894,
+            "total_greedy_per_lead": 790.4605825455247,
+            "oracle_per_lead": 4279.557016924648,
+            "last_greedy_per_lead": 1192.647091028632,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 708.2367512295713,
+            "total_greedy_per_lead": 766.1116509340426,
+            "oracle_per_lead": 4250.210737080787,
+            "last_greedy_per_lead": 722.8446772427284,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 703.8645431295491,
+            "total_greedy_per_lead": 793.677847566889,
+            "oracle_per_lead": 4257.976859741598,
+            "last_greedy_per_lead": 648.0315632211776,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 712.0243344648294,
+            "total_greedy_per_lead": 784.1942697564028,
+            "oracle_per_lead": 4236.968467424086,
+            "last_greedy_per_lead": 623.3643427073366,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 686.9822019148925,
+            "total_greedy_per_lead": 774.4080811054291,
+            "oracle_per_lead": 4257.126236763753,
+            "last_greedy_per_lead": 777.9069707480176,
+            "swaps": 0
+          }
+        ]
+      },
+      "hidden_share": 0.8233027607551765
+    },
+    "random_09": {
+      "0.00": {
+        "total_done_per_lead": 5076.458782916712,
+        "total_greedy_per_lead": 5076.458782916712,
+        "oracle_per_lead": 7242.098726267325,
+        "last_greedy_per_lead": 5498.1854865230725,
+        "swaps": 3.4,
+        "runs": [
+          {
+            "total_done_per_lead": 5101.039141241427,
+            "total_greedy_per_lead": 5101.039141241427,
+            "oracle_per_lead": 7185.046243753222,
+            "last_greedy_per_lead": 5264.647756248308,
+            "swaps": 4
+          },
+          {
+            "total_done_per_lead": 5050.746301183244,
+            "total_greedy_per_lead": 5050.746301183244,
+            "oracle_per_lead": 7233.205236491544,
+            "last_greedy_per_lead": 5338.915530799513,
+            "swaps": 4
+          },
+          {
+            "total_done_per_lead": 5055.770273381709,
+            "total_greedy_per_lead": 5055.770273381709,
+            "oracle_per_lead": 7306.210548115431,
+            "last_greedy_per_lead": 5504.556420886949,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 5038.346224970392,
+            "total_greedy_per_lead": 5038.346224970392,
+            "oracle_per_lead": 7301.902954629459,
+            "last_greedy_per_lead": 5900.4417955642675,
+            "swaps": 3
+          },
+          {
+            "total_done_per_lead": 5136.391973806789,
+            "total_greedy_per_lead": 5136.391973806789,
+            "oracle_per_lead": 7184.12864834697,
+            "last_greedy_per_lead": 5482.365929116324,
+            "swaps": 3
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": 2450.4180456837503,
+        "total_greedy_per_lead": 2484.2280930177026,
+        "oracle_per_lead": 7242.098726267325,
+        "last_greedy_per_lead": 3049.278381633634,
+        "swaps": 0.4,
+        "runs": [
+          {
+            "total_done_per_lead": 2874.208339515459,
+            "total_greedy_per_lead": 2943.6945911547323,
+            "oracle_per_lead": 7185.046243753222,
+            "last_greedy_per_lead": 5374.091321039508,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 2046.8545551698674,
+            "total_greedy_per_lead": 2055.9053848425406,
+            "oracle_per_lead": 7233.205236491544,
+            "last_greedy_per_lead": 2332.448694446281,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 2102.4013604510874,
+            "total_greedy_per_lead": 2112.6982267476806,
+            "oracle_per_lead": 7306.210548115431,
+            "last_greedy_per_lead": 1867.4162850447137,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 1981.688985610286,
+            "total_greedy_per_lead": 1996.3114619042144,
+            "oracle_per_lead": 7301.902954629459,
+            "last_greedy_per_lead": 2156.0857487936273,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 3246.9369876720516,
+            "total_greedy_per_lead": 3312.530800439344,
+            "oracle_per_lead": 7184.12864834697,
+            "last_greedy_per_lead": 3516.3498588440425,
+            "swaps": 1
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": 3122.6443898815223,
+        "total_greedy_per_lead": 3400.659843462815,
+        "oracle_per_lead": 7242.098726267325,
+        "last_greedy_per_lead": 4886.258162501674,
+        "swaps": 0.8,
+        "runs": [
+          {
+            "total_done_per_lead": 2427.5392322957123,
+            "total_greedy_per_lead": 2620.4769285691877,
+            "oracle_per_lead": 7185.046243753222,
+            "last_greedy_per_lead": 5218.232993874872,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 2791.938032638737,
+            "total_greedy_per_lead": 2990.480174444001,
+            "oracle_per_lead": 7233.205236491544,
+            "last_greedy_per_lead": 5588.978392878951,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 2037.5928132059,
+            "total_greedy_per_lead": 2112.6982267476806,
+            "oracle_per_lead": 7306.210548115431,
+            "last_greedy_per_lead": 1867.4162850447137,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 4717.999420334931,
+            "total_greedy_per_lead": 5266.190135724285,
+            "oracle_per_lead": 7301.902954629459,
+            "last_greedy_per_lead": 6069.883656305303,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 3638.152450932334,
+            "total_greedy_per_lead": 4013.45375182892,
+            "oracle_per_lead": 7184.12864834697,
+            "last_greedy_per_lead": 5686.779484404533,
+            "swaps": 1
+          }
+        ]
+      },
+      "hidden_share": 0.5763930784200824
+    },
+    "random_10": {
+      "0.00": {
+        "total_done_per_lead": 787.4224049743109,
+        "total_greedy_per_lead": 787.4224049743109,
+        "oracle_per_lead": 5401.55487681757,
+        "last_greedy_per_lead": 1873.0973186433723,
+        "swaps": 0.8,
+        "runs": [
+          {
+            "total_done_per_lead": -192.43821493171842,
+            "total_greedy_per_lead": -192.43821493171842,
+            "oracle_per_lead": 5425.21308910631,
+            "last_greedy_per_lead": -398.8665307316416,
+            "swaps": 0
+          },
+          {
+            "total_done_per_lead": 1126.1823508134141,
+            "total_greedy_per_lead": 1126.1823508134141,
+            "oracle_per_lead": 5448.106694234638,
+            "last_greedy_per_lead": 3798.071964170533,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 1420.3616325261967,
+            "total_greedy_per_lead": 1420.3616325261967,
+            "oracle_per_lead": 5354.420846692076,
+            "last_greedy_per_lead": 2125.8829491675315,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 1642.0074822441075,
+            "total_greedy_per_lead": 1642.0074822441075,
+            "oracle_per_lead": 5413.599797162115,
+            "last_greedy_per_lead": 3790.7595916590885,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": -59.00122578044536,
+            "total_greedy_per_lead": -59.00122578044536,
+            "oracle_per_lead": 5366.433956892718,
+            "last_greedy_per_lead": 49.638618951349294,
+            "swaps": 0
+          }
+        ]
+      },
+      "0.05": {
+        "total_done_per_lead": 1004.5429397598073,
+        "total_greedy_per_lead": 1042.7043370931472,
+        "oracle_per_lead": 5401.55487681757,
+        "last_greedy_per_lead": 2424.257721171599,
+        "swaps": 0.8,
+        "runs": [
+          {
+            "total_done_per_lead": 1612.507725128137,
+            "total_greedy_per_lead": 1694.5217005041804,
+            "oracle_per_lead": 5425.21308910631,
+            "last_greedy_per_lead": 3314.747598756338,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 1219.8816005011927,
+            "total_greedy_per_lead": 1266.0098364838748,
+            "oracle_per_lead": 5448.106694234638,
+            "last_greedy_per_lead": 2423.477012044791,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 1507.534666447663,
+            "total_greedy_per_lead": 1565.953474980087,
+            "oracle_per_lead": 5354.420846692076,
+            "last_greedy_per_lead": 2506.7775953530486,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 719.3038370957694,
+            "total_greedy_per_lead": 746.0378992780392,
+            "oracle_per_lead": 5413.599797162115,
+            "last_greedy_per_lead": 3826.647780752467,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": -36.513130373725645,
+            "total_greedy_per_lead": -59.00122578044536,
+            "oracle_per_lead": 5366.433956892718,
+            "last_greedy_per_lead": 49.638618951349294,
+            "swaps": 0
+          }
+        ]
+      },
+      "0.15": {
+        "total_done_per_lead": 1233.6242170158698,
+        "total_greedy_per_lead": 1425.7791488009193,
+        "oracle_per_lead": 5401.55487681757,
+        "last_greedy_per_lead": 3344.2793136543587,
+        "swaps": 1.2,
+        "runs": [
+          {
+            "total_done_per_lead": 1830.086848235518,
+            "total_greedy_per_lead": 2163.8789560087803,
+            "oracle_per_lead": 5425.21308910631,
+            "last_greedy_per_lead": 3913.3678999498884,
+            "swaps": 2
+          },
+          {
+            "total_done_per_lead": 1454.5923739015604,
+            "total_greedy_per_lead": 1679.1868564498518,
+            "oracle_per_lead": 5448.106694234638,
+            "last_greedy_per_lead": 2139.042640429618,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 873.406026475896,
+            "total_greedy_per_lead": 976.5031068625482,
+            "oracle_per_lead": 5354.420846692076,
+            "last_greedy_per_lead": 3293.428107225138,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 948.1086914472899,
+            "total_greedy_per_lead": 1109.1607624498272,
+            "oracle_per_lead": 5413.599797162115,
+            "last_greedy_per_lead": 3759.3805461311804,
+            "swaps": 1
+          },
+          {
+            "total_done_per_lead": 1061.927145019084,
+            "total_greedy_per_lead": 1200.1660622335896,
+            "oracle_per_lead": 5366.433956892718,
+            "last_greedy_per_lead": 3616.1773745359687,
+            "swaps": 1
+          }
+        ]
+      },
+      "hidden_share": 0.5223397279149308
+    }
+  },
+  "minutes": 43.3,
+  "comparisons": {
+    "0.05_vs_0.15": {
+      "done": {
+        "worlds": 14,
+        "wins": 9,
+        "losses": 5,
+        "ties": 0,
+        "mean": -94.33747449634845,
+        "median": 79.3317827055796,
+        "ci95": [
+          -366.85966619687144,
+          106.79439508253543
+        ],
+        "worst": -1529.0068958025047,
+        "best": 240.44001274450397,
+        "sign_p": 0.4239501953125,
+        "run_wins": 45,
+        "runs": 70
+      },
+      "learned_last_month": {
+        "worlds": 14,
+        "wins": 5,
+        "losses": 8,
+        "ties": 1,
+        "mean": -603.4780022450981,
+        "median": -142.4538981299463,
+        "ci95": [
+          -1312.8271591886405,
+          -90.71124540960422
+        ],
+        "worst": -4395.2547305604985,
+        "best": 257.22340930282394,
+        "sign_p": 0.5810546875,
+        "run_wins": 16,
+        "runs": 70
+      }
+    },
+    "0.00_vs_0.15": {
+      "done": {
+        "worlds": 14,
+        "wins": 12,
+        "losses": 2,
+        "ties": 0,
+        "mean": 567.1791530616167,
+        "median": 518.1115683564561,
+        "ci95": [
+          269.5064778274192,
+          890.3785220347993
+        ],
+        "worst": -446.2018120415589,
+        "best": 1953.8143930351898,
+        "sign_p": 0.012939453125,
+        "run_wins": 61,
+        "runs": 70
+      },
+      "learned_last_month": {
+        "worlds": 14,
+        "wins": 11,
+        "losses": 3,
+        "ties": 0,
+        "mean": 224.4647211923009,
+        "median": 175.68771215985936,
+        "ci95": [
+          -133.39543914086383,
+          535.6983786755363
+        ],
+        "worst": -1471.1819950109864,
+        "best": 1373.3061711601513,
+        "sign_p": 0.057373046875,
+        "run_wins": 51,
+        "runs": 70
+      }
+    },
+    "0.00_vs_0.05": {
+      "done": {
+        "worlds": 14,
+        "wins": 13,
+        "losses": 1,
+        "ties": 0,
+        "mean": 661.516627557965,
+        "median": 311.6848472806408,
+        "ci95": [
+          239.68629633659725,
+          1201.607248666349
+        ],
+        "worst": -217.12053478549637,
+        "best": 3039.9336880331407,
+        "sign_p": 0.0018310546875,
+        "run_wins": 59,
+        "runs": 70
+      },
+      "learned_last_month": {
+        "worlds": 14,
+        "wins": 13,
+        "losses": 1,
+        "ties": 0,
+        "mean": 827.9427234373991,
+        "median": 398.5428875655557,
+        "ci95": [
+          255.15641958175746,
+          1607.5892410506585
+        ],
+        "worst": -551.1604025282265,
+        "best": 4921.381967687668,
+        "sign_p": 0.0018310546875,
+        "run_wins": 54,
+        "runs": 70
+      }
+    }
+  }
+}

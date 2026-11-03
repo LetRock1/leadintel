@@ -1,0 +1,24 @@
+# Code style for all Python in the project (the backend and the research scripts in ml/): ruff check and ruff format.
+line-length = 120
+target-version = "py310"
+extend-exclude = [
+    "backend/app/db/migrations/versions",  # migrations are kept exactly as they were applied
+    "ml/experiments/published",  # the published solutions, re-run as their authors wrote them
+]
+
+[lint]
+select = ["E", "F", "W", "I", "B", "UP", "BLE", "SIM"]
+ignore = [
+    "E731",   # small lambdas are used as keys and callbacks
+    "B008",   # FastAPI dependencies are declared in argument defaults
+    "SIM108", # explicit if/else reads better in the business rules
+    "B905",   # zip() without strict= is intended (equal-length inputs)
+    "UP007",  # Optional[...] and X | None are both used in signatures
+]
+
+[lint.per-file-ignores]
+# the research scripts put the backend on sys.path before importing it, and write whole report-table rows per line
+"ml/**" = ["E402", "E501"]
+
+[lint.isort]
+known-first-party = ["app"]

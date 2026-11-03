@@ -1,0 +1,728 @@
+{
+ "part_a": [
+  {
+   "key": "lsc",
+   "label": "shinde-chandrakant / Lead-Scoring-Case-Study",
+   "url": "https://github.com/shinde-chandrakant/Lead-Scoring-Case-Study",
+   "commit": "f87f8bc",
+   "reproduced_exactly": true,
+   "n_train": 6351,
+   "n_test": 2723,
+   "test_converted": 0.36320235034887993,
+   "design_columns": 87,
+   "final_features": [
+    "Do Not Email",
+    "Lead Origin_Lead Add Form",
+    "Lead Source_Welingak Website",
+    "Tags_Busy",
+    "Tags_Closed by Horizzon",
+    "Tags_Lost to EINS",
+    "Tags_Ringing",
+    "Tags_Will revert after reading the email",
+    "Tags_switched off",
+    "Lead Quality_Not Sure",
+    "Lead Quality_Worst",
+    "Last Notable Activity_SMS Sent"
+   ],
+   "leaky_final_features": [
+    "Tags_Busy",
+    "Tags_Closed by Horizzon",
+    "Tags_Lost to EINS",
+    "Tags_Ringing",
+    "Tags_Will revert after reading the email",
+    "Tags_switched off",
+    "Lead Quality_Not Sure",
+    "Lead Quality_Worst",
+    "Last Notable Activity_SMS Sent"
+   ],
+   "leaky_columns_in_design": [
+    "Tags",
+    "Lead Quality",
+    "Last Activity",
+    "Last Notable Activity"
+   ],
+   "rule": "precision_recall",
+   "reported": {
+    "accuracy": 0.9078222548659567,
+    "sensitivity": 0.8412537917087968,
+    "specificity": 0.9457900807381776,
+    "precision": 0.8984881209503239,
+    "roc_auc": 0.9388647090311768
+   },
+   "notes": "Notebook re-fits StandardScaler on the test set ([193] scaler.fit_transform(X_test)); X_test reproduces that. No numeric column is among the final features, so it does not affect the final model's test predictions. X_test_train_scaled uses the train-fitted scaler instead. RFE: old-sklearn emulation (tol=1e-4/n) matches the notebook's printed selection: True (identical ranks 87/87); literal sklearn 1.6.1 defaults: False (identical ranks 31/87, only reproduced ['What is your current occupation_Working Professional'], only notebook ['Tags_wrong number given']). The final model uses the notebook's final feature list either way. Rows: 9,240 -> 9,074 after dropping rows with any missing value (Lead Source, TotalVisits, Page Views Per Visit, Last Activity); split 70/30 random_state=100, not stratified. Columns with >52% missing dropped (How did you hear, Lead Profile); Lead Quality (51.59% missing) deliberately kept with NaN -> 'Not Sure'; Asymmetrique x4 dropped by hand; Tags NaN -> mode 'Will revert after reading the email'. TotalVisits and Page Views Per Visit capped at the 95th percentile of all 9,074 rows before the split. Test cut-off 0.25 (precision-recall); train metrics are identical at 0.2 (sensitivity-specificity choice).",
+   "models": {
+    "theirs": {
+     "auc": 0.9388647090311768,
+     "auc_low": 0.9294411942860947,
+     "auc_high": 0.9482882237762589,
+     "log_loss": 0.2650748429851903,
+     "cutoff": 0.25,
+     "accuracy": 0.9078222548659567,
+     "sensitivity": 0.8412537917087968,
+     "specificity": 0.9457900807381776,
+     "precision": 0.8984881209503239
+    },
+    "ours_same_inputs": {
+     "auc": 0.9687543369218263,
+     "auc_low": 0.9622685818437252,
+     "auc_high": 0.9752400919999274,
+     "log_loss": 0.21062116559731298,
+     "cutoff": 0.37,
+     "accuracy": 0.9192067572530297,
+     "sensitivity": 0.8998988877654196,
+     "specificity": 0.9302191464821222,
+     "precision": 0.8803165182987142
+    },
+    "ours_new_lead_inputs": {
+     "auc": 0.8707576886699484,
+     "auc_low": 0.8566276975321651,
+     "auc_high": 0.8848876798077318,
+     "log_loss": 0.42627221810511745,
+     "cutoff": 0.42,
+     "accuracy": 0.8141755416819684,
+     "sensitivity": 0.7451971688574317,
+     "specificity": 0.8535178777393311,
+     "precision": 0.7436932391523713
+    },
+    "theirs_no_post_contact": {
+     "auc": 0.5991372222474907,
+     "auc_low": 0.5862750973248406,
+     "auc_high": 0.6119993471701407,
+     "log_loss": 0.6033490762695738,
+     "cutoff": 0.12,
+     "accuracy": 0.42049210429673156,
+     "sensitivity": 0.9737108190091001,
+     "specificity": 0.104959630911188,
+     "precision": 0.38290258449304176
+    }
+   },
+   "vs_theirs": {
+    "ours_same_inputs": {
+     "auc": {
+      "diff": 0.02988962789064953,
+      "low": 0.02300234857604276,
+      "high": 0.036776907205256296,
+      "p": 1.7993044722978253e-17
+     },
+     "accuracy": {
+      "ours_only_right": 110,
+      "theirs_only_right": 79,
+      "p": 0.02882825031214215,
+      "diff": 0.011384502387073003
+     },
+     "log_loss": {
+      "diff": 0.054453677387877375,
+      "low": 0.03776326152102767,
+      "high": 0.07219924085661894,
+      "ours": 0.21062116559731298,
+      "theirs": 0.2650748429851903
+     }
+    },
+    "ours_new_lead_inputs": {
+     "auc": {
+      "diff": -0.0681070203612284,
+      "low": -0.08381787379873071,
+      "high": -0.05239616692372608,
+      "p": 1.9512604932401262e-17
+     },
+     "accuracy": {
+      "ours_only_right": 153,
+      "theirs_only_right": 408,
+      "p": 9.200460324768684e-28,
+      "diff": -0.09364671318398832
+     },
+     "log_loss": {
+      "diff": -0.16119737511992713,
+      "low": -0.19030324463728907,
+      "high": -0.13218916094081412,
+      "ours": 0.42627221810511745,
+      "theirs": 0.2650748429851903
+     }
+    }
+   },
+   "repeated_splits": {
+    "splits": 30,
+    "theirs_auc": [
+     0.9485574795001142,
+     0.9424815964661453,
+     0.954633362534083
+    ],
+    "ours_same_inputs_auc": [
+     0.9733257395283756,
+     0.9698270574797248,
+     0.9768244215770265
+    ],
+    "ours_new_lead_inputs_auc": [
+     0.8730717089775805,
+     0.8653675746740173,
+     0.8807758432811437
+    ],
+    "ours_same_minus_theirs": [
+     0.024768260028261557,
+     0.020348002693150444,
+     0.02918851736337267
+    ],
+    "ours_new_minus_theirs": [
+     -0.07548577052253372,
+     -0.08433266879552617,
+     -0.06663887224954126
+    ],
+    "ours_same_wins": 30,
+    "ours_new_wins": 0
+   }
+  },
+  {
+   "key": "sivagiri",
+   "label": "Sivagiri12 / Lead-Scoring-Case-Study---Sivagiri",
+   "url": "https://github.com/Sivagiri12/Lead-Scoring-Case-Study---Sivagiri",
+   "commit": "06d99b2",
+   "reproduced_exactly": true,
+   "n_train": 3847,
+   "n_test": 1649,
+   "test_converted": 0.3947847180109157,
+   "design_columns": 77,
+   "final_features": [
+    "TotalVisits",
+    "Total Time Spent on Website",
+    "Lead Origin_lead add form",
+    "Lead Origin_lead import",
+    "Specialization_select",
+    "Lead Source_reference",
+    "Lead Source_welingak website",
+    "Do Not Email_yes",
+    "Last Activity_email opened",
+    "Last Activity_had a phone conversation",
+    "What is your current occupation_working professional",
+    "Last Notable Activity_email opened",
+    "Last Notable Activity_modified",
+    "Last Notable Activity_unreachable"
+   ],
+   "leaky_final_features": [
+    "Last Activity_email opened",
+    "Last Activity_had a phone conversation",
+    "Last Notable Activity_email opened",
+    "Last Notable Activity_modified",
+    "Last Notable Activity_unreachable"
+   ],
+   "leaky_columns_in_design": [
+    "Last Activity",
+    "Last Notable Activity"
+   ],
+   "rule": "sensitivity_specificity",
+   "reported": {
+    "accuracy": 0.8047301394784718,
+    "sensitivity": 0.8294930875576036,
+    "specificity": 0.7885771543086172,
+    "precision": null,
+    "roc_auc": null
+   },
+   "notes": "RFE: old-sklearn emulation (tol=1e-4/n) matches the notebook's printed selection: True (identical ranks 75/77); literal sklearn 1.6.1 defaults: True (identical ranks 47/77, only reproduced [], only notebook []). The final model uses the notebook's final feature list either way. All string values are lower-cased first ([11]); then the notebook replaces 'api' (not 'select') with NaN ([12], the comment says 'Select'), so every API-origin lead becomes missing and is removed by the complete-case filter ([24]): only 5,496 of 9,240 leads (59.48%, all non-API) are modelled, test n=1,649. 'select' is kept as a category (Specialization_select is a final feature). Tags, Lead Quality, Lead Profile and the Asymmetrique columns are dropped by hand ([16]) but Last Activity / Last Notable Activity are kept as dummies. Split 70/30 random_state=10, not stratified; MinMaxScaler fitted on train only and applied to test (no test re-fit), so X_test_train_scaled == X_test. Primary cut-off 0.35 (sensitivity/specificity, named in the summary PDF); the notebook also evaluates 0.41 (precision/recall) on test, kept under extra. No AUC is printed as text.",
+   "models": {
+    "theirs": {
+     "auc": 0.8819043617188294,
+     "auc_low": 0.8650179263524089,
+     "auc_high": 0.8987907970852498,
+     "log_loss": 0.4228605047479379,
+     "cutoff": 0.35,
+     "accuracy": 0.8047301394784718,
+     "sensitivity": 0.8294930875576036,
+     "specificity": 0.7885771543086172,
+     "precision": 0.7190412782956058
+    },
+    "ours_same_inputs": {
+     "auc": 0.9002790527291142,
+     "auc_low": 0.8848659683323571,
+     "auc_high": 0.9156921371258714,
+     "log_loss": 0.3863156062659697,
+     "cutoff": 0.42,
+     "accuracy": 0.8265615524560339,
+     "sensitivity": 0.8325652841781874,
+     "specificity": 0.8226452905811623,
+     "precision": 0.7538247566063978
+    },
+    "ours_new_lead_inputs": {
+     "auc": 0.8855214268783342,
+     "auc_low": 0.8692412189792943,
+     "auc_high": 0.9018016347773742,
+     "log_loss": 0.4139909588875842,
+     "cutoff": 0.42,
+     "accuracy": 0.8132201334141904,
+     "sensitivity": 0.8248847926267281,
+     "specificity": 0.8056112224448898,
+     "precision": 0.7346101231190151
+    },
+    "theirs_no_post_contact": {
+     "auc": 0.862493804813929,
+     "auc_low": 0.8439341923611726,
+     "auc_high": 0.8810534172666854,
+     "log_loss": 0.4473340254331961,
+     "cutoff": 0.38,
+     "accuracy": 0.8089751364463311,
+     "sensitivity": 0.8141321044546851,
+     "specificity": 0.8056112224448898,
+     "precision": 0.7320441988950276
+    }
+   },
+   "vs_theirs": {
+    "ours_same_inputs": {
+     "auc": {
+      "diff": 0.018374691010284883,
+      "low": 0.009669168723212843,
+      "high": 0.027080213297356923,
+      "p": 3.5193797682747255e-05
+     },
+     "accuracy": {
+      "ours_only_right": 75,
+      "theirs_only_right": 39,
+      "p": 0.0009591967698984278,
+      "diff": 0.02183141297756208
+     },
+     "log_loss": {
+      "diff": 0.03654489848196828,
+      "low": 0.02124518826686168,
+      "high": 0.052331369571195954,
+      "ours": 0.3863156062659697,
+      "theirs": 0.4228605047479379
+     }
+    },
+    "ours_new_lead_inputs": {
+     "auc": {
+      "diff": 0.003617065159504884,
+      "low": -0.006996802416416287,
+      "high": 0.014230932735426055,
+      "p": 0.5041706296778736
+     },
+     "accuracy": {
+      "ours_only_right": 72,
+      "theirs_only_right": 58,
+      "p": 0.25412455431009884,
+      "diff": 0.008489993935718587
+     },
+     "log_loss": {
+      "diff": 0.008869545860353744,
+      "low": -0.007905503311774066,
+      "high": 0.025536377740950696,
+      "ours": 0.4139909588875842,
+      "theirs": 0.4228605047479379
+     }
+    }
+   },
+   "repeated_splits": {
+    "splits": 30,
+    "theirs_auc": [
+     0.8805407894270771,
+     0.8715252362021141,
+     0.8895563426520402
+    ],
+    "ours_same_inputs_auc": [
+     0.8914717202009613,
+     0.8831188310079524,
+     0.8998246093939702
+    ],
+    "ours_new_lead_inputs_auc": [
+     0.8763588521497137,
+     0.8657864334342206,
+     0.8869312708652067
+    ],
+    "ours_same_minus_theirs": [
+     0.010930930773884422,
+     0.0057247618632661305,
+     0.016137099684502713
+    ],
+    "ours_new_minus_theirs": [
+     -0.004181937277363394,
+     -0.01163250260043373,
+     0.0032686280457069417
+    ],
+    "ours_same_wins": 30,
+    "ours_new_wins": 5
+   }
+  },
+  {
+   "key": "lscv1",
+   "label": "ShahadShaikh / Lead_Score_Case_Study",
+   "url": "https://github.com/ShahadShaikh/Lead_Score_Case_Study",
+   "commit": "123119e",
+   "reproduced_exactly": true,
+   "n_train": 6267,
+   "n_test": 2686,
+   "test_converted": 0.37602382725241995,
+   "design_columns": 56,
+   "final_features": [
+    "Total Time Spent on Website",
+    "Lead Origin_Lead Add Form",
+    "Lead Source_Direct Traffic",
+    "Lead Source_Welingak Website",
+    "Last Activity_SMS Sent",
+    "Last Notable Activity_Modified",
+    "Last Notable Activity_Olark Chat Conversation",
+    "Tags_Closed by Horizzon",
+    "Tags_Interested in other courses",
+    "Tags_Lost to EINS",
+    "Tags_Other_Tags",
+    "Tags_Ringing",
+    "Tags_Will revert after reading the email"
+   ],
+   "leaky_final_features": [
+    "Last Activity_SMS Sent",
+    "Last Notable Activity_Modified",
+    "Last Notable Activity_Olark Chat Conversation",
+    "Tags_Closed by Horizzon",
+    "Tags_Interested in other courses",
+    "Tags_Lost to EINS",
+    "Tags_Other_Tags",
+    "Tags_Ringing",
+    "Tags_Will revert after reading the email"
+   ],
+   "leaky_columns_in_design": [
+    "Tags",
+    "Last Activity",
+    "Last Notable Activity"
+   ],
+   "rule": "sensitivity_specificity",
+   "reported": {
+    "accuracy": 0.9277736411020104,
+    "sensitivity": 0.9198019801980198,
+    "specificity": 0.9325775656324582,
+    "precision": 0.8915547024952015,
+    "roc_auc": null
+   },
+   "notes": "RFE: old-sklearn emulation (tol=1e-4/n) matches the notebook's printed selection: True (identical ranks 56/56); literal sklearn 1.6.1 defaults: False (identical ranks 33/56, only reproduced ['Last Notable Activity_Email Link Clicked'], only notebook ['Last Notable Activity_SMS Sent']). The final model uses the notebook's final feature list either way. Rows: 9,240 -> 9,103 (rows with missing TotalVisits/Page Views dropped) -> 8,953 after removing the top and bottom 1% of TotalVisits and then of Page Views Per Visit (rows removed, not capped; quantiles on the full data before the split). Columns with >=45% missing dropped (Lead Quality, Lead Profile, Asymmetrique x4, How did you hear); Tags is kept (NaN -> 'Not Specified', rare tags -> 'Other_Tags'). Do Not Email and A free copy of Mastering The Interview are binary-mapped and then dropped with cat_cols ([118]), so they are not in the design matrix. Split 70/30 random_state=100, not stratified. The notebook re-fits StandardScaler on the test set ([185]) and 'Total Time Spent on Website' is a final feature; X_test reproduces that, X_test_train_scaled uses the train scaler (test accuracy 0.9270 / AUC 0.9720 with it). No test AUC is printed; train AUC 0.97 appears only in markdown.",
+   "models": {
+    "theirs": {
+     "auc": 0.9720397457406839,
+     "auc_low": 0.9661133525550428,
+     "auc_high": 0.9779661389263249,
+     "log_loss": 0.19609478529935795,
+     "cutoff": 0.3,
+     "accuracy": 0.9277736411020104,
+     "sensitivity": 0.9198019801980198,
+     "specificity": 0.9325775656324582,
+     "precision": 0.8915547024952015
+    },
+    "ours_same_inputs": {
+     "auc": 0.975858952243673,
+     "auc_low": 0.9702070638003276,
+     "auc_high": 0.9815108406870184,
+     "log_loss": 0.1816658683676936,
+     "cutoff": 0.29,
+     "accuracy": 0.9236783320923306,
+     "sensitivity": 0.9168316831683169,
+     "specificity": 0.9278042959427207,
+     "precision": 0.8844317096466093
+    },
+    "ours_new_lead_inputs": {
+     "auc": 0.877295068408989,
+     "auc_low": 0.8638384719550173,
+     "auc_high": 0.8907516648629606,
+     "log_loss": 0.42146836243581054,
+     "cutoff": 0.36,
+     "accuracy": 0.8090096798212956,
+     "sensitivity": 0.7663366336633664,
+     "specificity": 0.8347255369928401,
+     "precision": 0.736441484300666
+    },
+    "theirs_no_post_contact": {
+     "auc": 0.7852013870838158,
+     "auc_low": 0.7661259456970422,
+     "auc_high": 0.8042768284705895,
+     "log_loss": 0.5167342196412037,
+     "cutoff": 0.28,
+     "accuracy": 0.7468354430379747,
+     "sensitivity": 0.7485148514851485,
+     "specificity": 0.7458233890214797,
+     "precision": 0.6395939086294417
+    }
+   },
+   "vs_theirs": {
+    "ours_same_inputs": {
+     "auc": {
+      "diff": 0.0038192065029891697,
+      "low": 0.0007443041341548338,
+      "high": 0.006894108871823505,
+      "p": 0.01491512814343378
+     },
+     "accuracy": {
+      "ours_only_right": 24,
+      "theirs_only_right": 35,
+      "p": 0.19252645776146274,
+      "diff": -0.004095309009679804
+     },
+     "log_loss": {
+      "diff": 0.01442891693166437,
+      "low": 0.005734882274457772,
+      "high": 0.023276658478910504,
+      "ours": 0.1816658683676936,
+      "theirs": 0.19609478529935795
+     }
+    },
+    "ours_new_lead_inputs": {
+     "auc": {
+      "diff": -0.0947446773316949,
+      "low": -0.10787089288877669,
+      "high": -0.0816184617746131,
+      "p": 1.942644186280063e-45
+     },
+     "accuracy": {
+      "ours_only_right": 81,
+      "theirs_only_right": 400,
+      "p": 9.770927695408272e-52,
+      "diff": -0.11876396128071487
+     },
+     "log_loss": {
+      "diff": -0.2253735771364526,
+      "low": -0.2503707334335969,
+      "high": -0.19985341668516954,
+      "ours": 0.42146836243581054,
+      "theirs": 0.19609478529935795
+     }
+    }
+   },
+   "repeated_splits": {
+    "splits": 30,
+    "theirs_auc": [
+     0.9704548236152367,
+     0.9669906137575703,
+     0.9739190334729031
+    ],
+    "ours_same_inputs_auc": [
+     0.9748883351830961,
+     0.9718649945922616,
+     0.9779116757739307
+    ],
+    "ours_new_lead_inputs_auc": [
+     0.8725841461077964,
+     0.8634698392465573,
+     0.8816984529690356
+    ],
+    "ours_same_minus_theirs": [
+     0.0044335115678594715,
+     0.002572214541642908,
+     0.006294808594076036
+    ],
+    "ours_new_minus_theirs": [
+     -0.09787067750744029,
+     -0.10705562310637977,
+     -0.0886857319085008
+    ],
+    "ours_same_wins": 30,
+    "ours_new_wins": 0
+   }
+  },
+  {
+   "key": "lohani",
+   "label": "garima2811 / Lead_Scoring_Case_Study (Lohani & Bansal)",
+   "url": "https://github.com/garima2811/Lead_Scoring_Case_Study",
+   "commit": "f15474f",
+   "reproduced_exactly": true,
+   "n_train": 6372,
+   "n_test": 2731,
+   "test_converted": 0.3815452215305749,
+   "design_columns": 20,
+   "final_features": [
+    "Do Not Email",
+    "Total Time Spent on Website",
+    "Lead Origin_Lead Add Form",
+    "Lead Source_Direct Traffic",
+    "Lead Source_Google",
+    "Lead Source_Organic Search",
+    "Lead Source_Reference",
+    "Lead Source_Referral Sites",
+    "What is your current occupation_Student",
+    "What is your current occupation_Unemployed",
+    "What is your current occupation_Working Professional"
+   ],
+   "leaky_final_features": [],
+   "leaky_columns_in_design": [],
+   "rule": "sensitivity_specificity",
+   "reported": {
+    "accuracy": 0.7751739289637496,
+    "sensitivity": 0.8301343570057581,
+    "specificity": 0.7412670219064535,
+    "precision": 0.6643625192012289,
+    "roc_auc": null
+   },
+   "notes": "RFE: old-sklearn emulation (tol=1e-4/n) matches the notebook's printed selection: True (identical ranks 20/20); literal sklearn 1.6.1 defaults: True (identical ranks 18/20, only reproduced [], only notebook []). The final model uses the notebook's final feature list either way. Rows: 9,240 -> 9,103 (rows with missing TotalVisits/Page Views dropped). Columns with >=35% missing dropped (Specialization, How did you hear, Tags, Lead Quality, Lead Profile, City, Asymmetrique x4); Last Activity and Last Notable Activity dropped explicitly as sales-team data, so no post-contact column reaches the design matrix. TotalVisits and Page Views Per Visit capped at their 5th/95th percentiles computed on all 9,103 rows before the split. 'Lead Source_Olark Chat' and 'Lead Origin_Landing Page Submission' dropped by hand before RFE ([136]/[137]). Split 70/30 random_state=100, not stratified. The notebook re-fits StandardScaler on the test set ([219]) and 'Do Not Email' and 'Total Time Spent on Website' are final features; X_test reproduces that, X_test_train_scaled uses the train scaler (test accuracy 0.7741 / AUC 0.8639 with it). No test AUC is printed; train AUC 0.86 appears only in markdown.",
+   "models": {
+    "theirs": {
+     "auc": 0.8638346919039194,
+     "auc_low": 0.8499373872293235,
+     "auc_high": 0.8777319965785152,
+     "log_loss": 0.44610478829431016,
+     "cutoff": 0.3,
+     "accuracy": 0.7751739289637496,
+     "sensitivity": 0.8301343570057581,
+     "specificity": 0.7412670219064535,
+     "precision": 0.6643625192012289
+    },
+    "ours_same_inputs": {
+     "auc": 0.8692684060461221,
+     "auc_low": 0.8555565262006493,
+     "auc_high": 0.8829802858915949,
+     "log_loss": 0.43447365735286053,
+     "cutoff": 0.38,
+     "accuracy": 0.7898205785426584,
+     "sensitivity": 0.8282149712092131,
+     "specificity": 0.7661338069863824,
+     "precision": 0.6860095389507154
+    },
+    "ours_new_lead_inputs": {
+     "auc": 0.8746214355278424,
+     "auc_low": 0.8611731726202062,
+     "auc_high": 0.8880696984354787,
+     "log_loss": 0.42621825957727116,
+     "cutoff": 0.36,
+     "accuracy": 0.809959721713658,
+     "sensitivity": 0.7687140115163148,
+     "specificity": 0.8354055654233274,
+     "precision": 0.742354031510658
+    },
+    "theirs_no_post_contact": {
+     "auc": 0.8638659430048105,
+     "auc_low": 0.8499688570206713,
+     "auc_high": 0.8777630289889496,
+     "log_loss": 0.44607142025183577,
+     "cutoff": 0.31,
+     "accuracy": 0.7923837422189675,
+     "sensitivity": 0.7408829174664108,
+     "specificity": 0.8241563055062167,
+     "precision": 0.7221702525724977
+    }
+   },
+   "vs_theirs": {
+    "ours_same_inputs": {
+     "auc": {
+      "diff": 0.005433714142202728,
+      "low": -0.000539230206089405,
+      "high": 0.01140665849049486,
+      "p": 0.0745775841232166
+     },
+     "accuracy": {
+      "ours_only_right": 89,
+      "theirs_only_right": 49,
+      "p": 0.0008360058024357577,
+      "diff": 0.014646649578908821
+     },
+     "log_loss": {
+      "diff": 0.011631130941449654,
+      "low": 0.0018108294149395145,
+      "high": 0.020875129016144193,
+      "ours": 0.43447365735286053,
+      "theirs": 0.44610478829431016
+     }
+    },
+    "ours_new_lead_inputs": {
+     "auc": {
+      "diff": 0.010786743623923067,
+      "low": 0.004409973034162887,
+      "high": 0.01716351421368325,
+      "p": 0.0009148783015873062
+     },
+     "accuracy": {
+      "ours_only_right": 215,
+      "theirs_only_right": 120,
+      "p": 2.3516252725543833e-07,
+      "diff": 0.03478579274990845
+     },
+     "log_loss": {
+      "diff": 0.019886528717039036,
+      "low": 0.009025969417059538,
+      "high": 0.030685907977446133,
+      "ours": 0.42621825957727116,
+      "theirs": 0.44610478829431016
+     }
+    }
+   },
+   "repeated_splits": {
+    "splits": 30,
+    "theirs_auc": [
+     0.8586204587879007,
+     0.8501881821460893,
+     0.8670527354297122
+    ],
+    "ours_same_inputs_auc": [
+     0.8671937330426356,
+     0.858579729728439,
+     0.8758077363568322
+    ],
+    "ours_new_lead_inputs_auc": [
+     0.8712986561561583,
+     0.8629855808768082,
+     0.8796117314355084
+    ],
+    "ours_same_minus_theirs": [
+     0.008573274254734942,
+     0.0053753523057891595,
+     0.011771196203680724
+    ],
+    "ours_new_minus_theirs": [
+     0.012678197368257645,
+     0.008896506240735886,
+     0.016459888495779403
+    ],
+    "ours_same_wins": 30,
+    "ours_new_wins": 30
+   }
+  }
+ ],
+ "part_b_mandal_protocol": {
+  "splits": 50,
+  "auc_mean": 0.873709917510682,
+  "auc_p2_5": 0.861824581618927,
+  "auc_p97_5": 0.8862059890063696,
+  "auc_interval": [
+   0.873709917510682,
+   0.8663380797200492,
+   0.8810817553013149
+  ],
+  "share_auc_above_published": 0.98,
+  "accuracy_mean": 0.8083008658008657,
+  "accuracy_interval": [
+   0.8083008658008657,
+   0.7993369821177221,
+   0.8172647494840093
+  ],
+  "share_accuracy_above_published": 0.94,
+  "cutoff_mean": 0.4878
+ },
+ "with_post_contact_columns": {
+  "auc": [
+   0.9844331819753617,
+   0.9821258602045599,
+   0.9867405037461634
+  ],
+  "accuracy": 0.9470779220779221
+ },
+ "published_b": [
+  {
+   "who": "Mandal, MSc thesis, National College of Ireland (2025)",
+   "url": "https://norma.ncirl.ie/9780/",
+   "post_contact": "removed (9 columns)",
+   "protocol": "stratified 80/20 split",
+   "model": "random forest",
+   "accuracy": 0.7976,
+   "auc": 0.8605,
+   "note": "threshold 0.53 chosen to maximise accuracy on the test set"
+  },
+  {
+   "who": "Jadli et al., Indian J. Computer Science and Engineering 13(2), 2022",
+   "url": "https://doi.org/10.21817/indjcse/2022/v13i2/221302098",
+   "post_contact": "not stated",
+   "protocol": "9,074 rows x 89 columns after preprocessing",
+   "model": "random forest",
+   "accuracy": 0.9302,
+   "auc": 0.92,
+   "note": ""
+  },
+  {
+   "who": "Yim et al., Int. J. Management, Finance and Accounting 5(1), 2024",
+   "url": "https://doi.org/10.33093/ijomfa.2024.5.1.2",
+   "post_contact": "not stated in the abstract",
+   "protocol": "10-fold cross-validation",
+   "model": "stacking",
+   "accuracy": 0.9233,
+   "auc": null,
+   "note": ""
+  }
+ ]
+}

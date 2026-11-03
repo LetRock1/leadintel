@@ -1,0 +1,695 @@
+{
+  "settings": {
+    "seeds": 10,
+    "pool": 150000,
+    "pools": 2,
+    "decisions_per_day": 300,
+    "months": 2,
+    "warmup_days": 7,
+    "lookback_days": 7,
+    "open_leads": 1200,
+    "snapshots": 200,
+    "models": "starting models (lead_model.starter.pkl, nba_model.starter.pkl)"
+  },
+  "budget": {
+    "natural_month": 10059890,
+    "budgets": {
+      "10%": 1005989,
+      "25%": 2514973,
+      "50%": 5029945,
+      "100%": 10059890
+    },
+    "levels": [
+      {
+        "label": "10%",
+        "budget": 1005989,
+        "rules": {
+          "no coupons": {
+            "profit_month": 13976061,
+            "added_month": 0,
+            "share_of_hindsight": 0.0,
+            "share_ci95": 0.0,
+            "vs_first_come_month": -986446,
+            "vs_first_come_ci95": 24284,
+            "coupons_month": 0,
+            "true_discount_month": 0,
+            "budget_used": 0.0,
+            "budget_used_max": 0.0,
+            "to_buyers_anyway_month": 0
+          },
+          "cart recovery": {
+            "profit_month": 13281022,
+            "added_month": -695039,
+            "share_of_hindsight": -0.263,
+            "share_ci95": 0.01,
+            "vs_first_come_month": -1681486,
+            "vs_first_come_ci95": 24453,
+            "coupons_month": 275,
+            "true_discount_month": 1002142,
+            "budget_used": 0.996,
+            "budget_used_max": 1.015,
+            "to_buyers_anyway_month": 915405
+          },
+          "first come": {
+            "profit_month": 14962507,
+            "added_month": 986446,
+            "share_of_hindsight": 0.373,
+            "share_ci95": 0.01,
+            "vs_first_come_month": 0,
+            "vs_first_come_ci95": 0,
+            "coupons_month": 407,
+            "true_discount_month": 983549,
+            "budget_used": 0.978,
+            "budget_used_max": 1.031,
+            "to_buyers_anyway_month": 505842
+          },
+          "fixed price": {
+            "profit_month": 16496735,
+            "added_month": 2520674,
+            "share_of_hindsight": 0.953,
+            "share_ci95": 0.007,
+            "vs_first_come_month": 1534228,
+            "vs_first_come_ci95": 40861,
+            "coupons_month": 1250,
+            "true_discount_month": 958032,
+            "budget_used": 0.952,
+            "budget_used_max": 0.984,
+            "to_buyers_anyway_month": 508951
+          },
+          "re-solved price": {
+            "profit_month": 16536421,
+            "added_month": 2560360,
+            "share_of_hindsight": 0.968,
+            "share_ci95": 0.005,
+            "vs_first_come_month": 1573914,
+            "vs_first_come_ci95": 38217,
+            "coupons_month": 1324,
+            "true_discount_month": 951744,
+            "budget_used": 0.946,
+            "budget_used_max": 0.97,
+            "to_buyers_anyway_month": 509326
+          },
+          "hindsight": {
+            "profit_month": 16622021,
+            "added_month": 2645960,
+            "share_of_hindsight": 1.0,
+            "share_ci95": 0.0,
+            "vs_first_come_month": 1659513,
+            "vs_first_come_ci95": 40398,
+            "coupons_month": 1454,
+            "true_discount_month": 935489,
+            "budget_used": 0.93,
+            "budget_used_max": 0.958,
+            "to_buyers_anyway_month": 500933
+          },
+          "true hindsight": {
+            "profit_month": 17452925,
+            "added_month": 3476864,
+            "share_of_hindsight": 1.315,
+            "share_ci95": 0.012,
+            "vs_first_come_month": 2490418,
+            "vs_first_come_ci95": 30741,
+            "coupons_month": 1418,
+            "true_discount_month": 1005212,
+            "budget_used": 0.999,
+            "budget_used_max": 1.0,
+            "to_buyers_anyway_month": 499702
+          }
+        },
+        "planner_more_budget": {
+          "extra": 201198,
+          "estimate": 401034,
+          "estimate_ci95": 5223,
+          "true": 453306,
+          "true_ci95": 12751
+        }
+      },
+      {
+        "label": "25%",
+        "budget": 2514973,
+        "rules": {
+          "no coupons": {
+            "profit_month": 13976061,
+            "added_month": 0,
+            "share_of_hindsight": 0.0,
+            "share_ci95": 0.0,
+            "vs_first_come_month": -2480468,
+            "vs_first_come_ci95": 34263,
+            "coupons_month": 0,
+            "true_discount_month": 0,
+            "budget_used": 0.0,
+            "budget_used_max": 0.0,
+            "to_buyers_anyway_month": 0
+          },
+          "cart recovery": {
+            "profit_month": 12213148,
+            "added_month": -1762913,
+            "share_of_hindsight": -0.355,
+            "share_ci95": 0.008,
+            "vs_first_come_month": -4243381,
+            "vs_first_come_ci95": 40682,
+            "coupons_month": 690,
+            "true_discount_month": 2503919,
+            "budget_used": 0.996,
+            "budget_used_max": 1.003,
+            "to_buyers_anyway_month": 2287548
+          },
+          "first come": {
+            "profit_month": 16456529,
+            "added_month": 2480468,
+            "share_of_hindsight": 0.499,
+            "share_ci95": 0.008,
+            "vs_first_come_month": 0,
+            "vs_first_come_ci95": 0,
+            "coupons_month": 1005,
+            "true_discount_month": 2437059,
+            "budget_used": 0.969,
+            "budget_used_max": 0.997,
+            "to_buyers_anyway_month": 1247660
+          },
+          "fixed price": {
+            "profit_month": 18418958,
+            "added_month": 4442897,
+            "share_of_hindsight": 0.892,
+            "share_ci95": 0.02,
+            "vs_first_come_month": 1962429,
+            "vs_first_come_ci95": 135330,
+            "coupons_month": 1780,
+            "true_discount_month": 2017335,
+            "budget_used": 0.802,
+            "budget_used_max": 0.912,
+            "to_buyers_anyway_month": 953065
+          },
+          "re-solved price": {
+            "profit_month": 18938659,
+            "added_month": 4962598,
+            "share_of_hindsight": 0.998,
+            "share_ci95": 0.002,
+            "vs_first_come_month": 2482130,
+            "vs_first_come_ci95": 57589,
+            "coupons_month": 1903,
+            "true_discount_month": 2384838,
+            "budget_used": 0.948,
+            "budget_used_max": 0.965,
+            "to_buyers_anyway_month": 1094853
+          },
+          "hindsight": {
+            "profit_month": 18950724,
+            "added_month": 4974663,
+            "share_of_hindsight": 1.0,
+            "share_ci95": 0.0,
+            "vs_first_come_month": 2494195,
+            "vs_first_come_ci95": 56647,
+            "coupons_month": 1902,
+            "true_discount_month": 2385106,
+            "budget_used": 0.948,
+            "budget_used_max": 0.972,
+            "to_buyers_anyway_month": 1090536
+          },
+          "true hindsight": {
+            "profit_month": 20555199,
+            "added_month": 6579137,
+            "share_of_hindsight": 1.323,
+            "share_ci95": 0.009,
+            "vs_first_come_month": 4098669,
+            "vs_first_come_ci95": 39052,
+            "coupons_month": 2167,
+            "true_discount_month": 2513081,
+            "budget_used": 0.999,
+            "budget_used_max": 1.0,
+            "to_buyers_anyway_month": 1105445
+          }
+        },
+        "planner_more_budget": {
+          "extra": 502995,
+          "estimate": 773994,
+          "estimate_ci95": 11867,
+          "true": 686451,
+          "true_ci95": 13931
+        }
+      },
+      {
+        "label": "50%",
+        "budget": 5029945,
+        "rules": {
+          "no coupons": {
+            "profit_month": 13976061,
+            "added_month": 0,
+            "share_of_hindsight": 0.0,
+            "share_ci95": 0.0,
+            "vs_first_come_month": -4999533,
+            "vs_first_come_ci95": 44568,
+            "coupons_month": 0,
+            "true_discount_month": 0,
+            "budget_used": 0.0,
+            "budget_used_max": 0.0,
+            "to_buyers_anyway_month": 0
+          },
+          "cart recovery": {
+            "profit_month": 10453700,
+            "added_month": -3522361,
+            "share_of_hindsight": -0.434,
+            "share_ci95": 0.011,
+            "vs_first_come_month": -8521893,
+            "vs_first_come_ci95": 84180,
+            "coupons_month": 1371,
+            "true_discount_month": 5008695,
+            "budget_used": 0.996,
+            "budget_used_max": 1.003,
+            "to_buyers_anyway_month": 4575450
+          },
+          "first come": {
+            "profit_month": 18975594,
+            "added_month": 4999533,
+            "share_of_hindsight": 0.616,
+            "share_ci95": 0.006,
+            "vs_first_come_month": 0,
+            "vs_first_come_ci95": 0,
+            "coupons_month": 2011,
+            "true_discount_month": 4877745,
+            "budget_used": 0.97,
+            "budget_used_max": 0.989,
+            "to_buyers_anyway_month": 2485734
+          },
+          "fixed price": {
+            "profit_month": 21571220,
+            "added_month": 7595159,
+            "share_of_hindsight": 0.935,
+            "share_ci95": 0.023,
+            "vs_first_come_month": 2595627,
+            "vs_first_come_ci95": 225625,
+            "coupons_month": 2554,
+            "true_discount_month": 4318188,
+            "budget_used": 0.858,
+            "budget_used_max": 0.952,
+            "to_buyers_anyway_month": 1909561
+          },
+          "re-solved price": {
+            "profit_month": 22033097,
+            "added_month": 8057036,
+            "share_of_hindsight": 0.992,
+            "share_ci95": 0.002,
+            "vs_first_come_month": 3057503,
+            "vs_first_come_ci95": 80169,
+            "coupons_month": 2674,
+            "true_discount_month": 4797638,
+            "budget_used": 0.954,
+            "budget_used_max": 0.969,
+            "to_buyers_anyway_month": 2141224
+          },
+          "hindsight": {
+            "profit_month": 22094471,
+            "added_month": 8118410,
+            "share_of_hindsight": 1.0,
+            "share_ci95": 0.0,
+            "vs_first_come_month": 3118877,
+            "vs_first_come_ci95": 71626,
+            "coupons_month": 2673,
+            "true_discount_month": 4803762,
+            "budget_used": 0.955,
+            "budget_used_max": 0.972,
+            "to_buyers_anyway_month": 2133696
+          },
+          "true hindsight": {
+            "profit_month": 23932199,
+            "added_month": 9956138,
+            "share_of_hindsight": 1.226,
+            "share_ci95": 0.005,
+            "vs_first_come_month": 4956606,
+            "vs_first_come_ci95": 68353,
+            "coupons_month": 2815,
+            "true_discount_month": 5027340,
+            "budget_used": 0.999,
+            "budget_used_max": 1.0,
+            "to_buyers_anyway_month": 2142816
+          }
+        },
+        "planner_more_budget": {
+          "extra": 1005989,
+          "estimate": 992461,
+          "estimate_ci95": 35388,
+          "true": 864239,
+          "true_ci95": 30225
+        }
+      },
+      {
+        "label": "100%",
+        "budget": 10059890,
+        "rules": {
+          "no coupons": {
+            "profit_month": 13976061,
+            "added_month": 0,
+            "share_of_hindsight": 0.0,
+            "share_ci95": 0.0,
+            "vs_first_come_month": -9873378,
+            "vs_first_come_ci95": 92817,
+            "coupons_month": 0,
+            "true_discount_month": 0,
+            "budget_used": 0.0,
+            "budget_used_max": 0.0,
+            "to_buyers_anyway_month": 0
+          },
+          "cart recovery": {
+            "profit_month": 10125700,
+            "added_month": -3850361,
+            "share_of_hindsight": -0.384,
+            "share_ci95": 0.012,
+            "vs_first_come_month": -13723738,
+            "vs_first_come_ci95": 115761,
+            "coupons_month": 1502,
+            "true_discount_month": 5479760,
+            "budget_used": 0.545,
+            "budget_used_max": 0.585,
+            "to_buyers_anyway_month": 5004411
+          },
+          "first come": {
+            "profit_month": 23849439,
+            "added_month": 9873378,
+            "share_of_hindsight": 0.985,
+            "share_ci95": 0.008,
+            "vs_first_come_month": 0,
+            "vs_first_come_ci95": 0,
+            "coupons_month": 3978,
+            "true_discount_month": 9658128,
+            "budget_used": 0.96,
+            "budget_used_max": 0.978,
+            "to_buyers_anyway_month": 4920412
+          },
+          "fixed price": {
+            "profit_month": 23882754,
+            "added_month": 9906693,
+            "share_of_hindsight": 0.988,
+            "share_ci95": 0.005,
+            "vs_first_come_month": 33315,
+            "vs_first_come_ci95": 53700,
+            "coupons_month": 3856,
+            "true_discount_month": 9221221,
+            "budget_used": 0.917,
+            "budget_used_max": 0.976,
+            "to_buyers_anyway_month": 4636540
+          },
+          "re-solved price": {
+            "profit_month": 23986347,
+            "added_month": 10010286,
+            "share_of_hindsight": 0.998,
+            "share_ci95": 0.001,
+            "vs_first_come_month": 136908,
+            "vs_first_come_ci95": 76839,
+            "coupons_month": 3955,
+            "true_discount_month": 9523635,
+            "budget_used": 0.947,
+            "budget_used_max": 0.973,
+            "to_buyers_anyway_month": 4815982
+          },
+          "hindsight": {
+            "profit_month": 24001582,
+            "added_month": 10025520,
+            "share_of_hindsight": 1.0,
+            "share_ci95": 0.0,
+            "vs_first_come_month": 152143,
+            "vs_first_come_ci95": 77760,
+            "coupons_month": 3983,
+            "true_discount_month": 9651994,
+            "budget_used": 0.959,
+            "budget_used_max": 0.977,
+            "to_buyers_anyway_month": 4895904
+          },
+          "true hindsight": {
+            "profit_month": 26203185,
+            "added_month": 12227123,
+            "share_of_hindsight": 1.22,
+            "share_ci95": 0.004,
+            "vs_first_come_month": 2353746,
+            "vs_first_come_ci95": 104042,
+            "coupons_month": 3928,
+            "true_discount_month": 9818704,
+            "budget_used": 0.976,
+            "budget_used_max": 1.0,
+            "to_buyers_anyway_month": 4813124
+          }
+        },
+        "planner_more_budget": {
+          "extra": 2011978,
+          "estimate": 46439,
+          "estimate_ci95": 49274,
+          "true": 17217,
+          "true_ci95": 13163
+        }
+      }
+    ]
+  },
+  "guard": {
+    "rows": [
+      {
+        "who": "the warmest leads (top 10% by score)",
+        "discount": 10,
+        "coupons": 5515,
+        "stopped": 1.0,
+        "truly_lose_money": 0.983,
+        "precision": 0.983,
+        "recall": 1.0,
+        "profit_per_100_all": -383894,
+        "profit_per_100_guarded": 0,
+        "saved_per_100": 383894,
+        "anyway_discount_avoided_per_100": 438065
+      },
+      {
+        "who": "the warmest leads (top 10% by score)",
+        "discount": 20,
+        "coupons": 5515,
+        "stopped": 1.0,
+        "truly_lose_money": 0.996,
+        "precision": 0.996,
+        "recall": 1.0,
+        "profit_per_100_all": -801491,
+        "profit_per_100_guarded": 0,
+        "saved_per_100": 801491,
+        "anyway_discount_avoided_per_100": 876130
+      },
+      {
+        "who": "every left cart",
+        "discount": 10,
+        "coupons": 10771,
+        "stopped": 0.593,
+        "truly_lose_money": 0.611,
+        "precision": 0.96,
+        "recall": 0.931,
+        "profit_per_100_all": -48034,
+        "profit_per_100_guarded": 158673,
+        "saved_per_100": 206707,
+        "anyway_discount_avoided_per_100": 242870
+      },
+      {
+        "who": "every left cart",
+        "discount": 20,
+        "coupons": 10771,
+        "stopped": 0.666,
+        "truly_lose_money": 0.666,
+        "precision": 0.949,
+        "recall": 0.949,
+        "profit_per_100_all": -258336,
+        "profit_per_100_guarded": 178177,
+        "saved_per_100": 436513,
+        "anyway_discount_avoided_per_100": 538142
+      },
+      {
+        "who": "anyone (10% at random)",
+        "discount": 10,
+        "coupons": 5514,
+        "stopped": 0.355,
+        "truly_lose_money": 0.347,
+        "precision": 0.742,
+        "recall": 0.757,
+        "profit_per_100_all": 98852,
+        "profit_per_100_guarded": 156172,
+        "saved_per_100": 57320,
+        "anyway_discount_avoided_per_100": 91878
+      },
+      {
+        "who": "anyone (10% at random)",
+        "discount": 20,
+        "coupons": 5514,
+        "stopped": 0.45,
+        "truly_lose_money": 0.421,
+        "precision": 0.804,
+        "recall": 0.86,
+        "profit_per_100_all": 67230,
+        "profit_per_100_guarded": 211164,
+        "saved_per_100": 143934,
+        "anyway_discount_avoided_per_100": 227424
+      }
+    ]
+  },
+  "pipeline": {
+    "snapshots": 200,
+    "open_leads": 1200,
+    "anyway_pred": 18985429,
+    "anyway_true": 18958782,
+    "anyway_ratio": 1.001,
+    "add_pred": 4743635,
+    "add_true": 4666279,
+    "add_ratio": 1.017,
+    "bands": [
+      {
+        "score_from": 0.004,
+        "score_to": 0.069,
+        "anyway_pred_over_true": 0.925,
+        "add_pred": 1787,
+        "add_true": 1635
+      },
+      {
+        "score_from": 0.069,
+        "score_to": 0.154,
+        "anyway_pred_over_true": 1.018,
+        "add_pred": 3444,
+        "add_true": 3296
+      },
+      {
+        "score_from": 0.154,
+        "score_to": 0.32,
+        "anyway_pred_over_true": 0.998,
+        "add_pred": 4948,
+        "add_true": 4923
+      },
+      {
+        "score_from": 0.32,
+        "score_to": 0.65,
+        "anyway_pred_over_true": 0.998,
+        "add_pred": 6319,
+        "add_true": 6244
+      },
+      {
+        "score_from": 0.65,
+        "score_to": 1.0,
+        "anyway_pred_over_true": 1.007,
+        "add_pred": 3239,
+        "add_true": 3329
+      }
+    ],
+    "work": [
+      {
+        "share_worked": 0.05,
+        "leads_worked": 60,
+        "score_added": 40316,
+        "money_added": 874900,
+        "random_added": 229510,
+        "oracle_added": 978420,
+        "score_share_of_oracle": 0.041,
+        "money_share_of_oracle": 0.894,
+        "random_share_of_oracle": 0.235,
+        "oracle_share_of_oracle": 1.0,
+        "money_minus_score": 834583,
+        "money_minus_score_ci95": 7418
+      },
+      {
+        "share_worked": 0.1,
+        "leads_worked": 120,
+        "score_added": 193262,
+        "money_added": 1415563,
+        "random_added": 462883,
+        "oracle_added": 1588622,
+        "score_share_of_oracle": 0.122,
+        "money_share_of_oracle": 0.891,
+        "random_share_of_oracle": 0.292,
+        "oracle_share_of_oracle": 1.0,
+        "money_minus_score": 1222300,
+        "money_minus_score_ci95": 9896
+      },
+      {
+        "share_worked": 0.2,
+        "leads_worked": 240,
+        "score_added": 797639,
+        "money_added": 2271329,
+        "random_added": 930284,
+        "oracle_added": 2501642,
+        "score_share_of_oracle": 0.319,
+        "money_share_of_oracle": 0.908,
+        "random_share_of_oracle": 0.372,
+        "oracle_share_of_oracle": 1.0,
+        "money_minus_score": 1473691,
+        "money_minus_score_ci95": 12903
+      },
+      {
+        "share_worked": 0.4,
+        "leads_worked": 480,
+        "score_added": 2299796,
+        "money_added": 3451426,
+        "random_added": 1863147,
+        "oracle_added": 3710557,
+        "score_share_of_oracle": 0.62,
+        "money_share_of_oracle": 0.93,
+        "random_share_of_oracle": 0.502,
+        "oracle_share_of_oracle": 1.0,
+        "money_minus_score": 1151630,
+        "money_minus_score_ci95": 12094
+      }
+    ],
+    "no_discount_badge": {
+      "share_flagged": 0.2043,
+      "coupon_truly_loses": 0.912,
+      "coupon_loss_per_lead": 2859,
+      "likely_buyers_share": 0.2822,
+      "likely_buyers_coupon_truly_loses": 0.727,
+      "others_coupon_truly_loses": 0.146
+    }
+  },
+  "counsellor": {
+    "calls_now": 8,
+    "more_calls": 8,
+    "levels": [
+      {
+        "demand": 1,
+        "now_estimate": 547794,
+        "now_true": 542470,
+        "now_ratio": 1.01,
+        "now_ratio_ci95": 0.036,
+        "more_estimate": 57401,
+        "more_true": 61509,
+        "more_ratio": 0.892,
+        "more_ratio_ci95": 0.126,
+        "ranked_estimate": 19132,
+        "ranked_ratio": 0.308
+      },
+      {
+        "demand": 2,
+        "now_estimate": 919464,
+        "now_true": 899190,
+        "now_ratio": 1.024,
+        "now_ratio_ci95": 0.03,
+        "more_estimate": 193546,
+        "more_true": 204809,
+        "more_ratio": 0.952,
+        "more_ratio_ci95": 0.047,
+        "ranked_estimate": 163170,
+        "ranked_ratio": 0.808
+      },
+      {
+        "demand": 4,
+        "now_estimate": 1401105,
+        "now_true": 1389185,
+        "now_ratio": 1.009,
+        "now_ratio_ci95": 0.025,
+        "more_estimate": 570275,
+        "more_true": 558237,
+        "more_ratio": 1.025,
+        "more_ratio_ci95": 0.04,
+        "ranked_estimate": 568999,
+        "ranked_ratio": 1.022
+      },
+      {
+        "demand": 8,
+        "now_estimate": 1883119,
+        "now_true": 1818069,
+        "now_ratio": 1.037,
+        "now_ratio_ci95": 0.019,
+        "more_estimate": 999139,
+        "more_true": 968427,
+        "more_ratio": 1.033,
+        "more_ratio_ci95": 0.02,
+        "ranked_estimate": 1018644,
+        "ranked_ratio": 1.054
+      }
+    ]
+  },
+  "seconds": 34.4
+}

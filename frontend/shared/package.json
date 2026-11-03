@@ -1,0 +1,23 @@
+{
+  "name": "@xedu/shared",
+  "private": true,
+  "version": "7.1.0",
+  "type": "module",
+  "description": "Design tokens, UI primitives and helpers shared by the website and the CRM.",
+  "exports": {
+    "./styles/tokens.css": "./src/styles/tokens.css",
+    "./ui": "./src/ui/index.ts",
+    "./lib": "./src/lib/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "clsx": "2.1.1",
+    "lucide-react": "1.59.0"
+  }
+}

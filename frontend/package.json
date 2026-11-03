@@ -1,0 +1,40 @@
+{
+  "name": "xeducation-frontend",
+  "private": true,
+  "type": "module",
+  "description": "The learner website (web) and the CRM dashboard (crm), sharing one design system (shared).",
+  "workspaces": [
+    "shared",
+    "crm",
+    "web"
+  ],
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev:web": "npm run dev -w web",
+    "dev:crm": "npm run dev -w crm",
+    "build": "npm run build -w web && npm run build -w crm",
+    "typecheck": "npm run typecheck -w shared && npm run typecheck -w web && npm run typecheck -w crm",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/react": "16.3.3",
+    "@types/node": "22.20.5",
+    "eslint": "10.13.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.7",
+    "globals": "17.13.0",
+    "jsdom": "26.1.0",
+    "prettier": "3.9.9",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.2",
+    "vite": "7.3.7",
+    "vitest": "4.1.11"
+  }
+}

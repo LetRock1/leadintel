@@ -1,0 +1,11 @@
+# Line endings: Windows scripts need CRLF, shell scripts need LF; everything else is normalised to LF in the repository.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.sh text eol=lf
+*.png binary
+*.jpg binary
+*.pkl binary
+*.db binary
+# The two public datasets are kept byte for byte as they were downloaded
+ml/data/*.csv -text

@@ -1,0 +1,4 @@
+# Extra packages for the research experiments in ml/ (on top of the backend's own packages): figures for the paper.
+# Install: python -m pip install -r ml/requirements.txt
+-r ../backend/requirements.txt
+matplotlib==3.10.7

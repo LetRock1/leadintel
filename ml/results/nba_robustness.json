@@ -1,0 +1,3045 @@
+{
+  "design": {
+    "train_decisions": 60000,
+    "test_leads": 30000,
+    "random_worlds": 20,
+    "selection_split": 0.75,
+    "train_sizes": [
+      1000,
+      3000,
+      10000,
+      30000,
+      60000
+    ],
+    "call_capacity": 0.1
+  },
+  "random_world_summary": {
+    "worlds": 20,
+    "ours_beats_best_fixed": 20,
+    "flexible_beats_best_fixed": 20,
+    "selected_beats_best_fixed": 20,
+    "ours_beats_flexible": 13,
+    "selection_picked_better_family": 13,
+    "median_pct_of_oracle": {
+      "ours": 83.13499556700481,
+      "flexible": 81.53478950588666,
+      "champion_challenger": 86.79803820509494,
+      "best_fixed_in_hindsight": 27.40181479508481
+    },
+    "min_pct_of_oracle": {
+      "ours": 55.55903930055795,
+      "flexible": 60.71981920448835,
+      "champion_challenger": 60.010278887925885
+    },
+    "corr_hidden_share_vs_ours_minus_flexible": -0.7024517285769927,
+    "ours_beats_flexible_when_hidden_share_below_0.5": "9/10",
+    "ours_beats_flexible_when_hidden_share_above_0.5": "4/10"
+  },
+  "worlds": {
+    "documented": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 30.0,
+          "net_incremental_profit_per_1000_inr": 1393515.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 94.3,
+          "net_incremental_profit_per_1000_inr": 553592.0,
+          "discount_given_per_1000_inr": 3849699.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 45.6,
+          "net_incremental_profit_per_1000_inr": 1037883.0,
+          "discount_given_per_1000_inr": 1078235.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 34.2,
+          "net_incremental_profit_per_1000_inr": 943138.0,
+          "discount_given_per_1000_inr": 637236.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 41.6,
+          "net_incremental_profit_per_1000_inr": 1089122.0,
+          "discount_given_per_1000_inr": 830785.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 104.6,
+          "net_incremental_profit_per_1000_inr": 3898866.0,
+          "discount_given_per_1000_inr": 1020854.0,
+          "contact_cost_per_1000_inr": 17084.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 419.0,
+          "contacted_per_1000": 944.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 99.6,
+          "net_incremental_profit_per_1000_inr": 3563643.0,
+          "discount_given_per_1000_inr": 1124797.0,
+          "contact_cost_per_1000_inr": 17119.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 458.0,
+          "contacted_per_1000": 955.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 94.1,
+          "net_incremental_profit_per_1000_inr": 3332422.0,
+          "discount_given_per_1000_inr": 1092179.0,
+          "contact_cost_per_1000_inr": 17242.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 482.0,
+          "contacted_per_1000": 954.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 99.6,
+          "net_incremental_profit_per_1000_inr": 3563643.0,
+          "discount_given_per_1000_inr": 1124797.0,
+          "contact_cost_per_1000_inr": 17119.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 458.0,
+          "contacted_per_1000": 955.0
+        }
+      },
+      "learning_curve": {
+        "1000": {
+          "ours": 2790399.0,
+          "flexible": 1305302.0
+        },
+        "3000": {
+          "ours": 3190977.0,
+          "flexible": 1683828.0
+        },
+        "10000": {
+          "ours": 3435311.0,
+          "flexible": 2816454.0
+        },
+        "30000": {
+          "ours": 3554422.0,
+          "flexible": 3199734.0
+        },
+        "60000": {
+          "ours": 3563643.0,
+          "flexible": 3332422.0
+        }
+      },
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 19734.35134185444,
+          "Next-best-action (flexible GBM)": 19148.88766009578
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Email everyone (no discount)",
+        "best_fixed_profit": 1393515.0,
+        "oracle_profit": 3898866.0,
+        "ours_profit": 3563643.0,
+        "flexible_profit": 3332422.0,
+        "selected_profit": 3563643.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 91.40203843886914,
+        "flexible_pct_of_oracle": 85.47157045151077,
+        "selected_pct_of_oracle": 91.40203843886914,
+        "best_fixed_pct_of_oracle": 35.741546388103615,
+        "ours_contacted_per_1000": 955.0,
+        "ours_coupons_per_1000": 458.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "null": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": -1845.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": -2970517.0,
+          "discount_given_per_1000_inr": 2968672.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": -872290.0,
+          "discount_given_per_1000_inr": 855791.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": -602083.0,
+          "discount_given_per_1000_inr": 591572.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": -743815.0,
+          "discount_given_per_1000_inr": 727155.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": -18671.0,
+          "discount_given_per_1000_inr": 2319.0,
+          "contact_cost_per_1000_inr": 16352.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 2.0,
+          "contacted_per_1000": 532.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": -5717.0,
+          "discount_given_per_1000_inr": 5066.0,
+          "contact_cost_per_1000_inr": 652.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 17.0,
+          "contacted_per_1000": 167.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": -18671.0,
+          "discount_given_per_1000_inr": 2319.0,
+          "contact_cost_per_1000_inr": 16352.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 2.0,
+          "contacted_per_1000": 532.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": -18671.0,
+          "flexible": -5717.0
+        }
+      },
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 16609.805436148406,
+          "Next-best-action (flexible GBM)": 16207.192976662265
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "No contact",
+        "best_fixed_profit": 0.0,
+        "oracle_profit": 0.0,
+        "ours_profit": -18671.0,
+        "flexible_profit": -5717.0,
+        "selected_profit": -18671.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": null,
+        "flexible_pct_of_oracle": null,
+        "selected_pct_of_oracle": null,
+        "best_fixed_pct_of_oracle": null,
+        "ours_contacted_per_1000": 532.0,
+        "ours_coupons_per_1000": 2.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "reversed": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 4.6,
+          "net_incremental_profit_per_1000_inr": 208413.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 23.0,
+          "net_incremental_profit_per_1000_inr": -2117084.0,
+          "discount_given_per_1000_inr": 3182030.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 9.7,
+          "net_incremental_profit_per_1000_inr": -471120.0,
+          "discount_given_per_1000_inr": 907656.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 9.7,
+          "net_incremental_profit_per_1000_inr": -187524.0,
+          "discount_given_per_1000_inr": 626457.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 10.1,
+          "net_incremental_profit_per_1000_inr": -331426.0,
+          "discount_given_per_1000_inr": 776475.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 43.4,
+          "net_incremental_profit_per_1000_inr": 1617905.0,
+          "discount_given_per_1000_inr": 435840.0,
+          "contact_cost_per_1000_inr": 16887.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 162.0,
+          "contacted_per_1000": 780.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 29.8,
+          "net_incremental_profit_per_1000_inr": 1137434.0,
+          "discount_given_per_1000_inr": 299081.0,
+          "contact_cost_per_1000_inr": 17027.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 115.0,
+          "contacted_per_1000": 749.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 20.6,
+          "net_incremental_profit_per_1000_inr": 885590.0,
+          "discount_given_per_1000_inr": 123824.0,
+          "contact_cost_per_1000_inr": 16638.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 34.0,
+          "contacted_per_1000": 580.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 29.8,
+          "net_incremental_profit_per_1000_inr": 1137434.0,
+          "discount_given_per_1000_inr": 299081.0,
+          "contact_cost_per_1000_inr": 17027.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 115.0,
+          "contacted_per_1000": 749.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 1137434.0,
+          "flexible": 885590.0
+        }
+      },
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 17141.085809697874,
+          "Next-best-action (flexible GBM)": 16499.004085744036
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Email everyone (no discount)",
+        "best_fixed_profit": 208413.0,
+        "oracle_profit": 1617905.0,
+        "ours_profit": 1137434.0,
+        "flexible_profit": 885590.0,
+        "selected_profit": 1137434.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 70.30289170254125,
+        "flexible_pct_of_oracle": 54.73683559912356,
+        "selected_pct_of_oracle": 70.30289170254125,
+        "best_fixed_pct_of_oracle": 12.881658688241894,
+        "ours_contacted_per_1000": 749.0,
+        "ours_coupons_per_1000": 115.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "hidden": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 17.8,
+          "net_incremental_profit_per_1000_inr": 828961.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 38.0,
+          "net_incremental_profit_per_1000_inr": -1548872.0,
+          "discount_given_per_1000_inr": 3324083.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 20.3,
+          "net_incremental_profit_per_1000_inr": -17305.0,
+          "discount_given_per_1000_inr": 951815.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 17.0,
+          "net_incremental_profit_per_1000_inr": 186776.0,
+          "discount_given_per_1000_inr": 598360.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 19.1,
+          "net_incremental_profit_per_1000_inr": 115380.0,
+          "discount_given_per_1000_inr": 763086.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 74.8,
+          "net_incremental_profit_per_1000_inr": 2816102.0,
+          "discount_given_per_1000_inr": 665985.0,
+          "contact_cost_per_1000_inr": 16690.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 255.0,
+          "contacted_per_1000": 792.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 31.4,
+          "net_incremental_profit_per_1000_inr": 1033734.0,
+          "discount_given_per_1000_inr": 424425.0,
+          "contact_cost_per_1000_inr": 16934.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 377.0,
+          "contacted_per_1000": 942.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 47.5,
+          "net_incremental_profit_per_1000_inr": 1676363.0,
+          "discount_given_per_1000_inr": 538898.0,
+          "contact_cost_per_1000_inr": 13916.0,
+          "calls_per_1000": 81.0,
+          "coupons_per_1000": 224.0,
+          "contacted_per_1000": 826.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 47.5,
+          "net_incremental_profit_per_1000_inr": 1676363.0,
+          "discount_given_per_1000_inr": 538898.0,
+          "contact_cost_per_1000_inr": 13916.0,
+          "calls_per_1000": 81.0,
+          "coupons_per_1000": 224.0,
+          "contacted_per_1000": 826.0
+        }
+      },
+      "learning_curve": {
+        "1000": {
+          "ours": 601064.0,
+          "flexible": 121954.0
+        },
+        "3000": {
+          "ours": 722751.0,
+          "flexible": 981296.0
+        },
+        "10000": {
+          "ours": 932781.0,
+          "flexible": 1230246.0
+        },
+        "30000": {
+          "ours": 1011303.0,
+          "flexible": 1580593.0
+        },
+        "60000": {
+          "ours": 1033734.0,
+          "flexible": 1676363.0
+        }
+      },
+      "selection": {
+        "picked": "Next-best-action (flexible GBM)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 15945.185541500225,
+          "Next-best-action (flexible GBM)": 17451.175051514754
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Email everyone (no discount)",
+        "best_fixed_profit": 828961.0,
+        "oracle_profit": 2816102.0,
+        "ours_profit": 1033734.0,
+        "flexible_profit": 1676363.0,
+        "selected_profit": 1676363.0,
+        "picked": "Next-best-action (flexible GBM)",
+        "ours_pct_of_oracle": 36.7079743560425,
+        "flexible_pct_of_oracle": 59.5277798886546,
+        "selected_pct_of_oracle": 59.5277798886546,
+        "best_fixed_pct_of_oracle": 29.43646927561573,
+        "ours_contacted_per_1000": 942.0,
+        "ours_coupons_per_1000": 377.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "random_01": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": -4.3,
+          "net_incremental_profit_per_1000_inr": -203751.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": -42.9,
+          "net_incremental_profit_per_1000_inr": -4572870.0,
+          "discount_given_per_1000_inr": 2568084.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": -3.2,
+          "net_incremental_profit_per_1000_inr": -968294.0,
+          "discount_given_per_1000_inr": 807526.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": -6.5,
+          "net_incremental_profit_per_1000_inr": -903895.0,
+          "discount_given_per_1000_inr": 591712.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 0.5,
+          "net_incremental_profit_per_1000_inr": -748175.0,
+          "discount_given_per_1000_inr": 760065.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 78.4,
+          "net_incremental_profit_per_1000_inr": 3158043.0,
+          "discount_given_per_1000_inr": 528181.0,
+          "contact_cost_per_1000_inr": 16552.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 443.0,
+          "contacted_per_1000": 833.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 53.7,
+          "net_incremental_profit_per_1000_inr": 2017282.0,
+          "discount_given_per_1000_inr": 547748.0,
+          "contact_cost_per_1000_inr": 16308.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 404.0,
+          "contacted_per_1000": 743.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 49.4,
+          "net_incremental_profit_per_1000_inr": 1917558.0,
+          "discount_given_per_1000_inr": 440012.0,
+          "contact_cost_per_1000_inr": 16249.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 342.0,
+          "contacted_per_1000": 721.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 49.4,
+          "net_incremental_profit_per_1000_inr": 1917558.0,
+          "discount_given_per_1000_inr": 440012.0,
+          "contact_cost_per_1000_inr": 16249.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 342.0,
+          "contacted_per_1000": 721.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 2017282.0,
+          "flexible": 1917558.0
+        }
+      },
+      "hidden_share": 0.5166904023304625,
+      "selection": {
+        "picked": "Next-best-action (flexible GBM)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 17492.096312714086,
+          "Next-best-action (flexible GBM)": 18011.650875443258
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "No contact",
+        "best_fixed_profit": 0.0,
+        "oracle_profit": 3158043.0,
+        "ours_profit": 2017282.0,
+        "flexible_profit": 1917558.0,
+        "selected_profit": 1917558.0,
+        "picked": "Next-best-action (flexible GBM)",
+        "ours_pct_of_oracle": 63.87759761345872,
+        "flexible_pct_of_oracle": 60.71981920448835,
+        "selected_pct_of_oracle": 60.71981920448835,
+        "best_fixed_pct_of_oracle": 0.0,
+        "ours_contacted_per_1000": 743.0,
+        "ours_coupons_per_1000": 404.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "random_02": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 2.1,
+          "net_incremental_profit_per_1000_inr": 87962.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 94.6,
+          "net_incremental_profit_per_1000_inr": 555777.0,
+          "discount_given_per_1000_inr": 3850245.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 29.5,
+          "net_incremental_profit_per_1000_inr": 318640.0,
+          "discount_given_per_1000_inr": 1031759.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 8.1,
+          "net_incremental_profit_per_1000_inr": -251133.0,
+          "discount_given_per_1000_inr": 616178.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 13.0,
+          "net_incremental_profit_per_1000_inr": -177476.0,
+          "discount_given_per_1000_inr": 765867.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 115.1,
+          "net_incremental_profit_per_1000_inr": 4020587.0,
+          "discount_given_per_1000_inr": 1350207.0,
+          "contact_cost_per_1000_inr": 17102.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 553.0,
+          "contacted_per_1000": 926.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 91.6,
+          "net_incremental_profit_per_1000_inr": 2895767.0,
+          "discount_given_per_1000_inr": 1386833.0,
+          "contact_cost_per_1000_inr": 17116.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 588.0,
+          "contacted_per_1000": 896.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 92.7,
+          "net_incremental_profit_per_1000_inr": 3180895.0,
+          "discount_given_per_1000_inr": 1173590.0,
+          "contact_cost_per_1000_inr": 16956.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 525.0,
+          "contacted_per_1000": 822.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 92.7,
+          "net_incremental_profit_per_1000_inr": 3180895.0,
+          "discount_given_per_1000_inr": 1173590.0,
+          "contact_cost_per_1000_inr": 16956.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 525.0,
+          "contacted_per_1000": 822.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 2895767.0,
+          "flexible": 3180895.0
+        }
+      },
+      "hidden_share": 0.7148064231614649,
+      "selection": {
+        "picked": "Next-best-action (flexible GBM)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 19072.97390506163,
+          "Next-best-action (flexible GBM)": 19845.755627292092
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "20% coupon to everyone",
+        "best_fixed_profit": 555777.0,
+        "oracle_profit": 4020587.0,
+        "ours_profit": 2895767.0,
+        "flexible_profit": 3180895.0,
+        "selected_profit": 3180895.0,
+        "picked": "Next-best-action (flexible GBM)",
+        "ours_pct_of_oracle": 72.0234881125567,
+        "flexible_pct_of_oracle": 79.1151889015211,
+        "selected_pct_of_oracle": 79.1151889015211,
+        "best_fixed_pct_of_oracle": 13.823280033487647,
+        "ours_contacted_per_1000": 896.0,
+        "ours_coupons_per_1000": 588.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "random_03": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 143.5,
+          "net_incremental_profit_per_1000_inr": 6690452.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": -12.3,
+          "net_incremental_profit_per_1000_inr": -3429555.0,
+          "discount_given_per_1000_inr": 2853912.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 30.5,
+          "net_incremental_profit_per_1000_inr": 573379.0,
+          "discount_given_per_1000_inr": 812126.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 117.1,
+          "net_incremental_profit_per_1000_inr": 4914617.0,
+          "discount_given_per_1000_inr": 537605.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 81.7,
+          "net_incremental_profit_per_1000_inr": 3150461.0,
+          "discount_given_per_1000_inr": 648917.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 148.2,
+          "net_incremental_profit_per_1000_inr": 6896027.0,
+          "discount_given_per_1000_inr": 5661.0,
+          "contact_cost_per_1000_inr": 13211.0,
+          "calls_per_1000": 77.0,
+          "coupons_per_1000": 8.0,
+          "contacted_per_1000": 911.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 144.5,
+          "net_incremental_profit_per_1000_inr": 6731853.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 8746.0,
+          "calls_per_1000": 46.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 954.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 144.0,
+          "net_incremental_profit_per_1000_inr": 6714586.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 2770.0,
+          "calls_per_1000": 6.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 929.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 144.5,
+          "net_incremental_profit_per_1000_inr": 6731853.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 8746.0,
+          "calls_per_1000": 46.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 954.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 6731853.0,
+          "flexible": 6714586.0
+        }
+      },
+      "hidden_share": 0.6351858994293492,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 22754.29459514307,
+          "Next-best-action (flexible GBM)": 22558.209802722475
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Email everyone (no discount)",
+        "best_fixed_profit": 6690452.0,
+        "oracle_profit": 6896027.0,
+        "ours_profit": 6731853.0,
+        "flexible_profit": 6714586.0,
+        "selected_profit": 6731853.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 97.61929586412582,
+        "flexible_pct_of_oracle": 97.36890531316075,
+        "selected_pct_of_oracle": 97.61929586412582,
+        "best_fixed_pct_of_oracle": 97.01893568572164,
+        "ours_contacted_per_1000": 954.0,
+        "ours_coupons_per_1000": 0.0,
+        "ours_calls_per_1000": 46.0
+      }
+    },
+    "random_04": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 19.8,
+          "net_incremental_profit_per_1000_inr": 920003.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": -40.0,
+          "net_incremental_profit_per_1000_inr": -4463334.0,
+          "discount_given_per_1000_inr": 2595468.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 0.3,
+          "net_incremental_profit_per_1000_inr": -841120.0,
+          "discount_given_per_1000_inr": 824031.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 29.0,
+          "net_incremental_profit_per_1000_inr": 697397.0,
+          "discount_given_per_1000_inr": 644425.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 36.0,
+          "net_incremental_profit_per_1000_inr": 815337.0,
+          "discount_given_per_1000_inr": 833616.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 65.9,
+          "net_incremental_profit_per_1000_inr": 2554722.0,
+          "discount_given_per_1000_inr": 504807.0,
+          "contact_cost_per_1000_inr": 14279.0,
+          "calls_per_1000": 84.0,
+          "coupons_per_1000": 250.0,
+          "contacted_per_1000": 836.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 42.6,
+          "net_incremental_profit_per_1000_inr": 1419379.0,
+          "discount_given_per_1000_inr": 569741.0,
+          "contact_cost_per_1000_inr": 2025.0,
+          "calls_per_1000": 2.0,
+          "coupons_per_1000": 299.0,
+          "contacted_per_1000": 856.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 49.7,
+          "net_incremental_profit_per_1000_inr": 1832932.0,
+          "discount_given_per_1000_inr": 482203.0,
+          "contact_cost_per_1000_inr": 4909.0,
+          "calls_per_1000": 21.0,
+          "coupons_per_1000": 276.0,
+          "contacted_per_1000": 903.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 49.7,
+          "net_incremental_profit_per_1000_inr": 1832932.0,
+          "discount_given_per_1000_inr": 482203.0,
+          "contact_cost_per_1000_inr": 4909.0,
+          "calls_per_1000": 21.0,
+          "coupons_per_1000": 276.0,
+          "contacted_per_1000": 903.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 1419379.0,
+          "flexible": 1832932.0
+        }
+      },
+      "hidden_share": 0.688161865649265,
+      "selection": {
+        "picked": "Next-best-action (flexible GBM)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 16645.352425428657,
+          "Next-best-action (flexible GBM)": 17464.804057872727
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Email everyone (no discount)",
+        "best_fixed_profit": 920003.0,
+        "oracle_profit": 2554722.0,
+        "ours_profit": 1419379.0,
+        "flexible_profit": 1832932.0,
+        "selected_profit": 1832932.0,
+        "picked": "Next-best-action (flexible GBM)",
+        "ours_pct_of_oracle": 55.55903930055795,
+        "flexible_pct_of_oracle": 71.74682803060372,
+        "selected_pct_of_oracle": 71.74682803060372,
+        "best_fixed_pct_of_oracle": 36.01186352174523,
+        "ours_contacted_per_1000": 856.0,
+        "ours_coupons_per_1000": 299.0,
+        "ours_calls_per_1000": 2.0
+      }
+    },
+    "random_05": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 71.0,
+          "net_incremental_profit_per_1000_inr": 3302518.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 4.0,
+          "net_incremental_profit_per_1000_inr": -2820129.0,
+          "discount_given_per_1000_inr": 3006269.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 8.8,
+          "net_incremental_profit_per_1000_inr": -412592.0,
+          "discount_given_per_1000_inr": 795777.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 39.2,
+          "net_incremental_profit_per_1000_inr": 1294476.0,
+          "discount_given_per_1000_inr": 509405.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 1.8,
+          "net_incremental_profit_per_1000_inr": -489717.0,
+          "discount_given_per_1000_inr": 561035.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 111.0,
+          "net_incremental_profit_per_1000_inr": 5121855.0,
+          "discount_given_per_1000_inr": 129528.0,
+          "contact_cost_per_1000_inr": 16589.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 143.0,
+          "contacted_per_1000": 843.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 78.5,
+          "net_incremental_profit_per_1000_inr": 3755604.0,
+          "discount_given_per_1000_inr": 675.0,
+          "contact_cost_per_1000_inr": 16626.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 913.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 97.5,
+          "net_incremental_profit_per_1000_inr": 4628852.0,
+          "discount_given_per_1000_inr": 27113.0,
+          "contact_cost_per_1000_inr": 16572.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 19.0,
+          "contacted_per_1000": 882.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 97.5,
+          "net_incremental_profit_per_1000_inr": 4628852.0,
+          "discount_given_per_1000_inr": 27113.0,
+          "contact_cost_per_1000_inr": 16572.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 19.0,
+          "contacted_per_1000": 882.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 3755604.0,
+          "flexible": 4628852.0
+        }
+      },
+      "hidden_share": 0.8394026487138172,
+      "selection": {
+        "picked": "Next-best-action (flexible GBM)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 21110.575224722787,
+          "Next-best-action (flexible GBM)": 22319.735746114555
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Email everyone (no discount)",
+        "best_fixed_profit": 3302518.0,
+        "oracle_profit": 5121855.0,
+        "ours_profit": 3755604.0,
+        "flexible_profit": 4628852.0,
+        "selected_profit": 4628852.0,
+        "picked": "Next-best-action (flexible GBM)",
+        "ours_pct_of_oracle": 73.32507460675869,
+        "flexible_pct_of_oracle": 90.37452251186338,
+        "selected_pct_of_oracle": 90.37452251186338,
+        "best_fixed_pct_of_oracle": 64.4789436639655,
+        "ours_contacted_per_1000": 913.0,
+        "ours_coupons_per_1000": 0.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "random_06": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 53.9,
+          "net_incremental_profit_per_1000_inr": 2508288.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 111.8,
+          "net_incremental_profit_per_1000_inr": 1190668.0,
+          "discount_given_per_1000_inr": 4008968.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 54.4,
+          "net_incremental_profit_per_1000_inr": 1443974.0,
+          "discount_given_per_1000_inr": 1080796.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 47.2,
+          "net_incremental_profit_per_1000_inr": 1577419.0,
+          "discount_given_per_1000_inr": 614875.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 40.0,
+          "net_incremental_profit_per_1000_inr": 1081220.0,
+          "discount_given_per_1000_inr": 773414.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 114.8,
+          "net_incremental_profit_per_1000_inr": 4636466.0,
+          "discount_given_per_1000_inr": 809667.0,
+          "contact_cost_per_1000_inr": 16814.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 378.0,
+          "contacted_per_1000": 895.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 105.3,
+          "net_incremental_profit_per_1000_inr": 4135940.0,
+          "discount_given_per_1000_inr": 887086.0,
+          "contact_cost_per_1000_inr": 16983.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 449.0,
+          "contacted_per_1000": 933.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 98.9,
+          "net_incremental_profit_per_1000_inr": 3875701.0,
+          "discount_given_per_1000_inr": 847721.0,
+          "contact_cost_per_1000_inr": 16773.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 340.0,
+          "contacted_per_1000": 921.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 105.3,
+          "net_incremental_profit_per_1000_inr": 4135940.0,
+          "discount_given_per_1000_inr": 887086.0,
+          "contact_cost_per_1000_inr": 16983.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 449.0,
+          "contacted_per_1000": 933.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 4135940.0,
+          "flexible": 3875701.0
+        }
+      },
+      "hidden_share": 0.21127872013843563,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 21371.953294495783,
+          "Next-best-action (flexible GBM)": 20788.062227613787
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Email everyone (no discount)",
+        "best_fixed_profit": 2508288.0,
+        "oracle_profit": 4636466.0,
+        "ours_profit": 4135940.0,
+        "flexible_profit": 3875701.0,
+        "selected_profit": 4135940.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 89.20457952242074,
+        "flexible_pct_of_oracle": 83.59170540666102,
+        "selected_pct_of_oracle": 89.20457952242074,
+        "best_fixed_pct_of_oracle": 54.09913498772556,
+        "ours_contacted_per_1000": 933.0,
+        "ours_coupons_per_1000": 449.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "random_07": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": -0.7,
+          "net_incremental_profit_per_1000_inr": -39195.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": -57.8,
+          "net_incremental_profit_per_1000_inr": -5124065.0,
+          "discount_given_per_1000_inr": 2430285.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 2.1,
+          "net_incremental_profit_per_1000_inr": -722754.0,
+          "discount_given_per_1000_inr": 794041.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 9.3,
+          "net_incremental_profit_per_1000_inr": -225600.0,
+          "discount_given_per_1000_inr": 638374.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 18.6,
+          "net_incremental_profit_per_1000_inr": 13236.0,
+          "discount_given_per_1000_inr": 822569.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 79.4,
+          "net_incremental_profit_per_1000_inr": 3386415.0,
+          "discount_given_per_1000_inr": 286580.0,
+          "contact_cost_per_1000_inr": 16370.0,
+          "calls_per_1000": 94.0,
+          "coupons_per_1000": 248.0,
+          "contacted_per_1000": 852.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 74.2,
+          "net_incremental_profit_per_1000_inr": 3187895.0,
+          "discount_given_per_1000_inr": 243053.0,
+          "contact_cost_per_1000_inr": 16125.0,
+          "calls_per_1000": 91.0,
+          "coupons_per_1000": 263.0,
+          "contacted_per_1000": 892.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 71.7,
+          "net_incremental_profit_per_1000_inr": 2995740.0,
+          "discount_given_per_1000_inr": 336558.0,
+          "contact_cost_per_1000_inr": 4133.0,
+          "calls_per_1000": 9.0,
+          "coupons_per_1000": 367.0,
+          "contacted_per_1000": 915.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 74.2,
+          "net_incremental_profit_per_1000_inr": 3187895.0,
+          "discount_given_per_1000_inr": 243053.0,
+          "contact_cost_per_1000_inr": 16125.0,
+          "calls_per_1000": 91.0,
+          "coupons_per_1000": 263.0,
+          "contacted_per_1000": 892.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 3187895.0,
+          "flexible": 2995740.0
+        }
+      },
+      "hidden_share": 0.13958032879989213,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 18590.512372584293,
+          "Next-best-action (flexible GBM)": 18507.061091585692
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Lead-score targeting (score-based CRM)",
+        "best_fixed_profit": 13236.0,
+        "oracle_profit": 3386415.0,
+        "ours_profit": 3187895.0,
+        "flexible_profit": 2995740.0,
+        "selected_profit": 3187895.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 94.13775334682843,
+        "flexible_pct_of_oracle": 88.4634635743109,
+        "selected_pct_of_oracle": 94.13775334682843,
+        "best_fixed_pct_of_oracle": 0.39085581654935975,
+        "ours_contacted_per_1000": 892.0,
+        "ours_coupons_per_1000": 263.0,
+        "ours_calls_per_1000": 91.0
+      }
+    },
+    "random_08": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 6.3,
+          "net_incremental_profit_per_1000_inr": 286196.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 18.8,
+          "net_incremental_profit_per_1000_inr": -2269314.0,
+          "discount_given_per_1000_inr": 3143973.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 24.2,
+          "net_incremental_profit_per_1000_inr": 139833.0,
+          "discount_given_per_1000_inr": 971189.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 20.4,
+          "net_incremental_profit_per_1000_inr": 252285.0,
+          "discount_given_per_1000_inr": 687681.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 43.5,
+          "net_incremental_profit_per_1000_inr": 1073856.0,
+          "discount_given_per_1000_inr": 937761.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 107.7,
+          "net_incremental_profit_per_1000_inr": 4051624.0,
+          "discount_given_per_1000_inr": 959112.0,
+          "contact_cost_per_1000_inr": 16565.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 544.0,
+          "contacted_per_1000": 875.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 87.7,
+          "net_incremental_profit_per_1000_inr": 2883331.0,
+          "discount_given_per_1000_inr": 1172101.0,
+          "contact_cost_per_1000_inr": 16696.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 711.0,
+          "contacted_per_1000": 946.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 91.2,
+          "net_incremental_profit_per_1000_inr": 3135054.0,
+          "discount_given_per_1000_inr": 1119154.0,
+          "contact_cost_per_1000_inr": 16623.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 687.0,
+          "contacted_per_1000": 911.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 91.2,
+          "net_incremental_profit_per_1000_inr": 3135054.0,
+          "discount_given_per_1000_inr": 1119154.0,
+          "contact_cost_per_1000_inr": 16623.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 687.0,
+          "contacted_per_1000": 911.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 2883331.0,
+          "flexible": 3135054.0
+        }
+      },
+      "hidden_share": 0.8233027607551765,
+      "selection": {
+        "picked": "Next-best-action (flexible GBM)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 18345.036835550894,
+          "Next-best-action (flexible GBM)": 19331.629352089225
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Lead-score targeting (score-based CRM)",
+        "best_fixed_profit": 1073856.0,
+        "oracle_profit": 4051624.0,
+        "ours_profit": 2883331.0,
+        "flexible_profit": 3135054.0,
+        "selected_profit": 3135054.0,
+        "picked": "Next-best-action (flexible GBM)",
+        "ours_pct_of_oracle": 71.1648218097237,
+        "flexible_pct_of_oracle": 77.37771323301472,
+        "selected_pct_of_oracle": 77.37771323301472,
+        "best_fixed_pct_of_oracle": 26.504335051821197,
+        "ours_contacted_per_1000": 946.0,
+        "ours_coupons_per_1000": 711.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "random_09": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 73.7,
+          "net_incremental_profit_per_1000_inr": 3428283.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": -84.0,
+          "net_incremental_profit_per_1000_inr": -6101141.0,
+          "discount_given_per_1000_inr": 2186016.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 50.6,
+          "net_incremental_profit_per_1000_inr": 1490250.0,
+          "discount_given_per_1000_inr": 854160.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 85.6,
+          "net_incremental_profit_per_1000_inr": 3262366.0,
+          "discount_given_per_1000_inr": 706347.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 105.0,
+          "net_incremental_profit_per_1000_inr": 3845468.0,
+          "discount_given_per_1000_inr": 1016454.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 173.9,
+          "net_incremental_profit_per_1000_inr": 7161810.0,
+          "discount_given_per_1000_inr": 934992.0,
+          "contact_cost_per_1000_inr": 17121.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 465.0,
+          "contacted_per_1000": 961.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 162.4,
+          "net_incremental_profit_per_1000_inr": 6363864.0,
+          "discount_given_per_1000_inr": 1192776.0,
+          "contact_cost_per_1000_inr": 17010.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 610.0,
+          "contacted_per_1000": 993.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 165.2,
+          "net_incremental_profit_per_1000_inr": 6589411.0,
+          "discount_given_per_1000_inr": 1104782.0,
+          "contact_cost_per_1000_inr": 17079.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 569.0,
+          "contacted_per_1000": 990.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 162.4,
+          "net_incremental_profit_per_1000_inr": 6363864.0,
+          "discount_given_per_1000_inr": 1192776.0,
+          "contact_cost_per_1000_inr": 17010.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 610.0,
+          "contacted_per_1000": 993.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 6363864.0,
+          "flexible": 6589411.0
+        }
+      },
+      "hidden_share": 0.5763930784200824,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 22357.62439360094,
+          "Next-best-action (flexible GBM)": 22239.02596314908
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Lead-score targeting (score-based CRM)",
+        "best_fixed_profit": 3845468.0,
+        "oracle_profit": 7161810.0,
+        "ours_profit": 6363864.0,
+        "flexible_profit": 6589411.0,
+        "selected_profit": 6363864.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 88.85831933547524,
+        "flexible_pct_of_oracle": 92.00762097849567,
+        "selected_pct_of_oracle": 88.85831933547524,
+        "best_fixed_pct_of_oracle": 53.69408012778892,
+        "ours_contacted_per_1000": 993.0,
+        "ours_coupons_per_1000": 610.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "random_10": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": -30.0,
+          "net_incremental_profit_per_1000_inr": -1393047.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 38.1,
+          "net_incremental_profit_per_1000_inr": -1537839.0,
+          "discount_given_per_1000_inr": 3326841.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 28.0,
+          "net_incremental_profit_per_1000_inr": 253896.0,
+          "discount_given_per_1000_inr": 1041751.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 9.9,
+          "net_incremental_profit_per_1000_inr": -238080.0,
+          "discount_given_per_1000_inr": 707962.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 50.2,
+          "net_incremental_profit_per_1000_inr": 1328796.0,
+          "discount_given_per_1000_inr": 995396.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 147.7,
+          "net_incremental_profit_per_1000_inr": 5416027.0,
+          "discount_given_per_1000_inr": 1457254.0,
+          "contact_cost_per_1000_inr": 12093.0,
+          "calls_per_1000": 65.0,
+          "coupons_per_1000": 592.0,
+          "contacted_per_1000": 934.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 133.0,
+          "net_incremental_profit_per_1000_inr": 4714840.0,
+          "discount_given_per_1000_inr": 1481550.0,
+          "contact_cost_per_1000_inr": 6342.0,
+          "calls_per_1000": 26.0,
+          "coupons_per_1000": 674.0,
+          "contacted_per_1000": 930.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 129.9,
+          "net_incremental_profit_per_1000_inr": 4683521.0,
+          "discount_given_per_1000_inr": 1367161.0,
+          "contact_cost_per_1000_inr": 3021.0,
+          "calls_per_1000": 4.0,
+          "coupons_per_1000": 661.0,
+          "contacted_per_1000": 900.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 129.9,
+          "net_incremental_profit_per_1000_inr": 4683521.0,
+          "discount_given_per_1000_inr": 1367161.0,
+          "contact_cost_per_1000_inr": 3021.0,
+          "calls_per_1000": 4.0,
+          "coupons_per_1000": 661.0,
+          "contacted_per_1000": 900.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 4714840.0,
+          "flexible": 4683521.0
+        }
+      },
+      "hidden_share": 0.5223397279149308,
+      "selection": {
+        "picked": "Next-best-action (flexible GBM)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 20618.450485542828,
+          "Next-best-action (flexible GBM)": 21006.22999426201
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Lead-score targeting (score-based CRM)",
+        "best_fixed_profit": 1328796.0,
+        "oracle_profit": 5416027.0,
+        "ours_profit": 4714840.0,
+        "flexible_profit": 4683521.0,
+        "selected_profit": 4683521.0,
+        "picked": "Next-best-action (flexible GBM)",
+        "ours_pct_of_oracle": 87.05348034638675,
+        "flexible_pct_of_oracle": 86.47521513463651,
+        "selected_pct_of_oracle": 86.47521513463651,
+        "best_fixed_pct_of_oracle": 24.534515799127295,
+        "ours_contacted_per_1000": 930.0,
+        "ours_coupons_per_1000": 674.0,
+        "ours_calls_per_1000": 26.0
+      }
+    },
+    "random_11": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 128.3,
+          "net_incremental_profit_per_1000_inr": 5973820.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 21.1,
+          "net_incremental_profit_per_1000_inr": -2181628.0,
+          "discount_given_per_1000_inr": 3165894.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 38.9,
+          "net_incremental_profit_per_1000_inr": 852726.0,
+          "discount_given_per_1000_inr": 921279.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 103.5,
+          "net_incremental_profit_per_1000_inr": 4205626.0,
+          "discount_given_per_1000_inr": 589259.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 75.4,
+          "net_incremental_profit_per_1000_inr": 2742649.0,
+          "discount_given_per_1000_inr": 743714.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 143.6,
+          "net_incremental_profit_per_1000_inr": 6468170.0,
+          "discount_given_per_1000_inr": 218711.0,
+          "contact_cost_per_1000_inr": 9063.0,
+          "calls_per_1000": 48.0,
+          "coupons_per_1000": 142.0,
+          "contacted_per_1000": 957.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 141.2,
+          "net_incremental_profit_per_1000_inr": 6370843.0,
+          "discount_given_per_1000_inr": 197695.0,
+          "contact_cost_per_1000_inr": 11141.0,
+          "calls_per_1000": 62.0,
+          "coupons_per_1000": 103.0,
+          "contacted_per_1000": 958.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 136.3,
+          "net_incremental_profit_per_1000_inr": 6247361.0,
+          "discount_given_per_1000_inr": 96846.0,
+          "contact_cost_per_1000_inr": 7332.0,
+          "calls_per_1000": 37.0,
+          "coupons_per_1000": 64.0,
+          "contacted_per_1000": 958.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 141.2,
+          "net_incremental_profit_per_1000_inr": 6370843.0,
+          "discount_given_per_1000_inr": 197695.0,
+          "contact_cost_per_1000_inr": 11141.0,
+          "calls_per_1000": 62.0,
+          "coupons_per_1000": 103.0,
+          "contacted_per_1000": 958.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 6370843.0,
+          "flexible": 6247361.0
+        }
+      },
+      "hidden_share": 0.1258679525091102,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 22158.305113739352,
+          "Next-best-action (flexible GBM)": 22088.918215156194
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Email everyone (no discount)",
+        "best_fixed_profit": 5973820.0,
+        "oracle_profit": 6468170.0,
+        "ours_profit": 6370843.0,
+        "flexible_profit": 6247361.0,
+        "selected_profit": 6370843.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 98.49529310454116,
+        "flexible_pct_of_oracle": 96.5862214505803,
+        "selected_pct_of_oracle": 98.49529310454116,
+        "best_fixed_pct_of_oracle": 92.35718912768218,
+        "ours_contacted_per_1000": 958.0,
+        "ours_coupons_per_1000": 103.0,
+        "ours_calls_per_1000": 62.0
+      }
+    },
+    "random_12": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": -22.9,
+          "net_incremental_profit_per_1000_inr": -1064812.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": -51.5,
+          "net_incremental_profit_per_1000_inr": -4892070.0,
+          "discount_given_per_1000_inr": 2488284.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": -11.5,
+          "net_incremental_profit_per_1000_inr": -1294070.0,
+          "discount_given_per_1000_inr": 744438.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": -23.2,
+          "net_incremental_profit_per_1000_inr": -1633755.0,
+          "discount_given_per_1000_inr": 538316.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": -19.3,
+          "net_incremental_profit_per_1000_inr": -1565657.0,
+          "discount_given_per_1000_inr": 653474.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 61.1,
+          "net_incremental_profit_per_1000_inr": 2728146.0,
+          "discount_given_per_1000_inr": 237469.0,
+          "contact_cost_per_1000_inr": 16923.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 288.0,
+          "contacted_per_1000": 784.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 42.5,
+          "net_incremental_profit_per_1000_inr": 1933845.0,
+          "discount_given_per_1000_inr": 188773.0,
+          "contact_cost_per_1000_inr": 17156.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 197.0,
+          "contacted_per_1000": 790.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 35.4,
+          "net_incremental_profit_per_1000_inr": 1716623.0,
+          "discount_given_per_1000_inr": 65410.0,
+          "contact_cost_per_1000_inr": 16954.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 72.0,
+          "contacted_per_1000": 640.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 42.5,
+          "net_incremental_profit_per_1000_inr": 1933845.0,
+          "discount_given_per_1000_inr": 188773.0,
+          "contact_cost_per_1000_inr": 17156.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 197.0,
+          "contacted_per_1000": 790.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 1933845.0,
+          "flexible": 1716623.0
+        }
+      },
+      "hidden_share": 0.4991891898056552,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 18828.608078191763,
+          "Next-best-action (flexible GBM)": 18652.044848860147
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "No contact",
+        "best_fixed_profit": 0.0,
+        "oracle_profit": 2728146.0,
+        "ours_profit": 1933845.0,
+        "flexible_profit": 1716623.0,
+        "selected_profit": 1933845.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 70.88495263816526,
+        "flexible_pct_of_oracle": 62.92269548623864,
+        "selected_pct_of_oracle": 70.88495263816526,
+        "best_fixed_pct_of_oracle": 0.0,
+        "ours_contacted_per_1000": 790.0,
+        "ours_coupons_per_1000": 197.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "random_13": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": -122.5,
+          "net_incremental_profit_per_1000_inr": -5722269.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 47.7,
+          "net_incremental_profit_per_1000_inr": -1190012.0,
+          "discount_given_per_1000_inr": 3413798.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": -31.1,
+          "net_incremental_profit_per_1000_inr": -2345233.0,
+          "discount_given_per_1000_inr": 891155.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": -79.8,
+          "net_incremental_profit_per_1000_inr": -4243102.0,
+          "discount_given_per_1000_inr": 523638.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": -57.0,
+          "net_incremental_profit_per_1000_inr": -3282552.0,
+          "discount_given_per_1000_inr": 614416.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 79.3,
+          "net_incremental_profit_per_1000_inr": 2646209.0,
+          "discount_given_per_1000_inr": 1146831.0,
+          "contact_cost_per_1000_inr": 16043.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 421.0,
+          "contacted_per_1000": 580.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 72.7,
+          "net_incremental_profit_per_1000_inr": 2306090.0,
+          "discount_given_per_1000_inr": 1202615.0,
+          "contact_cost_per_1000_inr": 15880.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 354.0,
+          "contacted_per_1000": 521.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 65.6,
+          "net_incremental_profit_per_1000_inr": 2096719.0,
+          "discount_given_per_1000_inr": 1074816.0,
+          "contact_cost_per_1000_inr": 15720.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 298.0,
+          "contacted_per_1000": 439.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 72.7,
+          "net_incremental_profit_per_1000_inr": 2306090.0,
+          "discount_given_per_1000_inr": 1202615.0,
+          "contact_cost_per_1000_inr": 15880.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 354.0,
+          "contacted_per_1000": 521.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 2306090.0,
+          "flexible": 2096719.0
+        }
+      },
+      "hidden_share": 0.09163168550678957,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 19121.793593985643,
+          "Next-best-action (flexible GBM)": 18873.78014613592
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "No contact",
+        "best_fixed_profit": 0.0,
+        "oracle_profit": 2646209.0,
+        "ours_profit": 2306090.0,
+        "flexible_profit": 2096719.0,
+        "selected_profit": 2306090.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 87.14693359443642,
+        "flexible_pct_of_oracle": 79.23482234396452,
+        "selected_pct_of_oracle": 87.14693359443642,
+        "best_fixed_pct_of_oracle": 0.0,
+        "ours_contacted_per_1000": 521.0,
+        "ours_coupons_per_1000": 354.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "random_14": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 90.1,
+          "net_incremental_profit_per_1000_inr": 4199045.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 78.9,
+          "net_incremental_profit_per_1000_inr": -22838.0,
+          "discount_given_per_1000_inr": 3705592.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 56.3,
+          "net_incremental_profit_per_1000_inr": 1564064.0,
+          "discount_given_per_1000_inr": 1046432.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 76.9,
+          "net_incremental_profit_per_1000_inr": 2971004.0,
+          "discount_given_per_1000_inr": 602626.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 64.3,
+          "net_incremental_profit_per_1000_inr": 2193121.0,
+          "discount_given_per_1000_inr": 785488.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 122.2,
+          "net_incremental_profit_per_1000_inr": 5258619.0,
+          "discount_given_per_1000_inr": 424367.0,
+          "contact_cost_per_1000_inr": 17049.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 231.0,
+          "contacted_per_1000": 966.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 109.2,
+          "net_incremental_profit_per_1000_inr": 4793259.0,
+          "discount_given_per_1000_inr": 282313.0,
+          "contact_cost_per_1000_inr": 12534.0,
+          "calls_per_1000": 69.0,
+          "coupons_per_1000": 162.0,
+          "contacted_per_1000": 962.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 103.1,
+          "net_incremental_profit_per_1000_inr": 4608904.0,
+          "discount_given_per_1000_inr": 196088.0,
+          "contact_cost_per_1000_inr": 5944.0,
+          "calls_per_1000": 25.0,
+          "coupons_per_1000": 126.0,
+          "contacted_per_1000": 964.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 109.2,
+          "net_incremental_profit_per_1000_inr": 4793259.0,
+          "discount_given_per_1000_inr": 282313.0,
+          "contact_cost_per_1000_inr": 12534.0,
+          "calls_per_1000": 69.0,
+          "coupons_per_1000": 162.0,
+          "contacted_per_1000": 962.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 4793259.0,
+          "flexible": 4608904.0
+        }
+      },
+      "hidden_share": 0.4437406986182346,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 20495.111858953314,
+          "Next-best-action (flexible GBM)": 20401.935777209437
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Email everyone (no discount)",
+        "best_fixed_profit": 4199045.0,
+        "oracle_profit": 5258619.0,
+        "ours_profit": 4793259.0,
+        "flexible_profit": 4608904.0,
+        "selected_profit": 4793259.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 91.15052830410417,
+        "flexible_pct_of_oracle": 87.64475996454583,
+        "selected_pct_of_oracle": 91.15052830410417,
+        "best_fixed_pct_of_oracle": 79.85071746023053,
+        "ours_contacted_per_1000": 962.0,
+        "ours_coupons_per_1000": 162.0,
+        "ours_calls_per_1000": 69.0
+      }
+    },
+    "random_15": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": -18.8,
+          "net_incremental_profit_per_1000_inr": -885271.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 112.0,
+          "net_incremental_profit_per_1000_inr": 1195294.0,
+          "discount_given_per_1000_inr": 4010124.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 10.7,
+          "net_incremental_profit_per_1000_inr": -544426.0,
+          "discount_given_per_1000_inr": 1029202.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": -23.2,
+          "net_incremental_profit_per_1000_inr": -1646163.0,
+          "discount_given_per_1000_inr": 554123.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": -33.0,
+          "net_incremental_profit_per_1000_inr": -2219408.0,
+          "discount_given_per_1000_inr": 654924.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 123.4,
+          "net_incremental_profit_per_1000_inr": 4223759.0,
+          "discount_given_per_1000_inr": 1492809.0,
+          "contact_cost_per_1000_inr": 9614.0,
+          "calls_per_1000": 50.0,
+          "coupons_per_1000": 412.0,
+          "contacted_per_1000": 798.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 120.0,
+          "net_incremental_profit_per_1000_inr": 3973846.0,
+          "discount_given_per_1000_inr": 1581769.0,
+          "contact_cost_per_1000_inr": 13461.0,
+          "calls_per_1000": 75.0,
+          "coupons_per_1000": 408.0,
+          "contacted_per_1000": 811.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 118.5,
+          "net_incremental_profit_per_1000_inr": 3788415.0,
+          "discount_given_per_1000_inr": 1708700.0,
+          "contact_cost_per_1000_inr": 2752.0,
+          "calls_per_1000": 2.0,
+          "coupons_per_1000": 511.0,
+          "contacted_per_1000": 831.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 118.5,
+          "net_incremental_profit_per_1000_inr": 3788415.0,
+          "discount_given_per_1000_inr": 1708700.0,
+          "contact_cost_per_1000_inr": 2752.0,
+          "calls_per_1000": 2.0,
+          "coupons_per_1000": 511.0,
+          "contacted_per_1000": 831.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 3973846.0,
+          "flexible": 3788415.0
+        }
+      },
+      "hidden_share": 0.1253920104843167,
+      "selection": {
+        "picked": "Next-best-action (flexible GBM)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 19002.71693437763,
+          "Next-best-action (flexible GBM)": 19116.606613177733
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "20% coupon to everyone",
+        "best_fixed_profit": 1195294.0,
+        "oracle_profit": 4223759.0,
+        "ours_profit": 3973846.0,
+        "flexible_profit": 3788415.0,
+        "selected_profit": 3788415.0,
+        "picked": "Next-best-action (flexible GBM)",
+        "ours_pct_of_oracle": 94.08316146825612,
+        "flexible_pct_of_oracle": 89.69297253938967,
+        "selected_pct_of_oracle": 89.69297253938967,
+        "best_fixed_pct_of_oracle": 28.299294538348423,
+        "ours_contacted_per_1000": 811.0,
+        "ours_coupons_per_1000": 408.0,
+        "ours_calls_per_1000": 75.0
+      }
+    },
+    "random_16": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 19.7,
+          "net_incremental_profit_per_1000_inr": 911604.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": -33.0,
+          "net_incremental_profit_per_1000_inr": -4206522.0,
+          "discount_given_per_1000_inr": 2659671.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 11.8,
+          "net_incremental_profit_per_1000_inr": -320532.0,
+          "discount_given_per_1000_inr": 855933.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": 29.9,
+          "net_incremental_profit_per_1000_inr": 737793.0,
+          "discount_given_per_1000_inr": 651474.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": 38.7,
+          "net_incremental_profit_per_1000_inr": 920341.0,
+          "discount_given_per_1000_inr": 863485.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 93.2,
+          "net_incremental_profit_per_1000_inr": 3683361.0,
+          "discount_given_per_1000_inr": 637373.0,
+          "contact_cost_per_1000_inr": 17013.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 284.0,
+          "contacted_per_1000": 902.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 75.3,
+          "net_incremental_profit_per_1000_inr": 2814894.0,
+          "discount_given_per_1000_inr": 683686.0,
+          "contact_cost_per_1000_inr": 14425.0,
+          "calls_per_1000": 81.0,
+          "coupons_per_1000": 354.0,
+          "contacted_per_1000": 947.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 77.0,
+          "net_incremental_profit_per_1000_inr": 2927457.0,
+          "discount_given_per_1000_inr": 658744.0,
+          "contact_cost_per_1000_inr": 3248.0,
+          "calls_per_1000": 5.0,
+          "coupons_per_1000": 307.0,
+          "contacted_per_1000": 925.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 75.3,
+          "net_incremental_profit_per_1000_inr": 2814894.0,
+          "discount_given_per_1000_inr": 683686.0,
+          "contact_cost_per_1000_inr": 14425.0,
+          "calls_per_1000": 81.0,
+          "coupons_per_1000": 354.0,
+          "contacted_per_1000": 947.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 2814894.0,
+          "flexible": 2927457.0
+        }
+      },
+      "hidden_share": 0.4832096676969797,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 18827.418012694245,
+          "Next-best-action (flexible GBM)": 18526.23818359375
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Lead-score targeting (score-based CRM)",
+        "best_fixed_profit": 920341.0,
+        "oracle_profit": 3683361.0,
+        "ours_profit": 2814894.0,
+        "flexible_profit": 2927457.0,
+        "selected_profit": 2814894.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 76.42188750980422,
+        "flexible_pct_of_oracle": 79.4778736051123,
+        "selected_pct_of_oracle": 76.42188750980422,
+        "best_fixed_pct_of_oracle": 24.98644580316727,
+        "ours_contacted_per_1000": 947.0,
+        "ours_coupons_per_1000": 354.0,
+        "ours_calls_per_1000": 81.0
+      }
+    },
+    "random_17": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": -54.9,
+          "net_incremental_profit_per_1000_inr": -2560796.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": -57.2,
+          "net_incremental_profit_per_1000_inr": -5098251.0,
+          "discount_given_per_1000_inr": 2436738.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": -13.4,
+          "net_incremental_profit_per_1000_inr": -1378251.0,
+          "discount_given_per_1000_inr": 757953.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": -37.8,
+          "net_incremental_profit_per_1000_inr": -2353850.0,
+          "discount_given_per_1000_inr": 583631.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": -19.7,
+          "net_incremental_profit_per_1000_inr": -1656143.0,
+          "discount_given_per_1000_inr": 725044.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 53.4,
+          "net_incremental_profit_per_1000_inr": 2485337.0,
+          "discount_given_per_1000_inr": 129338.0,
+          "contact_cost_per_1000_inr": 16761.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 175.0,
+          "contacted_per_1000": 574.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 47.2,
+          "net_incremental_profit_per_1000_inr": 2255844.0,
+          "discount_given_per_1000_inr": 56400.0,
+          "contact_cost_per_1000_inr": 16682.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 91.0,
+          "contacted_per_1000": 506.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 43.9,
+          "net_incremental_profit_per_1000_inr": 2165247.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 16546.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 412.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 43.9,
+          "net_incremental_profit_per_1000_inr": 2165247.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 16546.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 412.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 2255844.0,
+          "flexible": 2165247.0
+        }
+      },
+      "hidden_share": 0.11172711772392985,
+      "selection": {
+        "picked": "Next-best-action (flexible GBM)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 19441.11308423554,
+          "Next-best-action (flexible GBM)": 19566.169140466875
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "No contact",
+        "best_fixed_profit": 0.0,
+        "oracle_profit": 2485337.0,
+        "ours_profit": 2255844.0,
+        "flexible_profit": 2165247.0,
+        "selected_profit": 2165247.0,
+        "picked": "Next-best-action (flexible GBM)",
+        "ours_pct_of_oracle": 90.76612145556116,
+        "flexible_pct_of_oracle": 87.12086127555338,
+        "selected_pct_of_oracle": 87.12086127555338,
+        "best_fixed_pct_of_oracle": 0.0,
+        "ours_contacted_per_1000": 506.0,
+        "ours_coupons_per_1000": 91.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "random_18": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": 14.8,
+          "net_incremental_profit_per_1000_inr": 688628.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": -55.2,
+          "net_incremental_profit_per_1000_inr": -5026974.0,
+          "discount_given_per_1000_inr": 2454558.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": -22.3,
+          "net_incremental_profit_per_1000_inr": -1746298.0,
+          "discount_given_per_1000_inr": 679412.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": -13.0,
+          "net_incremental_profit_per_1000_inr": -1109523.0,
+          "discount_given_per_1000_inr": 484540.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": -34.4,
+          "net_incremental_profit_per_1000_inr": -2161676.0,
+          "discount_given_per_1000_inr": 541817.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 41.3,
+          "net_incremental_profit_per_1000_inr": 1837596.0,
+          "discount_given_per_1000_inr": 145438.0,
+          "contact_cost_per_1000_inr": 16328.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 188.0,
+          "contacted_per_1000": 739.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 27.9,
+          "net_incremental_profit_per_1000_inr": 1324304.0,
+          "discount_given_per_1000_inr": 59862.0,
+          "contact_cost_per_1000_inr": 16251.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 65.0,
+          "contacted_per_1000": 720.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 23.0,
+          "net_incremental_profit_per_1000_inr": 1120279.0,
+          "discount_given_per_1000_inr": 543.0,
+          "contact_cost_per_1000_inr": 16546.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 1.0,
+          "contacted_per_1000": 851.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 27.9,
+          "net_incremental_profit_per_1000_inr": 1324304.0,
+          "discount_given_per_1000_inr": 59862.0,
+          "contact_cost_per_1000_inr": 16251.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 65.0,
+          "contacted_per_1000": 720.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 1324304.0,
+          "flexible": 1120279.0
+        }
+      },
+      "hidden_share": 0.6002790229260317,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 17703.734417344174,
+          "Next-best-action (flexible GBM)": 17330.66263853652
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "Email everyone (no discount)",
+        "best_fixed_profit": 688628.0,
+        "oracle_profit": 1837596.0,
+        "ours_profit": 1324304.0,
+        "flexible_profit": 1120279.0,
+        "selected_profit": 1324304.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 72.06720084284032,
+        "flexible_pct_of_oracle": 60.96437954806171,
+        "selected_pct_of_oracle": 72.06720084284032,
+        "best_fixed_pct_of_oracle": 37.47439589550696,
+        "ours_contacted_per_1000": 720.0,
+        "ours_coupons_per_1000": 65.0,
+        "ours_calls_per_1000": 100.0
+      }
+    },
+    "random_19": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": -11.3,
+          "net_incremental_profit_per_1000_inr": -527762.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 109.4,
+          "net_incremental_profit_per_1000_inr": 1114880.0,
+          "discount_given_per_1000_inr": 3990021.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": 16.8,
+          "net_incremental_profit_per_1000_inr": -285809.0,
+          "discount_given_per_1000_inr": 1054383.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": -3.5,
+          "net_incremental_profit_per_1000_inr": -778455.0,
+          "discount_given_per_1000_inr": 602033.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": -2.7,
+          "net_incremental_profit_per_1000_inr": -893946.0,
+          "discount_given_per_1000_inr": 737866.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 104.9,
+          "net_incremental_profit_per_1000_inr": 3362650.0,
+          "discount_given_per_1000_inr": 1525736.0,
+          "contact_cost_per_1000_inr": 6457.0,
+          "calls_per_1000": 29.0,
+          "coupons_per_1000": 466.0,
+          "contacted_per_1000": 855.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 93.4,
+          "net_incremental_profit_per_1000_inr": 2663774.0,
+          "discount_given_per_1000_inr": 1692554.0,
+          "contact_cost_per_1000_inr": 4648.0,
+          "calls_per_1000": 15.0,
+          "coupons_per_1000": 546.0,
+          "contacted_per_1000": 887.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 93.9,
+          "net_incremental_profit_per_1000_inr": 2658462.0,
+          "discount_given_per_1000_inr": 1727323.0,
+          "contact_cost_per_1000_inr": 2661.0,
+          "calls_per_1000": 3.0,
+          "coupons_per_1000": 581.0,
+          "contacted_per_1000": 818.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 93.4,
+          "net_incremental_profit_per_1000_inr": 2663774.0,
+          "discount_given_per_1000_inr": 1692554.0,
+          "contact_cost_per_1000_inr": 4648.0,
+          "calls_per_1000": 15.0,
+          "coupons_per_1000": 546.0,
+          "contacted_per_1000": 887.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 2663774.0,
+          "flexible": 2658462.0
+        }
+      },
+      "hidden_share": 0.4412077981233171,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 18249.809921479904,
+          "Next-best-action (flexible GBM)": 18131.287415654522
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "20% coupon to everyone",
+        "best_fixed_profit": 1114880.0,
+        "oracle_profit": 3362650.0,
+        "ours_profit": 2663774.0,
+        "flexible_profit": 2658462.0,
+        "selected_profit": 2663774.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 79.21651078762285,
+        "flexible_pct_of_oracle": 79.05854013947334,
+        "selected_pct_of_oracle": 79.21651078762285,
+        "best_fixed_pct_of_oracle": 33.15480350318945,
+        "ours_contacted_per_1000": 887.0,
+        "ours_coupons_per_1000": 546.0,
+        "ours_calls_per_1000": 15.0
+      }
+    },
+    "random_20": {
+      "policies": {
+        "No contact": {
+          "incremental_conversions_per_1000": 0.0,
+          "net_incremental_profit_per_1000_inr": 0.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 0.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 0.0
+        },
+        "Email everyone (no discount)": {
+          "incremental_conversions_per_1000": -31.3,
+          "net_incremental_profit_per_1000_inr": -1465793.0,
+          "discount_given_per_1000_inr": 0.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 0.0,
+          "contacted_per_1000": 923.0
+        },
+        "20% coupon to everyone": {
+          "incremental_conversions_per_1000": 43.0,
+          "net_incremental_profit_per_1000_inr": -1362041.0,
+          "discount_given_per_1000_inr": 3370791.0,
+          "contact_cost_per_1000_inr": 1845.0,
+          "calls_per_1000": 0.0,
+          "coupons_per_1000": 923.0,
+          "contacted_per_1000": 923.0
+        },
+        "Random action": {
+          "incremental_conversions_per_1000": -9.8,
+          "net_incremental_profit_per_1000_inr": -1350431.0,
+          "discount_given_per_1000_inr": 870919.0,
+          "contact_cost_per_1000_inr": 16499.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 358.0,
+          "contacted_per_1000": 764.0
+        },
+        "Tier playbook (rule-based workflow)": {
+          "incremental_conversions_per_1000": -34.9,
+          "net_incremental_profit_per_1000_inr": -2150666.0,
+          "discount_given_per_1000_inr": 508828.0,
+          "contact_cost_per_1000_inr": 10511.0,
+          "calls_per_1000": 58.0,
+          "coupons_per_1000": 161.0,
+          "contacted_per_1000": 926.0
+        },
+        "Lead-score targeting (score-based CRM)": {
+          "incremental_conversions_per_1000": -41.8,
+          "net_incremental_profit_per_1000_inr": -2522732.0,
+          "discount_given_per_1000_inr": 563520.0,
+          "contact_cost_per_1000_inr": 16659.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 278.0,
+          "contacted_per_1000": 930.0
+        },
+        "Oracle (knows true effects)": {
+          "incremental_conversions_per_1000": 69.5,
+          "net_incremental_profit_per_1000_inr": 2599503.0,
+          "discount_given_per_1000_inr": 733133.0,
+          "contact_cost_per_1000_inr": 16636.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 386.0,
+          "contacted_per_1000": 753.0
+        },
+        "Next-best-action (ours, interpretable)": {
+          "incremental_conversions_per_1000": 49.1,
+          "net_incremental_profit_per_1000_inr": 1559969.0,
+          "discount_given_per_1000_inr": 823204.0,
+          "contact_cost_per_1000_inr": 16512.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 453.0,
+          "contacted_per_1000": 699.0
+        },
+        "Next-best-action (flexible GBM)": {
+          "incremental_conversions_per_1000": 48.4,
+          "net_incremental_profit_per_1000_inr": 1590711.0,
+          "discount_given_per_1000_inr": 751399.0,
+          "contact_cost_per_1000_inr": 16398.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 437.0,
+          "contacted_per_1000": 654.0
+        },
+        "Next-best-action (champion/challenger pick)": {
+          "incremental_conversions_per_1000": 49.1,
+          "net_incremental_profit_per_1000_inr": 1559969.0,
+          "discount_given_per_1000_inr": 823204.0,
+          "contact_cost_per_1000_inr": 16512.0,
+          "calls_per_1000": 100.0,
+          "coupons_per_1000": 453.0,
+          "contacted_per_1000": 699.0
+        }
+      },
+      "learning_curve": {
+        "60000": {
+          "ours": 1559969.0,
+          "flexible": 1590711.0
+        }
+      },
+      "hidden_share": 0.6706791044308572,
+      "selection": {
+        "picked": "Next-best-action (ours, interpretable)",
+        "snips_profit_per_lead": {
+          "Next-best-action (ours, interpretable)": 18024.99810757859,
+          "Next-best-action (flexible GBM)": 17894.855567485352
+        }
+      },
+      "summary": {
+        "best_fixed_policy": "No contact",
+        "best_fixed_profit": 0.0,
+        "oracle_profit": 2599503.0,
+        "ours_profit": 1559969.0,
+        "flexible_profit": 1590711.0,
+        "selected_profit": 1559969.0,
+        "picked": "Next-best-action (ours, interpretable)",
+        "ours_pct_of_oracle": 60.010278887925885,
+        "flexible_pct_of_oracle": 61.192889563889715,
+        "selected_pct_of_oracle": 60.010278887925885,
+        "best_fixed_pct_of_oracle": 0.0,
+        "ours_contacted_per_1000": 699.0,
+        "ours_coupons_per_1000": 453.0,
+        "ours_calls_per_1000": 100.0
+      }
+    }
+  },
+  "runtime_s": 775.5
+}

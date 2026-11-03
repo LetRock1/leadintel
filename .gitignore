@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Backend data: the database, trained models, logs, generated passwords (made on the first start)
+backend/.env
+backend/data/
+*.db
+*.db-wal
+*.db-shm
+
+# Frontends
+node_modules/
+dist/
+frontend/*/.env.local
+*.tsbuildinfo
+
+# Editors and systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test and tool output
+playwright-report/
+test-results/
+coverage/
+.coverage
+
+# Temporary files of the start scripts
+frontend/lock.new
