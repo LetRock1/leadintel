@@ -144,41 +144,85 @@ export function DecisionReceipt({
                 {showMath ? <ChevronDown className="size-3" /> : <ChevronRight className="size-3" />}
               </button>
               {showMath && (
-                <div className="mt-2 space-y-2 rounded border border-line bg-canvas p-2.5 text-[12px] text-ink-2">
-                  <p className="font-semibold text-ink">
-                    Causal Optimization: argmax E[Profit | a] − E[Profit | Do Nothing]
-                  </p>
-                  <p className="text-[11.5px] text-muted">
-                    E[Profit | a] = P(buy | a) × Course Fee × (1 − Discount) − Action Cost
-                  </p>
-                  <div className="space-y-1 pt-1">
-                    {options.map((o) => {
-                      const netProfit = o.incremental_profit ?? 0;
-                      const isBest = o.action === picked.action;
-                      return (
-                        <div
-                          key={o.action}
-                          className={cn("flex justify-between py-0.5", isBest && "font-semibold text-brand")}
-                        >
-                          <span>
-                            {o.label || actionLabel(o.action)}
-                            {o.blocked ? ` (${o.blocked})` : ""}
-                          </span>
-                          <span className="num">
-                            {o.blocked
-                              ? "Blocked"
-                              : `ΔProfit: ${money(netProfit)}${
-                                  o.net_of_slot !== undefined ? ` (Net of slot: ${money(o.net_of_slot)})` : ""
-                                }`}
-                          </span>
-                        </div>
-                      );
-                    })}
+                <div className="mt-2 space-y-3 rounded border border-line bg-canvas p-3 text-[12px] text-ink-2">
+                  <div>
+                    <p className="font-semibold text-ink">
+                      1. How ML Influences This (Causal Uplift, Not Naive Scoring)
+                    </p>
+                    <p className="mt-0.5 text-[11.5px] text-muted">
+                      A standard CRM only predicts static buying likelihood and blindly discounts warm leads. Our ML S-Learner
+                      model estimates the <em>counterfactual probability vector</em>: what this specific person will do under
+                      each intervention. It detects when discounts cannibalize organic purchases (producing negative ΔProfit).
+                    </p>
                   </div>
-                  <p className="pt-1 text-[11px] italic text-muted">
-                    The chosen action maximizes the expected net return after accounting for opportunity cost of counsellor
-                    call slots and coupon budget constraints.
-                  </p>
+
+                  <div>
+                    <p className="font-semibold text-ink">
+                      2. Exact Optimization Calculation
+                    </p>
+                    <p className="mt-0.5 font-mono text-[11px] text-brand-ink">
+                      ΔProfit(a) = [P(buy | a) × Fee × (1 − Discount)] − Action Cost − [P(buy | none) × Fee]
+                    </p>
+                    {price && none && picked && (
+                      <div className="mt-1.5 rounded bg-surface p-2 text-[11.5px] font-mono text-ink-2 border border-line/60 space-y-0.5">
+                        <p>• Baseline without action: {pct(none.p_convert)} × {money(price)} = {money(none.p_convert * price)}</p>
+                        <p>
+                          • {picked.label || actionLabel(picked.action)}: {pct(picked.p_convert)} × {money(price)}
+                          {picked.discount > 0 ? ` × (1 − ${pct(picked.discount)})` : ""} − {money(picked.cost)} = {money(picked.expected_profit)}
+                        </p>
+                        <p className="font-semibold text-brand">
+                          • Net Incremental Profit (ΔProfit): {money(picked.incremental_profit)}
+                          {picked.net_of_slot !== undefined ? ` (Net of slot price: ${money(picked.net_of_slot)})` : ""}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-ink">3. Every Candidate Action Evaluated</p>
+                    <div className="mt-1 space-y-1">
+                      {options.map((o) => {
+                        const netProfit = o.incremental_profit ?? 0;
+                        const isBest = o.action === picked.action;
+                        return (
+                          <div
+                            key={o.action}
+                            className={cn("flex justify-between py-0.5", isBest && "font-semibold text-brand")}
+                          >
+                            <span>
+                              {o.label || actionLabel(o.action)}
+                              {o.blocked ? ` (${o.blocked})` : ""}
+                            </span>
+                            <span className="num">
+                              {o.blocked
+                                ? "Blocked by policy"
+                                : `ΔProfit: ${money(netProfit)}${
+                                    o.net_of_slot !== undefined ? ` (Net of slot: ${money(o.net_of_slot)})` : ""
+                                  }`}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-ink">4. Budget & Resource Governance Checks</p>
+                    <ul className="mt-0.5 list-disc pl-4 text-[11.5px] text-muted space-y-0.5">
+                      <li>
+                        <strong>Call Capacity:</strong> Daily quota allocated via dynamic shadow pricing (bid price) so
+                        call slots are reserved for high-uplift leads.
+                      </li>
+                      <li>
+                        <strong>Discount Budget Approval:</strong> Governed by the owner's monthly limit (under Planner);
+                        the Coupon Guard blocks discounts on leads with high organic conversion.
+                      </li>
+                      <li>
+                        <strong>Anti-Fatigue Policy:</strong> Maximum 1 active coupon per learner, 7-day cooldown between
+                        coupons, and no repetitive manual outreach within 24 hours.
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               )}
             </div>
