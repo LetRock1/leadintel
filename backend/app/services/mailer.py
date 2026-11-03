@@ -27,7 +27,7 @@ log = logging.getLogger(__name__)
 
 _cfg = get_settings()
 GMAIL_USER = _cfg.gmail_user
-GMAIL_PASS = _cfg.gmail_app_password
+GMAIL_PASS = (_cfg.gmail_app_password or "").replace(" ", "").strip()
 SMTP_SECURITY = (_cfg.smtp_security or "ssl").strip().lower()
 if SMTP_SECURITY not in ("ssl", "starttls", "none"):
     log.error("SMTP_SECURITY must be ssl, starttls or none (not %r): using ssl", SMTP_SECURITY)

@@ -65,8 +65,10 @@ class Settings(BaseSettings):
 
     # outbound email (optional: without it, codes and emails are written to the log). Gmail by default; any mail
     # server works with SMTP_HOST, SMTP_PORT and SMTP_SECURITY (ssl, starttls, or none for a local relay)
-    gmail_user: str = Field(default="", validation_alias=AliasChoices("GMAIL_USER", "SMTP_USER"))
+    gmail_user: str = Field(default="", validation_alias=AliasChoices("GMAIL_USER", "SMTP_USER", "EMAIL_FROM"))
     gmail_app_password: str = Field(default="", validation_alias=AliasChoices("GMAIL_APP_PASSWORD", "SMTP_PASSWORD"))
+    email_from: str = ""
+    brevo_api_key: str = ""
     smtp_host: str = ""
     smtp_port: int | None = None
     smtp_security: str = ""

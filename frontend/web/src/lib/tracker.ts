@@ -146,6 +146,11 @@ export async function reportEmailClick(token: string): Promise<void> {
   if (reportedClicks.has(token)) return;
   reportedClicks.add(token);
   try {
+    sessionStorage.setItem(SOURCE_KEY, "Email Campaign");
+  } catch {
+    /* ignore */
+  }
+  try {
     await fetch("/api/v1/email/click", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
