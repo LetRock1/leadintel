@@ -4,7 +4,7 @@
  * is in use the visit is kept alive every 30 seconds, so the CRM's "visit ended" follow-up waits until the learner
  * has really left. Nothing is recorded for visitors who are not signed in.
  */
-import { getToken } from "../api/client";
+import { getToken, setToken } from "../api/client";
 
 const VISIT_KEY = "xe-visit";
 const SOURCE_KEY = "xe-source";
@@ -151,11 +151,23 @@ export async function reportEmailClick(token: string): Promise<void> {
     /* ignore */
   }
   try {
-    await fetch("/api/v1/email/click", {
+    const res = await fetch("/api/v1/email/click", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token }),
     });
+    if (res.ok) {
+      const data = (await res.json()) as { token?: string; session_id?: number };
+      if (data?.session_id) {
+        adoptVisit(data.session_id);
+      }
+      if (data?.token && !getToken()) {
+        setToken(data.token);
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("xe-auth-changed"));
+        }
+      }
+    }
   } catch {
     /* ignore */
   }

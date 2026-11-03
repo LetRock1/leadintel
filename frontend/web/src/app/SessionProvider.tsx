@@ -25,6 +25,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => setSignedOutHandler(signOut), [signOut]);
 
+  useEffect(() => {
+    const handleAuthChange = () => {
+      setHasToken(Boolean(getToken()));
+      void qc.invalidateQueries({ queryKey: ["me"] });
+    };
+    window.addEventListener("xe-auth-changed", handleAuthChange);
+    return () => window.removeEventListener("xe-auth-changed", handleAuthChange);
+  }, [qc]);
+
   const adopt = useCallback(
     async (r: SignInResponse) => {
       setToken(r.token);

@@ -11,7 +11,7 @@ from fastapi import APIRouter, HTTPException, status
 
 from app import db
 from app.api.deps import Learner
-from app.core import perf
+from app.core import perf, security
 from app.ml import features as F
 from app.schemas.learner import BehaviourEvent, EmailToken, SessionPing, SessionStart
 from app.services.scoring import rescore_latest_lead
@@ -100,9 +100,26 @@ def email_click(body: EmailToken):
                   WHERE token=?""",
         (token,),
     )
+    token_str = None
+    session_id = None
+    user_info = None
     if send.get("user_id"):
         rescore_latest_lead(send["user_id"], "email_click")
-    return {"ok": True, "first_click": first}
+        user = db.get_user_by_id(send["user_id"])
+        if user:
+            token_str = security.create_learner_token(user["id"], user["email"], user["password_hash"])
+            session_id = db.execute(
+                "INSERT INTO user_sessions (user_id, device_type, lead_source) VALUES (?,?,?)",
+                (user["id"], "Desktop", "Email Campaign"),
+            )
+            user_info = {"id": user["id"], "name": user["name"], "email": user["email"]}
+    return {
+        "ok": True,
+        "first_click": first,
+        "token": token_str,
+        "session_id": session_id,
+        "user": user_info,
+    }
 
 
 @router.post("/email/unsubscribe", summary="One-click unsubscribe from marketing emails")
