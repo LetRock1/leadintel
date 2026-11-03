@@ -119,7 +119,7 @@ def keep_alive_job():
         )
         with urllib.request.urlopen(req, timeout=15) as res:
             log.info("Keep-alive self-ping sent to %s -> status %d", target, res.status)
-    except Exception as exc:
+    except Exception as exc:  # noqa: BLE001 - keep-alive failure must not crash scheduler
         log.warning("Keep-alive self-ping to %s failed: %s", target, exc)
 
 
