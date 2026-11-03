@@ -1,6 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { int, pct, points, useChartColors } from "@xedu/shared/lib";
+import { cn, int, pct, points, useChartColors } from "@xedu/shared/lib";
 import { Segmented, Select, Table, Td, Th } from "@xedu/shared/ui";
+import { ArrowRight, EyeOff, RotateCcw } from "lucide-react";
 import { useState } from "react";
 import { ResponsiveContainer, Sankey, Tooltip, type TooltipContentProps } from "recharts";
 import type { LinkProps, NodeProps } from "recharts/types/chart/Sankey";
@@ -111,10 +112,11 @@ function nodeLabel(n: MapNode): string {
   return n.name === "Bought" ? "Bought within 3 days" : n.name;
 }
 
-/** The journey map: stage, the step the CRM took, the reaction and the outcome, with a table of the same flows. */
-function JourneyMap({ map }: { map: JourneyData["sankey"] }) {
+/** The journey map: stage, the step the CRM took, the reaction and the outcome, with step flow cards, a visual map, and a table of the same flows. */
+function JourneyMap({ map, topPaths }: { map: JourneyData["sankey"]; topPaths?: JourneyData["top_paths"] }) {
   const c = useChartColors();
-  const [view, setView] = useState<"map" | "table">("map");
+  const [view, setView] = useState<"flows" | "map" | "table">("flows");
+  const [hidden, setHidden] = useState(false);
   const lastLayer = map.nodes.reduce(
     (m, n) =>
       Math.max(
@@ -124,6 +126,23 @@ function JourneyMap({ map }: { map: JourneyData["sankey"] }) {
     0,
   );
   const flows = map.links.map((l) => ({ ...l, from: map.nodes[l.source], to: map.nodes[l.target] }));
+
+  if (hidden) {
+    return (
+      <div className="flex items-center justify-between rounded-md border border-line bg-surface px-4 py-3 text-[13px] text-muted">
+        <span>Journey map is hidden.</span>
+        <button
+          type="button"
+          onClick={() => setHidden(false)}
+          className="flex items-center gap-1.5 font-medium text-brand hover:underline"
+        >
+          <RotateCcw className="size-3.5" />
+          Show journey map
+        </button>
+      </div>
+    );
+  }
+
   const MapNodeShape = ({ x, y, width, height, payload }: NodeProps) => {
     const node = payload as unknown as MapNode & { value: number; depth: number };
     const end = node.depth >= lastLayer;
@@ -150,18 +169,23 @@ function JourneyMap({ map }: { map: JourneyData["sankey"] }) {
       </g>
     );
   };
+
   const MapLinkShape = (p: LinkProps) => {
     const conv = (p.payload as unknown as { conversion?: number }).conversion ?? 0;
+    // Semantic color coding based on conversion performance instead of confusing muddy opacity
+    const strokeColor = conv >= 0.25 ? "#10b981" : conv >= 0.1 ? "#6366f1" : "#94a3b8";
+    const opacity = 0.28 + 0.5 * Math.min(1, Math.max(0, conv));
     return (
       <path
         d={`M${p.sourceX},${p.sourceY}C${p.sourceControlX},${p.sourceY} ${p.targetControlX},${p.targetY} ${p.targetX},${p.targetY}`}
         fill="none"
-        stroke={c.series[0]}
-        strokeOpacity={0.14 + 0.62 * Math.min(1, Math.max(0, conv))}
-        strokeWidth={Math.max(1, p.linkWidth)}
+        stroke={strokeColor}
+        strokeOpacity={opacity}
+        strokeWidth={Math.max(1.5, p.linkWidth)}
       />
     );
   };
+
   const tip = ({ active, payload }: Partial<TooltipContentProps<number, string>>) => {
     const item = payload?.[0]?.payload as
       { source?: MapNode & { value: number }; target?: MapNode; value?: number; payload?: unknown } | undefined;
@@ -178,7 +202,19 @@ function JourneyMap({ map }: { map: JourneyData["sankey"] }) {
               Decisions<span className="num ml-auto pl-4 font-medium text-ink">{int(link.value)}</span>
             </p>
             <p className="flex text-ink-2">
-              Bought in the end<span className="num ml-auto pl-4 font-medium text-ink">{pct(link.conversion, 1)}</span>
+              Bought in the end
+              <span
+                className={cn(
+                  "num ml-auto pl-4 font-semibold",
+                  (link.conversion ?? 0) >= 0.25
+                    ? "text-emerald-600 dark:text-emerald-400"
+                    : (link.conversion ?? 0) >= 0.1
+                      ? "text-indigo-600 dark:text-indigo-400"
+                      : "text-ink",
+                )}
+              >
+                {pct(link.conversion, 1)}
+              </span>
             </p>
           </>
         ) : (
@@ -189,29 +225,110 @@ function JourneyMap({ map }: { map: JourneyData["sankey"] }) {
       </div>
     );
   };
+
   return (
     <figure className="rounded-md border border-line bg-surface">
       <figcaption className="flex flex-wrap items-start gap-3 px-4 pt-3">
         <div className="min-w-0 flex-1">
-          <p className="text-[14px] font-semibold text-ink">Journey map</p>
+          <div className="flex items-center gap-2.5">
+            <p className="text-[14px] font-semibold text-ink">Journey map</p>
+            <button
+              type="button"
+              onClick={() => setHidden(true)}
+              className="flex items-center gap-1 text-[11.5px] text-muted hover:text-ink"
+              title="Hide journey map section"
+            >
+              <EyeOff className="size-3" /> Hide
+            </button>
+          </div>
           <p className="mt-0.5 text-[12.5px] text-muted">
-            The width of a band is how many decisions took that path; the darker it is, the more of them bought in the
-            end.
+            {view === "flows" && "Top converting paths learners take from their initial trigger to final purchase."}
+            {view === "map" && "Full pathway diagram: band thickness reflects volume; color indicates conversion rate."}
+            {view === "table" && "Complete decision flow metrics across stages and responses."}
           </p>
         </div>
         <Segmented
           size="sm"
           label="Journey map: show as"
           value={view}
-          onChange={setView}
+          onChange={(v) => setView(v as "flows" | "map" | "table")}
           options={[
-            { value: "map", label: "Map" },
+            { value: "flows", label: "Step flows" },
+            { value: "map", label: "Sankey map" },
             { value: "table", label: "Table" },
           ]}
         />
       </figcaption>
-      {view === "map" ? (
-        <div className="overflow-x-auto px-2 pb-3 pt-3">
+
+      {view === "flows" ? (
+        <div className="p-4">
+          {!topPaths || topPaths.length === 0 ? (
+            <p className="py-4 text-center text-[13px] text-muted">Not enough journey data yet to display top flows.</p>
+          ) : (
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              {topPaths.slice(0, 6).map((p, i) => {
+                const isHigh = p.conversion_weighted >= 0.25;
+                const isMed = p.conversion_weighted >= 0.1;
+                return (
+                  <div
+                    key={i}
+                    className="flex flex-col justify-between rounded-md border border-line bg-canvas/40 p-3.5 transition-colors hover:border-brand/40"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2 border-b border-line/60 pb-2 text-[12px]">
+                        <span className="font-semibold text-ink">Pathway #{i + 1}</span>
+                        <span className="num font-medium text-muted">{int(p.n)} learners</span>
+                      </div>
+                      <div className="mt-3 flex flex-wrap items-center gap-1.5 text-[12px]">
+                        <span className="rounded border border-line/60 bg-surface px-2 py-1 font-medium text-ink-2">
+                          {STAGE_LABEL[p.stage] ?? p.stage}
+                        </span>
+                        <ArrowRight className="size-3 shrink-0 text-muted" />
+                        <span className="rounded bg-brand-soft px-2 py-1 font-medium text-brand-ink">
+                          {p.action_label}
+                        </span>
+                        <ArrowRight className="size-3 shrink-0 text-muted" />
+                        <span className="rounded border border-line/60 bg-surface px-2 py-1 font-medium text-ink-2">
+                          {p.reaction_label}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="mt-3.5 flex items-center justify-between border-t border-line/60 pt-2 text-[12px]">
+                      <span className="text-muted">Final conversion:</span>
+                      <span
+                        className={cn(
+                          "num rounded px-2 py-0.5 font-semibold",
+                          isHigh
+                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                            : isMed
+                              ? "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400"
+                              : "bg-slate-500/10 text-muted",
+                        )}
+                      >
+                        {pct(p.conversion_weighted, 1)} enrolled
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      ) : view === "map" ? (
+        <div className="overflow-x-auto px-4 pb-3 pt-2">
+          <div className="mb-2 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded border border-line/50 bg-canvas/60 px-3 py-1.5 text-[11.5px] text-muted">
+            <span className="font-medium text-ink">Legend:</span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block size-2 rounded-full bg-emerald-500" /> High conversion (≥25%)
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block size-2 rounded-full bg-indigo-500" /> Moderate (10–25%)
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block size-2 rounded-full bg-slate-400" /> Low / Drop-off (&lt;10%)
+            </span>
+            <span className="ml-auto text-muted">Band width = Decision volume</span>
+          </div>
           <div className="min-w-[680px]">
             {/* column names over the node columns, which sit at equal steps across the drawing */}
             <div className="relative mx-2 h-5 text-[12px] font-medium text-muted">
@@ -354,7 +471,7 @@ export default function Journeys() {
                 title="How journeys run"
                 description={`Stage, the step the CRM took, how the person reacted and whether they bought, from ${int(d.with_outcome)} decisions with a known outcome.`}
               >
-                <JourneyMap map={d.sankey} />
+                <JourneyMap map={d.sankey} topPaths={d.top_paths} />
               </Section>
             )}
 
