@@ -38,11 +38,9 @@ services:
   - type: web
     name: leadintel-web
     runtime: static
-    region: oregon
-    plan: free
-    rootDir: .
-    buildCommand: "npm ci --prefix frontend && npm run build -w web --prefix frontend"
-    staticPublishPath: "./frontend/web/dist"
+    rootDir: frontend
+    buildCommand: "npm ci && npm run build -w web"
+    staticPublishPath: "./web/dist"
     envVars:
       - key: VITE_API_URL
         sync: false
@@ -57,11 +55,9 @@ services:
   - type: web
     name: leadintel-crm
     runtime: static
-    region: oregon
-    plan: free
-    rootDir: .
-    buildCommand: "npm ci --prefix frontend && npm run build -w crm --prefix frontend"
-    staticPublishPath: "./frontend/crm/dist"
+    rootDir: frontend
+    buildCommand: "npm ci && npm run build -w crm"
+    staticPublishPath: "./crm/dist"
     envVars:
       - key: VITE_API_URL
         sync: false
