@@ -1,10 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { dateTime, errorText } from "@xedu/shared/lib";
 import { Button, Field, Input, Notice, useToast } from "@xedu/shared/ui";
+import { LogOut } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router";
 import { api, setToken } from "../api/client";
-import { useMe } from "../app/session";
+import { useMe, useSession } from "../app/session";
 import { Facts, PageHeader, Panel, Section } from "../components/page";
 
 function problem(pw: string): string | null {
@@ -15,6 +16,7 @@ function problem(pw: string): string | null {
 
 export default function Account() {
   const me = useMe();
+  const { signOut } = useSession();
   const qc = useQueryClient();
   const toast = useToast();
   const navigate = useNavigate();
@@ -117,6 +119,23 @@ export default function Account() {
               </form>
             </Panel>
           )}
+        </Section>
+
+        <Section title="Sign out" description="End your current CRM session on this device.">
+          <Panel>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-[13.5px] font-medium text-ink">Signed in as {me.name}</p>
+                <p className="text-[12.5px] text-muted">
+                  {me.email} ({me.role})
+                </p>
+              </div>
+              <Button type="button" variant="secondary" onClick={signOut}>
+                <LogOut className="mr-1.5 size-4" />
+                Sign out
+              </Button>
+            </div>
+          </Panel>
         </Section>
       </div>
     </>

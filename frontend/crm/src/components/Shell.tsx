@@ -9,6 +9,7 @@ import {
   Gauge,
   LayoutDashboard,
   ListChecks,
+  LogOut,
   Menu as MenuIcon,
   MessageCircleQuestion,
   MessagesSquare,
@@ -281,6 +282,7 @@ function WelcomeBar() {
 
 export function Shell() {
   const [open, setOpen] = useState(false);
+  const { signOut } = useSession();
   return (
     <div className="min-h-screen lg:pl-[232px]">
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-[232px] border-r border-line bg-surface lg:block">
@@ -307,9 +309,13 @@ export function Shell() {
           <MenuIcon aria-hidden className="size-5" />
         </IconButton>
         <GlobalSearch />
-        <div className="ml-auto flex items-center gap-1">
+        <div className="ml-auto flex items-center gap-1.5">
           <LiveDot />
           <ThemeToggle />
+          <div className="mx-1 hidden h-4 w-px bg-line/80 sm:block" />
+          <IconButton label="Sign out" onClick={signOut} title="Sign out of CRM" className="text-muted hover:text-ink">
+            <LogOut aria-hidden className="size-4" />
+          </IconButton>
         </div>
       </header>
       <main className="mx-auto w-full max-w-[1360px] px-4 pb-16 pt-6 sm:px-6">
