@@ -95,6 +95,12 @@ class Settings(BaseSettings):
     # background work
     scheduler_enabled: bool = True
     simulation_enabled: bool | None = None  # None: crm_settings.json decides
+    keep_alive_enabled: bool = True
+    keep_alive_url: str | None = Field(
+        default=None,
+        validation_alias=AliasChoices("KEEP_ALIVE_URL", "RENDER_EXTERNAL_URL"),
+    )
+    keep_alive_interval_minutes: int = 9
 
     @field_validator("public_site_url", "dashboard_url", "api_url")
     @classmethod

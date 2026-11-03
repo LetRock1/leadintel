@@ -103,6 +103,26 @@ def simulation_job():
     live.tick()
 
 
+def keep_alive_job():
+    import os
+    import urllib.request
+
+    settings = get_settings()
+    url = (settings.keep_alive_url or os.environ.get("RENDER_EXTERNAL_URL") or "").strip().rstrip("/")
+    if not url:
+        return
+    target = f"{url}/api/health"
+    try:
+        req = urllib.request.Request(
+            target,
+            headers={"User-Agent": "LeadIntel-KeepAlive/1.0", "X-Keep-Alive": "true"},
+        )
+        with urllib.request.urlopen(req, timeout=15) as res:
+            log.info("Keep-alive self-ping sent to %s -> status %d", target, res.status)
+    except Exception as exc:
+        log.warning("Keep-alive self-ping to %s failed: %s", target, exc)
+
+
 def start() -> BackgroundScheduler | None:
     """Start every job (once per process)."""
     global _scheduler
@@ -132,6 +152,10 @@ def start() -> BackgroundScheduler | None:
     simulate = settings.simulation_enabled is not False  # None: crm_settings.json and the dashboard decide
     if simulate:
         sched.add_job(_safe("simulation", simulation_job), "interval", seconds=sim_every, id="simulation")
+    if settings.keep_alive_enabled:
+        keep_every = max(1, min(14, int(settings.keep_alive_interval_minutes)))
+        sched.add_job(_safe("keep_alive", keep_alive_job), "interval", minutes=keep_every, id="keep_alive")
+        threading.Timer(60.0, _safe("keep_alive_startup", keep_alive_job)).start()
     sched.start()
     _scheduler = sched
     # once right after start-up: scores saved by an older model are brought up to date
