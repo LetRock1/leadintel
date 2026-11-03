@@ -1,6 +1,6 @@
 import { cn, money, pct, points } from "@xedu/shared/lib";
-import { Check } from "lucide-react";
-import type { ReactNode } from "react";
+import { Check, ChevronDown, ChevronRight, HelpCircle } from "lucide-react";
+import { useState, type ReactNode } from "react";
 import type { Policy, StepOption } from "../api/types";
 import { actionLabel, POLICY_HELP, POLICY_LABEL } from "../lib/labels";
 
@@ -38,6 +38,7 @@ export function DecisionReceipt({
   className,
   compact,
 }: DecisionReceiptProps) {
+  const [showMath, setShowMath] = useState(false);
   const slot = slotPrice && slotPrice > 0 ? slotPrice : 0;
   const none = options.find((o) => o.action === "none");
   const change = (o: StepOption) => (none ? o.p_convert - none.p_convert : 0);
@@ -132,6 +133,55 @@ export function DecisionReceipt({
               </span>
             </div>
             <PolicyLine policy={policy} chosen={picked.action} modelBest={modelBest} />
+            <div className="mt-2 border-t border-line/60 pt-2">
+              <button
+                type="button"
+                onClick={() => setShowMath((v) => !v)}
+                className="flex items-center gap-1.5 text-[12px] font-medium text-brand hover:underline"
+              >
+                <HelpCircle className="size-3.5" />
+                {showMath ? "Hide decision calculation" : "Why was this step preferred? (Calculation & explainability)"}
+                {showMath ? <ChevronDown className="size-3" /> : <ChevronRight className="size-3" />}
+              </button>
+              {showMath && (
+                <div className="mt-2 space-y-2 rounded border border-line bg-canvas p-2.5 text-[12px] text-ink-2">
+                  <p className="font-semibold text-ink">
+                    Causal Optimization: argmax E[Profit | a] − E[Profit | Do Nothing]
+                  </p>
+                  <p className="text-[11.5px] text-muted">
+                    E[Profit | a] = P(buy | a) × Course Fee × (1 − Discount) − Action Cost
+                  </p>
+                  <div className="space-y-1 pt-1">
+                    {options.map((o) => {
+                      const netProfit = o.incremental_profit ?? 0;
+                      const isBest = o.action === picked.action;
+                      return (
+                        <div
+                          key={o.action}
+                          className={cn("flex justify-between py-0.5", isBest && "font-semibold text-brand")}
+                        >
+                          <span>
+                            {o.label || actionLabel(o.action)}
+                            {o.blocked ? ` (${o.blocked})` : ""}
+                          </span>
+                          <span className="num">
+                            {o.blocked
+                              ? "Blocked"
+                              : `ΔProfit: ${money(netProfit)}${
+                                  o.net_of_slot !== undefined ? ` (Net of slot: ${money(o.net_of_slot)})` : ""
+                                }`}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <p className="pt-1 text-[11px] italic text-muted">
+                    The chosen action maximizes the expected net return after accounting for opportunity cost of counsellor
+                    call slots and coupon budget constraints.
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
