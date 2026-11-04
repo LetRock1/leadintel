@@ -34,10 +34,19 @@ import math
 import threading
 import time
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from app import db
 from app.core import rules
+
+IST = timezone(timedelta(hours=5, minutes=30))
+
+
+def _now_local(dt: datetime | None = None) -> datetime:
+    if dt is not None:
+        return dt
+    return datetime.now(IST).replace(tzinfo=None)
+
 
 log = logging.getLogger(__name__)
 
@@ -169,7 +178,7 @@ def pricer_at(as_of: datetime, cap: int | None = None, con=None) -> SlotPricer:
 
 def calls_today(now: datetime | None = None) -> int:
     """Call tasks created today. One team makes every call, so all calls share the daily capacity."""
-    day = (now or datetime.now()).strftime("%Y-%m-%d")
+    day = (now or _now_local()).strftime("%Y-%m-%d")
     return db.fetchone(
         """SELECT COUNT(*) AS c FROM sales_tasks WHERE task_type='call' AND date(created_at)=?""", (day,)
     )["c"]
@@ -178,7 +187,7 @@ def calls_today(now: datetime | None = None) -> int:
 def _pricer() -> SlotPricer:
     with _lock:
         if _cache["pricer"] is None or time.time() - _cache["at"] > CACHE_SECONDS:
-            p = pricer_at(datetime.now())
+            p = pricer_at(_now_local())
             _cache.update(pricer=p, at=time.time())
             _log(p)
         return _cache["pricer"]
@@ -186,9 +195,10 @@ def _pricer() -> SlotPricer:
 
 def _log(p: SlotPricer) -> None:
     """Keep at most one price a quarter-hour in call_slot_prices (the dashboard's price chart)."""
+    now = _now_local()
     try:
         last = db.fetchone("SELECT computed_at FROM call_slot_prices ORDER BY id DESC LIMIT 1")
-        if last and datetime.now() - datetime.strptime(last["computed_at"][:19], TS) < timedelta(minutes=15):
+        if last and now - datetime.strptime(last["computed_at"][:19], TS) < timedelta(minutes=15):
             return
         db.execute(
             """INSERT INTO call_slot_prices (price, policy, capacity, lookback_days, days_seen, candidates,
@@ -215,14 +225,14 @@ def reset_cache() -> None:
 
 def price_now(now: datetime | None = None) -> tuple[float, int]:
     """(price of a call slot right now, calls already created today)."""
-    now = now or datetime.now()
+    now = now or _now_local()
     used = calls_today(now)
     return _pricer().price(capacity() - used, time_of_day(now)), used
 
 
 def current() -> dict:
     """Everything the dashboard shows about call slots right now."""
-    now = datetime.now()
+    now = _now_local()
     p = _pricer()
     used = calls_today(now)
     price = p.price(p.capacity - used, time_of_day(now))
