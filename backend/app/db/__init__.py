@@ -34,13 +34,54 @@ def get_conn() -> sqlite3.Connection:
     return conn
 
 
+def _restore_seeds_if_needed(target_path: Path) -> None:
+    settings = get_settings()
+    if settings.environment == "test":
+        return
+    if target_path.exists() and target_path.stat().st_size > 0:
+        return
+
+    import gzip
+    import shutil
+
+    seeds_dir = Path(__file__).resolve().parents[2] / "seeds"
+    if not seeds_dir.exists():
+        return
+
+    seed_gz = seeds_dir / "xeducation.db.gz"
+    if seed_gz.exists() and target_path.name == "xeducation.db":
+        log.info("Restoring database seed from %s -> %s", seed_gz, target_path)
+        with gzip.open(seed_gz, "rb") as f_in, open(target_path, "wb") as f_out:
+            shutil.copyfileobj(f_in, f_out)
+
+    sim_db = settings.simulation_db
+    if not sim_db.exists() or sim_db.stat().st_size == 0:
+        sim_seed_gz = seeds_dir / "simulation_world.db.gz"
+        if sim_seed_gz.exists():
+            sim_db.parent.mkdir(parents=True, exist_ok=True)
+            log.info("Restoring simulation world seed from %s -> %s", sim_seed_gz, sim_db)
+            with gzip.open(sim_seed_gz, "rb") as f_in, open(sim_db, "wb") as f_out:
+                shutil.copyfileobj(f_in, f_out)
+
+    models_seed_dir = seeds_dir / "models"
+    target_models_dir = settings.model_dir
+    if models_seed_dir.exists():
+        target_models_dir.mkdir(parents=True, exist_ok=True)
+        for model_file in models_seed_dir.iterdir():
+            dest = target_models_dir / model_file.name
+            if not dest.exists():
+                shutil.copy2(model_file, dest)
+
+
 def init_db(path: str | None = None) -> None:
     """Create or upgrade the database schema to the latest migration (idempotent)."""
     from alembic import command
     from alembic.config import Config
 
     target = str(path or DB_PATH)
-    Path(target).parent.mkdir(parents=True, exist_ok=True)
+    target_p = Path(target)
+    target_p.parent.mkdir(parents=True, exist_ok=True)
+    _restore_seeds_if_needed(target_p)
     cfg = Config()
     cfg.set_main_option("script_location", str(MIGRATIONS_DIR))
     cfg.set_main_option("sqlalchemy.url", f"sqlite:///{target}")

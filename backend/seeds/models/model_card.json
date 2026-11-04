@@ -1,0 +1,289 @@
+{
+  "kind": "starter+live",
+  "starter_columns": [
+    "LeadOrigin",
+    "LeadSource",
+    "DeviceType",
+    "CurrentOccupation",
+    "Specialization",
+    "CourseType",
+    "City",
+    "Country",
+    "AgeBracket",
+    "HowDidYouHear",
+    "TotalVisits",
+    "TotalTimeOnWebsite",
+    "PageViewsPerVisit",
+    "EmailOpenedCount",
+    "VideoWatched",
+    "BrochureDownloaded",
+    "ChatInitiated",
+    "PricingPageVisited",
+    "TestimonialVisited",
+    "WebinarAttended",
+    "AddedToWishlist",
+    "AddedToCart",
+    "CheckoutStarted",
+    "EnquirySubmitted",
+    "WhatsAppOptIn",
+    "DoNotEmail",
+    "DoNotCall",
+    "TimePerVisit",
+    "IsReturningVisitor",
+    "ContentEngagement",
+    "CommerceIntent",
+    "ProfileCompleteness"
+  ],
+  "live": {
+    "signals": [
+      "VideoWatched",
+      "BrochureDownloaded",
+      "ChatInitiated",
+      "PricingPageVisited",
+      "TestimonialVisited",
+      "WebinarAttended",
+      "AddedToWishlist",
+      "AddedToCart",
+      "CheckoutStarted",
+      "EnquirySubmitted",
+      "EmailEngagement",
+      "WhatsAppOptIn",
+      "MobileDevice"
+    ],
+    "weights": [
+      -0.03748974402134526,
+      0.20311331524033052,
+      0.5377183833028921,
+      0.3947508935216562,
+      -0.0642936775592737,
+      0.2785872770631776,
+      -0.43442243783511847,
+      -0.1956277113616606,
+      0.19904120543785817,
+      0.2998467253390523,
+      -1.3796626784266557,
+      0.7303450340967693,
+      -0.468013249042258
+    ],
+    "intercept": -0.9395778486392655,
+    "slope": 0.91430643061362,
+    "outcomes_used": 2388,
+    "trained_at": "2026-10-28 20:37:02",
+    "learning_run": 11,
+    "own_effects": {
+      "email_info": 0.9034718415883239,
+      "email_coupon_10": 0.9148936911648792,
+      "email_coupon_20": 1.0746270188591798,
+      "call": 0.9628957392508591,
+      "whatsapp": 0.30125321182953846,
+      "campaign": 0.4817501385415375,
+      "away_1_7_days": 0.24483807192987653,
+      "away_7_14_days": 0.3061488029664336,
+      "away_14_30_days": -1.4479396036217964,
+      "away_30_days_plus": -0.34990837561677807,
+      "age_7_14_days": -0.8677246132155889,
+      "age_14_30_days": -1.3705053699195795,
+      "age_30_days_plus": -1.3410534537755319
+    },
+    "method": "anchored_control",
+    "fixed_steps": [],
+    "learned_as_of": "2026-07-30 00:00:00"
+  },
+  "model_type": "logistic_regression",
+  "version": "v7.1-live-20260730-run11",
+  "feature_version": 6,
+  "sklearn_version": "1.6.1",
+  "trained_at": "2026-10-27T17:36:27",
+  "metrics": {
+    "roc_auc": 0.8767,
+    "log_loss": 0.4055,
+    "brier": 0.1293,
+    "ece": 0.0109,
+    "accuracy": 0.8153,
+    "precision_top10": 0.9608
+  },
+  "metrics_all_candidates": {
+    "logistic_regression": {
+      "roc_auc": 0.8767,
+      "log_loss": 0.4055,
+      "brier": 0.1293,
+      "ece": 0.0109,
+      "accuracy": 0.8153,
+      "precision_top10": 0.9608
+    },
+    "gradient_boosting": {
+      "roc_auc": 0.8755,
+      "log_loss": 0.4081,
+      "brier": 0.1302,
+      "ece": 0.0112,
+      "accuracy": 0.8141,
+      "precision_top10": 0.95
+    }
+  },
+  "base_rate": 0.3401,
+  "trained_on": {
+    "simulated_leads": 60000,
+    "history_outcomes": 2388
+  },
+  "starter_version": "v7-base-20261027-173627",
+  "learned_signals": [
+    {
+      "signal": "VideoWatched",
+      "label": "Watched a course video",
+      "weight": -0.037,
+      "points": -0.8
+    },
+    {
+      "signal": "BrochureDownloaded",
+      "label": "Downloaded a brochure",
+      "weight": 0.203,
+      "points": 4.4
+    },
+    {
+      "signal": "ChatInitiated",
+      "label": "Opened chat",
+      "weight": 0.538,
+      "points": 12.3
+    },
+    {
+      "signal": "PricingPageVisited",
+      "label": "Spent time on pricing",
+      "weight": 0.395,
+      "points": 8.9
+    },
+    {
+      "signal": "TestimonialVisited",
+      "label": "Read testimonials",
+      "weight": -0.064,
+      "points": -1.3
+    },
+    {
+      "signal": "WebinarAttended",
+      "label": "Joined a webinar",
+      "weight": 0.279,
+      "points": 6.2
+    },
+    {
+      "signal": "AddedToWishlist",
+      "label": "Wishlisted a course",
+      "weight": -0.434,
+      "points": -8.3
+    },
+    {
+      "signal": "AddedToCart",
+      "label": "Added to cart",
+      "weight": -0.196,
+      "points": -3.9
+    },
+    {
+      "signal": "CheckoutStarted",
+      "label": "Started checkout",
+      "weight": 0.199,
+      "points": 4.3
+    },
+    {
+      "signal": "EnquirySubmitted",
+      "label": "Sent an enquiry",
+      "weight": 0.3,
+      "points": 6.6
+    },
+    {
+      "signal": "EmailEngagement",
+      "label": "Clicked our emails",
+      "weight": -1.38,
+      "points": -20.3
+    },
+    {
+      "signal": "WhatsAppOptIn",
+      "label": "Opted in to WhatsApp",
+      "weight": 0.73,
+      "points": 17.1
+    },
+    {
+      "signal": "MobileDevice",
+      "label": "Browses on mobile",
+      "weight": -0.468,
+      "points": -8.8
+    }
+  ],
+  "own_effects": [
+    {
+      "input": "email_info",
+      "label": "Send an information email",
+      "weight": 0.903,
+      "points": 21.4
+    },
+    {
+      "input": "email_coupon_10",
+      "label": "Send email with 10% coupon",
+      "weight": 0.915,
+      "points": 21.7
+    },
+    {
+      "input": "email_coupon_20",
+      "label": "Send email with 20% coupon",
+      "weight": 1.075,
+      "points": 25.7
+    },
+    {
+      "input": "call",
+      "label": "Counsellor phone call",
+      "weight": 0.963,
+      "points": 22.9
+    },
+    {
+      "input": "whatsapp",
+      "label": "WhatsApp message",
+      "weight": 0.301,
+      "points": 6.7
+    },
+    {
+      "input": "campaign",
+      "label": "Campaign or A/B email",
+      "weight": 0.482,
+      "points": 11.0
+    },
+    {
+      "input": "away_1_7_days",
+      "label": "Last seen 1-7 days ago",
+      "weight": 0.245,
+      "points": 5.4
+    },
+    {
+      "input": "away_7_14_days",
+      "label": "Last seen 7-14 days ago",
+      "weight": 0.306,
+      "points": 6.8
+    },
+    {
+      "input": "away_14_30_days",
+      "label": "Last seen 14-30 days ago",
+      "weight": -1.448,
+      "points": -20.8
+    },
+    {
+      "input": "away_30_days_plus",
+      "label": "Last seen 30+ days ago",
+      "weight": -0.35,
+      "points": -6.8
+    },
+    {
+      "input": "age_7_14_days",
+      "label": "Signed up 7-14 days ago",
+      "weight": -0.868,
+      "points": -14.7
+    },
+    {
+      "input": "age_14_30_days",
+      "label": "Signed up 14-30 days ago",
+      "weight": -1.371,
+      "points": -20.2
+    },
+    {
+      "input": "age_30_days_plus",
+      "label": "Signed up 30+ days ago",
+      "weight": -1.341,
+      "points": -19.9
+    }
+  ]
+}

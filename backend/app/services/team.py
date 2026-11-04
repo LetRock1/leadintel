@@ -148,7 +148,11 @@ def ensure_owner(email, name="Admin"):
         else:
             db.execute("UPDATE team_members SET email=? WHERE id=?", (email, owner["id"]))
     owner = owner_account()
-    if owner and not settings.owner_password_from_env and not owner.get("password_hash"):
+    if owner and settings.owner_password_from_env and settings.crm_owner_password:
+        if not owner.get("password_hash") or not verify_password(settings.crm_owner_password, owner["password_hash"]):
+            set_password(owner["id"], settings.crm_owner_password, must_change=False)
+            owner = owner_account()
+    elif owner and not settings.owner_password_from_env and not owner.get("password_hash"):
         first = security.generate_password()
         set_password(owner["id"], first, must_change=True)
         path = settings.initial_password_file

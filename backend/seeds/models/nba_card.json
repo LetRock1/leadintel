@@ -1,0 +1,61 @@
+{
+  "kind": "flexible_gbm",
+  "version": "nba-20261028-203353",
+  "context_names": [
+    "bias",
+    "base_logit",
+    "price_sensitive",
+    "high_intent",
+    "cart_or_enquiry",
+    "professional",
+    "email_engaged",
+    "whatsapp_opt_in",
+    "low_engagement"
+  ],
+  "treatments": [
+    "email_info",
+    "email_coupon_10",
+    "email_coupon_20",
+    "call",
+    "whatsapp"
+  ],
+  "trained_at": "2026-10-28 20:33:53",
+  "sklearn_version": "1.6.1",
+  "trained_on": {
+    "simulated_rows": 60000,
+    "real_rows": 545
+  },
+  "uplift_quality": {
+    "email_info": {
+      "corr_with_true_uplift": 0.679,
+      "mean_true_uplift_pts": 3.26,
+      "mean_pred_uplift_pts": 2.82
+    },
+    "email_coupon_10": {
+      "corr_with_true_uplift": 0.821,
+      "mean_true_uplift_pts": 6.08,
+      "mean_pred_uplift_pts": 6.54
+    },
+    "email_coupon_20": {
+      "corr_with_true_uplift": 0.873,
+      "mean_true_uplift_pts": 10.21,
+      "mean_pred_uplift_pts": 10.02
+    },
+    "call": {
+      "corr_with_true_uplift": 0.894,
+      "mean_true_uplift_pts": 5.3,
+      "mean_pred_uplift_pts": 4.95
+    },
+    "whatsapp": {
+      "corr_with_true_uplift": 0.648,
+      "mean_true_uplift_pts": 5.34,
+      "mean_pred_uplift_pts": 4.07
+    }
+  },
+  "learned_as_of": "2026-06-30 00:00:00",
+  "offpolicy_profit_per_lead": {
+    "champion": 19813.19247343781,
+    "interpretable S-learner": 15565.037986004842,
+    "flexible S-learner (GBM)": 30034.4746535653
+  }
+}
