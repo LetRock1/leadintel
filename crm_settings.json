@@ -71,7 +71,7 @@
       "cost": 5
     }
   },
-  "daily_call_capacity": 8,
+  "daily_call_capacity": 24,
   "call_capacity": {
     "_about": "Capacity-aware next-best-action. daily_call_capacity is how many counsellor calls the team can make in a day (8: one counsellor, besides call-backs). 'priced': a call slot gets a price worked out from the last lookback_days of decisions, and a call is created only when it adds more than that price over the best step without a call (see backend/app/ml/capacity.py). 'fcfs': first come, first served until the daily capacity is used. Until min_decisions decisions with a possible call exist, the price is 0.",
     "policy": "priced",
