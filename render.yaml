@@ -45,7 +45,7 @@ services:
     staticPublishPath: "./web/dist"
     envVars:
       - key: VITE_API_URL
-        sync: false
+        value: "https://leadintel-backend.onrender.com"
     routes:
       - type: rewrite
         source: /*
@@ -62,7 +62,7 @@ services:
     staticPublishPath: "./crm/dist"
     envVars:
       - key: VITE_API_URL
-        sync: false
+        value: "https://leadintel-backend.onrender.com"
     routes:
       - type: rewrite
         source: /*
