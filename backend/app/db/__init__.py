@@ -34,11 +34,23 @@ def get_conn() -> sqlite3.Connection:
     return conn
 
 
+def _is_empty_or_stale_db(db_path: Path) -> bool:
+    if not db_path.exists() or db_path.stat().st_size < 1000:
+        return True
+    try:
+        con = sqlite3.connect(str(db_path))
+        count = con.execute("SELECT COUNT(*) FROM users").fetchone()[0]
+        con.close()
+        return count < 100
+    except Exception:  # noqa: BLE001
+        return True
+
+
 def _restore_seeds_if_needed(target_path: Path) -> None:
     settings = get_settings()
     if settings.environment == "test":
         return
-    if target_path.exists() and target_path.stat().st_size > 0:
+    if not _is_empty_or_stale_db(target_path):
         return
 
     import gzip
@@ -55,7 +67,7 @@ def _restore_seeds_if_needed(target_path: Path) -> None:
             shutil.copyfileobj(f_in, f_out)
 
     sim_db = settings.simulation_db
-    if not sim_db.exists() or sim_db.stat().st_size == 0:
+    if not sim_db.exists() or sim_db.stat().st_size < 100000:
         sim_seed_gz = seeds_dir / "simulation_world.db.gz"
         if sim_seed_gz.exists():
             sim_db.parent.mkdir(parents=True, exist_ok=True)
