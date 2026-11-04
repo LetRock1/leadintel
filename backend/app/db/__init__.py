@@ -31,7 +31,23 @@ def get_conn() -> sqlite3.Connection:
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA busy_timeout=30000")
     conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA cache_size=-2000")
+    conn.execute("PRAGMA mmap_size=0")
     return conn
+
+
+def trim_memory() -> None:
+    """Trigger Python garbage collection and release Linux glibc memory arenas back to OS."""
+    import gc
+
+    gc.collect()
+    try:
+        import ctypes
+
+        libc = ctypes.CDLL("libc.so.6")
+        libc.malloc_trim(0)
+    except Exception:  # noqa: BLE001
+        pass
 
 
 def _is_empty_or_stale_db(db_path: Path) -> bool:

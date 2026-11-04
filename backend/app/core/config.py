@@ -95,6 +95,7 @@ class Settings(BaseSettings):
     # background work
     scheduler_enabled: bool = True
     simulation_enabled: bool | None = None  # None: crm_settings.json decides
+    learning_loop_enabled: bool = True
     keep_alive_enabled: bool = True
     keep_alive_url: str | None = Field(
         default=None,

@@ -78,17 +78,21 @@ def refresh_scores_job(reason: str = "scheduled"):
 
 
 def learning_job():
+    if not get_settings().learning_loop_enabled:
+        return
     from app.ml import learning
 
     learning.scheduled_job()
 
 
 def housekeeping_job():
+    from app import db
     from app.services import learner_auth
 
     n = learner_auth.purge_old()
     if n:
         log.info("Housekeeping: deleted %d expired one-time code(s) and simulated inbox email(s)", n)
+    db.trim_memory()
 
 
 def email_retry_job():
@@ -144,7 +148,8 @@ def start() -> BackgroundScheduler | None:
     sched.add_job(_safe("team", team_job), "interval", minutes=1, id="team")
     sched.add_job(_safe("adoption", adoption_job), "interval", minutes=5, id="adoption")
     sched.add_job(_safe("score_refresh", refresh_scores_job), "interval", minutes=refresh_every, id="score_refresh")
-    sched.add_job(_safe("learning", learning_job), "interval", minutes=learn_every, id="learning")
+    if settings.learning_loop_enabled:
+        sched.add_job(_safe("learning", learning_job), "interval", minutes=learn_every, id="learning")
     sched.add_job(_safe("housekeeping", housekeeping_job), "interval", minutes=60, id="housekeeping")
     sched.add_job(_safe("email_retry", email_retry_job), "interval", minutes=10, id="email_retry")
     sim = rules.S.get("live_simulation") or {}
@@ -159,7 +164,7 @@ def start() -> BackgroundScheduler | None:
     sched.start()
     _scheduler = sched
     # once right after start-up: scores saved by an older model are brought up to date
-    threading.Timer(3.0, _safe("score_refresh_startup", refresh_scores_job, "startup")).start()
+    threading.Timer(30.0, _safe("score_refresh_startup", refresh_scores_job, "startup")).start()
     log.info(
         "Background jobs started: automations every %d min, learning check every %d min, scores refreshed every "
         "%d min, simulated learners every %d s%s",

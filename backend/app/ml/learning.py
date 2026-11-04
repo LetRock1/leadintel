@@ -560,11 +560,12 @@ def evaluate(bundle, rows, resamples=None, seed=11, method=None, boot=AN.BOOT):
     fold = person_folds(users)
     champion = bundle.get("live") or LM.empty_live()
     geo = AN.nba_geometry(rows)
-    design = AN.designs(rows, y, geo, boot)
-    fits = {m: _fit(m, z, S, y, Nm, design=design) for m in (method, other, "naive")}
+    effective_boot = min(boot, 50) if len(rows) > 2000 else boot
+    design = AN.designs(rows, y, geo, effective_boot)
+    fits = {m: _fit(m, z, S, y, Nm, design=design, boot=effective_boot) for m in (method, other, "naive")}
     ours, effects, _ = fits[method]
     naive = fits["naive"][0]
-    cv = crossfit_methods([method, other, "naive"], z, S, y, fold, Nm, rows, geo, boot)
+    cv = crossfit_methods([method, other, "naive"], z, S, y, fold, Nm, rows, geo, effective_boot)
     # rows a fold could not score (tiny data): use the full-data fits
     pred = {}
     for mm, (live_m, eff_m, _) in fits.items():
@@ -1076,6 +1077,7 @@ def run(as_of=None, reason="manual", force=True, dry_run=False, simulated=False,
         )
         return res
     finally:
+        db.trim_memory()
         _run_lock.release()
 
 

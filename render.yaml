@@ -27,6 +27,12 @@ services:
         value: "Leadintel@123"
       - key: CORS_ORIGINS
         value: '["*"]'
+      - key: MALLOC_ARENA_MAX
+        value: "2"
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: LEARNING_LOOP_ENABLED
+        value: "false"
       - key: BREVO_API_KEY
         sync: false
       - key: GMAIL_USER

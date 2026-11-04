@@ -319,6 +319,7 @@ class World:
             c = sqlite3.connect(self.path, timeout=30, check_same_thread=False, isolation_level=None)
             c.row_factory = sqlite3.Row
             c.execute("PRAGMA journal_mode=WAL")
+            c.execute("PRAGMA cache_size=-1000")
             c.executescript(SCHEMA)
             self._con = c
         return self._con

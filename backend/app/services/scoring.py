@@ -424,11 +424,22 @@ def refresh_scores(reason="refresh", user_ids=None, verbose=True):
         if user_ids is not None:
             wanted = {int(u) for u in user_ids}
             leads = [ld for ld in leads if ld["user_id"] in wanted]
-        if not leads:
-            return {"status": "done", "checked": 0, "updated": 0, "tier_changes": 0}
-        raws = build_raw_many([ld["user_id"] for ld in leads])
-        preds = predict_many([raws[ld["user_id"]] for ld in leads])
         version = model_info().get("version", "fallback")
+        if reason == "startup":
+            leads = [ld for ld in leads if ld["model_version"] != version or ld["lead_score"] is None]
+        if not leads:
+            res = {
+                "status": "done",
+                "reason": reason,
+                "checked": 0,
+                "updated": 0,
+                "tier_changes": 0,
+                "model_version": version,
+                "seconds": round(time.perf_counter() - started, 2),
+            }
+            _refresh_state["last"] = {**res, "at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+            return res
+
         spent = {
             r["user_id"]: r["s"]
             for r in db.fetchall("SELECT user_id, COALESCE(SUM(price_paid),0) AS s FROM purchases GROUP BY user_id")
@@ -437,53 +448,69 @@ def refresh_scores(reason="refresh", user_ids=None, verbose=True):
         for r in db.fetchall("SELECT user_id, course_slug FROM cart ORDER BY added_at ASC"):
             carts[r["user_id"]] = r["course_slug"]  # the latest cart item wins
         avg_price = catalog.average_price()
-        updates, history, states = [], [], []
-        for lead, (p, score, tier, persona) in zip(leads, preds):
-            u = lead["user_id"]
-            slug = lead["course_slug"] or carts.get(u) or raws[u]["_top_course_slug"]
-            plv = round((spent.get(u) or 0) + (catalog.price_of(slug) or avg_price) * p, 2)
-            old_score = lead["lead_score"] if lead["lead_score"] is not None else -1.0
-            if (
-                abs(score - old_score) < 0.05
-                and tier == lead["recommended_action"]
-                and lead["model_version"] == version
-            ):
-                continue
-            updates.append((score, p, tier, persona, persona, plv, version, lead["id"], lead["lead_score"]))
-            states.append((u, score, persona))
-            if lead["recommended_action"] and tier != lead["recommended_action"]:
-                why = "model_update" if lead["model_version"] != version else "time_away"
-                history.append((lead["id"], u, lead["lead_score"], score, lead["recommended_action"], tier, why))
-        con = db.get_conn()
-        try:
-            # only rows nobody changed since we read them (an event may have re-scored someone meanwhile)
-            con.executemany(
-                """UPDATE leads SET lead_score=?, conversion_probability=?, recommended_action=?, persona=?,
-                                      customer_segment=?, plv=?, model_version=?, decayed=0
-                               WHERE id=? AND lead_score IS ?""",
-                updates,
-            )
-            con.executemany(
-                """INSERT INTO lead_score_history (lead_id, user_id, old_score, new_score, old_tier, new_tier, reason)
-                               VALUES (?,?,?,?,?,?,?)""",
-                history,
-            )
-            con.executemany(
-                """INSERT INTO live_user_state (user_id, live_score, persona, updated_at)
-                   VALUES (?, ?, ?, datetime('now','localtime'))
-                   ON CONFLICT(user_id) DO UPDATE SET live_score=excluded.live_score, persona=excluded.persona,
-                   updated_at=excluded.updated_at""",
-                states,
-            )
-            con.commit()
-        finally:
-            con.close()
+
+        total_updated = 0
+        total_history = 0
+        BATCH_SIZE = 150
+
+        for i in range(0, len(leads), BATCH_SIZE):
+            chunk = leads[i : i + BATCH_SIZE]
+            raws = build_raw_many([ld["user_id"] for ld in chunk])
+            preds = predict_many([raws[ld["user_id"]] for ld in chunk])
+            updates, history, states = [], [], []
+            for lead, (p, score, tier, persona) in zip(chunk, preds):
+                u = lead["user_id"]
+                slug = lead["course_slug"] or carts.get(u) or raws[u]["_top_course_slug"]
+                plv = round((spent.get(u) or 0) + (catalog.price_of(slug) or avg_price) * p, 2)
+                old_score = lead["lead_score"] if lead["lead_score"] is not None else -1.0
+                if (
+                    abs(score - old_score) < 0.05
+                    and tier == lead["recommended_action"]
+                    and lead["model_version"] == version
+                ):
+                    continue
+                updates.append((score, p, tier, persona, persona, plv, version, lead["id"], lead["lead_score"]))
+                states.append((u, score, persona))
+                if lead["recommended_action"] and tier != lead["recommended_action"]:
+                    why = "model_update" if lead["model_version"] != version else "time_away"
+                    history.append((lead["id"], u, lead["lead_score"], score, lead["recommended_action"], tier, why))
+
+            if updates or states or history:
+                con = db.get_conn()
+                try:
+                    # only rows nobody changed since we read them (an event may have re-scored someone meanwhile)
+                    con.executemany(
+                        """UPDATE leads SET lead_score=?, conversion_probability=?, recommended_action=?, persona=?,
+                                               customer_segment=?, plv=?, model_version=?, decayed=0
+                                        WHERE id=? AND lead_score IS ?""",
+                        updates,
+                    )
+                    con.executemany(
+                        """INSERT INTO lead_score_history
+                           (lead_id, user_id, old_score, new_score, old_tier, new_tier, reason)
+                           VALUES (?,?,?,?,?,?,?)""",
+                        history,
+                    )
+                    con.executemany(
+                        """INSERT INTO live_user_state (user_id, live_score, persona, updated_at)
+                            VALUES (?, ?, ?, datetime('now','localtime'))
+                            ON CONFLICT(user_id) DO UPDATE SET live_score=excluded.live_score, persona=excluded.persona,
+                            updated_at=excluded.updated_at""",
+                        states,
+                    )
+                    con.commit()
+                finally:
+                    con.close()
+            total_updated += len(updates)
+            total_history += len(history)
+
+        db.trim_memory()
         res = {
             "status": "done",
             "reason": reason,
             "checked": len(leads),
-            "updated": len(updates),
-            "tier_changes": len(history),
+            "updated": total_updated,
+            "tier_changes": total_history,
             "model_version": version,
             "seconds": round(time.perf_counter() - started, 2),
         }
