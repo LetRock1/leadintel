@@ -20,9 +20,11 @@ services:
       - key: EMAIL_FROM
         value: "krishna.jain24@spit.ac.in"
       - key: CRM_OWNER_EMAIL
-        value: "krishna.jain24@spit.ac.in"
+        value: "admin@xeducation.in"
       - key: CRM_OWNER_NAME
-        value: "Krishna Jain"
+        value: "Admin"
+      - key: CRM_OWNER_PASSWORD
+        value: "Leadintel@123"
       - key: CORS_ORIGINS
         value: '["*"]'
       - key: BREVO_API_KEY
@@ -30,8 +32,6 @@ services:
       - key: GMAIL_USER
         sync: false
       - key: GMAIL_APP_PASSWORD
-        sync: false
-      - key: CRM_OWNER_PASSWORD
         sync: false
 
   # -------------------------------------------------------------

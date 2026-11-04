@@ -20,14 +20,23 @@ CAN = {"admin": ["team", "audit", "marketing", "leads"], "marketing": ["marketin
 
 @router.post("/auth/login", summary="Sign in to the CRM")
 def login(body: LoginRequest):
+    settings = get_settings()
     email = (body.email or "").strip().lower()
-    wait = T.locked_seconds(email)
-    if wait:
-        raise HTTPException(
-            status.HTTP_429_TOO_MANY_REQUESTS,
-            f"Too many wrong passwords for this address. Try again in {max(1, round(wait / 60))} "
-            "minute(s), or ask an admin to reset the password.",
-        )
+    owner_email = (settings.crm_owner_email or "").strip().lower()
+    is_env_owner = (
+        owner_email
+        and security.constant_time_equals(email, owner_email)
+        and settings.owner_password_from_env
+        and security.constant_time_equals(body.password or "", settings.crm_owner_password or "")
+    )
+    if not is_env_owner:
+        wait = T.locked_seconds(email)
+        if wait:
+            raise HTTPException(
+                status.HTTP_429_TOO_MANY_REQUESTS,
+                f"Too many wrong passwords for this address. Try again in {max(1, round(wait / 60))} "
+                "minute(s), or ask an admin to reset the password.",
+            )
     m = T.authenticate(email, body.password)
     if not m:
         failures, locked = T.record_failure(email)

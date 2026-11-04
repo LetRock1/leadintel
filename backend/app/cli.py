@@ -154,6 +154,20 @@ def cmd_serve(args) -> int:
     return 0
 
 
+def cmd_unlock(args) -> int:
+    from app import db
+
+    email = (args.email or "").strip().lower()
+    if email:
+        for ns in ("crm", "learner"):
+            db.execute("DELETE FROM login_attempts WHERE email=?", (f"{ns}:{email}",))
+        _say(f"Cleared login failures and unlocked: {email}")
+    else:
+        db.execute("DELETE FROM login_attempts")
+        _say("Cleared all login failures and unlocked all accounts.")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     settings = get_settings()
     setup_logging(settings.log_level, settings.log_path)
@@ -180,6 +194,9 @@ def main(argv: list[str] | None = None) -> int:
     v.add_argument("--host", default="127.0.0.1")
     v.add_argument("--port", type=int, default=8000)
     v.set_defaults(fn=cmd_serve)
+    u = sub.add_parser("unlock", help="clear login attempt failures and unlock locked accounts")
+    u.add_argument("email", nargs="?", default="", help="email to unlock (or omit to unlock all)")
+    u.set_defaults(fn=cmd_unlock)
     args = ap.parse_args(argv)
     return int(args.fn(args) or 0)
 
